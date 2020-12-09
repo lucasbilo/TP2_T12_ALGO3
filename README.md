@@ -13,7 +13,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Tomas Zocchi** - [tomiizocchi07](https://github.com/tomiizocchi07)
 * **Federico Rubachin** - [federubachin](https://github.com/federubachin)
 
-Corrector: **{Corrector}**
+Corrector: **{Martin Picco}**
 
 ### Pre-requisitos
 
