@@ -13,7 +13,7 @@ public class Direccion {
         this.coordenadas[1] = coordenadaY;
     }
 
-    public int[] getDireccion() {
+    public int[] obtenerCoordenadas() {
         return coordenadas;
     }
 }

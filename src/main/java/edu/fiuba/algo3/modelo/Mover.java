@@ -12,7 +12,7 @@ public class Mover {
     }
 
     //Métodos
-    Direccion ejecutarBloque() {
-        return direccion;
+    int[] ejecutarBloque() {
+        return direccion.obtenerCoordenadas();
     }
 }
