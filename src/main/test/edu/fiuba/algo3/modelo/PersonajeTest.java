@@ -11,16 +11,16 @@ class PersonajeTest {
         Personaje personaje = new Personaje();
         EstadoLapiz estadoLapiz = personaje.obtenerEstadoLapiz();
 
-        assertEquals(new LapizArriba(), estadoLapiz);
+        assertEquals("Arriba", estadoLapiz.obtenerTipoEstado());
     }
 
     @Test
-    public void test01SeModificaElEstadoDelLapizALapizAbajo(){
+    public void test02SeModificaElEstadoDelLapizALapizAbajo(){
         Personaje personaje = new Personaje();
         personaje.modificarEstadoLapiz(new LapizAbajo());
         EstadoLapiz estadoLapiz = personaje.obtenerEstadoLapiz();
 
-        assertEquals(new LapizAbajo(), estadoLapiz);
+        assertEquals("Abajo", estadoLapiz.obtenerTipoEstado());
     }
 
 }
