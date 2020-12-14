@@ -16,4 +16,23 @@ public class BajarLapizTest {
 
         assertEquals("Abajo", estadoLapiz.obtenerTipoEstado());
     }
+
+    @Test
+    public void test02BajarLapizDevuelveEstadoLapizAbajoNoImportaQueEstadoLePases(){
+
+        BajarLapiz bloqueBajarLapiz = new BajarLapiz();
+        LapizArriba lapizArriba = new LapizArriba();
+        EstadoLapiz estadoLapiz = bloqueBajarLapiz.ejecutarEstado(lapizArriba);
+
+        assertEquals("Abajo", estadoLapiz.obtenerTipoEstado());
+    }
+
+    @Test
+    public void test03BajarLapizDevuelvePosicionEn0(){
+
+        BajarLapiz bloqueBajarLapiz = new BajarLapiz();
+        int[] arrayCoordenadas = bloqueBajarLapiz.ejecutarPosicion();
+
+        assertArrayEquals(new int[] {0,0}, arrayCoordenadas);
+    }
 }

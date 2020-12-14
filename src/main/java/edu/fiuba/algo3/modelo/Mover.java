@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-public class Mover {
+public class Mover extends Bloque {
     //Atributos
     private Direccion direccion = new Direccion();
 
@@ -12,7 +12,9 @@ public class Mover {
     }
 
     //Métodos
-    int[] ejecutarBloque() {
+    public int[] ejecutarPosicion() {
         return direccion.obtenerCoordenadas();
     }
+
+    public EstadoLapiz ejecutarEstado(EstadoLapiz estado){ return estado;}
 }
