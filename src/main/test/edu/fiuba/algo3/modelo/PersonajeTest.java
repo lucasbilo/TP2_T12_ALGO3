@@ -15,7 +15,7 @@ class PersonajeTest {
     }
 
     @Test
-    public void test02SeModificaElEstadoDelLapizALapizAbajo(){
+    public void test02SeModificaElEstadoDelLapizDelPersonajeALapizAbajo(){
         Personaje personaje = new Personaje();
         personaje.modificarEstadoLapiz(new LapizAbajo());
         EstadoLapiz estadoLapiz = personaje.obtenerEstadoLapiz();
@@ -36,7 +36,7 @@ class PersonajeTest {
     }
 
     @Test
-    public void test03SeAgregaUnBloqueMoverArribaYUnBloqueMoverALaDerechaAlAlgoritmoDelPersonaje(){
+    public void test04SeAgregaUnBloqueMoverArribaYUnBloqueMoverALaDerechaAlAlgoritmoDelPersonaje(){
         Personaje personaje = new Personaje();
         Direccion direccionDerecha = new Direccion(1,0);
         Mover bloqueMoverALaDerecha = new Mover(direccionDerecha);
@@ -51,7 +51,7 @@ class PersonajeTest {
     }
 
     @Test
-    public void test03SeAgregaUnBloqueMoverArribaYUnBloqueBajarLapizAlAlgoritmoDelPersonaje(){
+    public void test04SeAgregaUnBloqueMoverArribaYUnBloqueBajarLapizAlAlgoritmoDelPersonaje(){
         Personaje personaje = new Personaje();
         BajarLapiz bloqueBajarLapiz = new BajarLapiz();
         personaje.agregarBloque(bloqueBajarLapiz);
