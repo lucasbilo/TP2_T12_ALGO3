@@ -28,8 +28,7 @@ class PersonajeTest {
         Personaje personaje = new Personaje();
         Direccion direccionArriba = new Direccion(0, 5);
         personaje.modificarPosicion(direccionArriba);
-        Posicion posicion = personaje.obtenerPosicion();
 
-        assertEquals(5, posicion.obtenerX());
+        assertEquals(5, personaje.obtenerPosicion().obtenerY());
     }
 }

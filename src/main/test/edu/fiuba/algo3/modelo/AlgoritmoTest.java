@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class AlgoritmoTest {
 
@@ -43,6 +42,33 @@ public class AlgoritmoTest {
         ArrayList<Bloque> arrayDeBloques = algoritmo.obtenerAlgoritmo();
 
         assertEquals(3,arrayDeBloques.size());
+    }
+
+    @Test
+    public void test04SeCreaUnAlgoritmoConUnBloqueMoverYSeLoEjecuta(){
+        Algoritmo algoritmo = new Algoritmo();
+        Personaje personaje = new Personaje();
+        Direccion direccionArriba = new Direccion(0,1);
+        Mover bloqueMoverArriba = new Mover(direccionArriba);
+
+        algoritmo.agregarBloque(bloqueMoverArriba);
+        algoritmo.ejecutar(personaje);
+
+        assertEquals(1, personaje.obtenerPosicion().obtenerY());
+
+    }
+
+    @Test
+    public void test05SeCreaUnAlgoritmoConUnBloqueBajarLapizYSeLoEjecuta(){
+        Algoritmo algoritmo = new Algoritmo();
+        Personaje personaje = new Personaje();
+        Bloque bloque = new BajarLapiz();
+
+        algoritmo.agregarBloque(bloque);
+        algoritmo.ejecutar(personaje);
+
+        assertEquals(true, personaje.obtenerEstadoLapiz().lapizAbajo());
+
     }
 
 }

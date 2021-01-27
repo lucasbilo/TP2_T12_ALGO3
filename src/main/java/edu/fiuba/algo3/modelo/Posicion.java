@@ -9,15 +9,7 @@ public class Posicion {
         this.y = 0;
     }
 
-    /*public void modificarX(int numero){
-        this.x += numero;
-    }
-
-    public void modificarY(int numero){
-        this.y += numero;
-    }*/
-
-    public void modificar (Direccion direccion){
+    public void modificar(Direccion direccion){
         this.x += direccion.obtenerCoordenadas()[0];
         this.y += direccion.obtenerCoordenadas()[1];
     }

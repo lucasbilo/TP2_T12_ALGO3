@@ -7,6 +7,7 @@ public class Personaje {
 
     //Constructor
     public Personaje(){
+        this.posicion = new Posicion();
         this.estadoLapiz = new LapizArriba();
     }
 
