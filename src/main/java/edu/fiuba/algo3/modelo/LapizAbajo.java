@@ -1,13 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
 public class LapizAbajo implements EstadoLapiz {
-    private String tipo;
 
-    public LapizAbajo(){
-        tipo = "Abajo";
-    }
+    public boolean lapizAbajo(){return true;}
 
-    public String obtenerTipoEstado(){
-        return tipo;
-    }
+    public boolean lapizArriba() { return false; }
+
 }

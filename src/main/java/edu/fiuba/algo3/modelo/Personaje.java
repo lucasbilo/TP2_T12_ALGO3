@@ -10,17 +10,16 @@ public class Personaje {
         this.estadoLapiz = new LapizArriba();
     }
 
-    /*public EstadoLapiz obtenerEstadoLapiz(){
+    public EstadoLapiz obtenerEstadoLapiz(){
         return this.estadoLapiz;
     }
 
     public Posicion obtenerPosicion(){
         return this.posicion;
-    }*/
+    }
 
     public void modificarPosicion(Direccion direccion){
-        posicion.modificarX(direccion.obtenerCoordenadas()[0]);
-        posicion.modificarY(direccion.obtenerCoordenadas()[1]);
+        posicion.modificar(direccion);
     }
 
     public void modificarEstadoLapiz(EstadoLapiz nuevoEstado){

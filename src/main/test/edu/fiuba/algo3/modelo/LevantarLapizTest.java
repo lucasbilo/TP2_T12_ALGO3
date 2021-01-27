@@ -7,33 +7,14 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 public class LevantarLapizTest {
 
     @Test
-    public void test01SeModificaElEstadoDelLapizHaciaArriba(){
+    public void test01SeModificaElEstadoDelLapizHaciaArriba() {
         Personaje personaje = new Personaje();
 
-        new LevantarLapiz(personaje);
+        Bloque bloque = new LevantarLapiz();
 
-        EstadoLapiz estadoLapiz = personaje.obtenerEstadoLapiz();
+        bloque.ejecutar(personaje);
 
-        assertEquals("Arriba", estadoLapiz.obtenerTipoEstado());
-    }
-
-    @Test
-    public void test02LevantarLapizDevuelveEstadoLapizArribaNoImportaQueEstadoLePases(){
-
-        LevantarLapiz bloqueLevantarLapiz = new LevantarLapiz();
-        LapizAbajo lapizArriba = new LapizAbajo();
-        EstadoLapiz estadoLapiz = bloqueLevantarLapiz.ejecutarEstado(lapizArriba);
-
-        assertEquals("Arriba", estadoLapiz.obtenerTipoEstado());
-    }
-
-    @Test
-    public void test03BajarLapizDevuelvePosicionEn0(){
-
-        LevantarLapiz bloqueLevantarLapiz = new LevantarLapiz();
-        int[] arrayCoordenadas = bloqueLevantarLapiz.ejecutarPosicion();
-
-        assertArrayEquals(new int[] {0,0}, arrayCoordenadas);
+        assertEquals(true, personaje.obtenerEstadoLapiz().lapizArriba());
     }
 }
 

@@ -16,6 +16,5 @@ public class Algoritmo {
         for (int i = 0; i < algoritmo.size(); i++){
             algoritmo.get(i).ejecutar(personaje);
         }
-
     }
 }

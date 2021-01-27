@@ -10,11 +10,8 @@ public class MoverTest {
     @Test
     public void test01SeCreaObjetoMover(){
         Mover bloqueMover = new Mover();
-        //El metodo ejecutarBloque devuelve el objeto direccion
-        int[] arrayCoordenadas = bloqueMover.ejecutarPosicion();
-        //Al crearse un objeto Mover nuevo, la direccion por default es {0,0}
 
-        assertArrayEquals(new int[]{0, 0},arrayCoordenadas);
+        assertArrayEquals(new int[]{0, 0}, bloqueMover.obtenerDireccion().obtenerCoordenadas());
     }
 
     @Test
@@ -22,9 +19,8 @@ public class MoverTest {
         //creo una direccion "arriba" con x=0 e y=1
         Direccion direccionArriba = new Direccion(0,1);
         Mover bloqueMover = new Mover(direccionArriba);
-        int[] arrayCoordenadas = bloqueMover.ejecutarPosicion();
 
-        assertArrayEquals(new int[]{0, 1},arrayCoordenadas);
+        assertArrayEquals(new int[]{0, 1},bloqueMover.obtenerDireccion().obtenerCoordenadas());
     }
 
     @Test
@@ -32,9 +28,8 @@ public class MoverTest {
         //creo una direccion "abajo" con x=0 e y=-1
         Direccion direccionAbajo = new Direccion(0,-1);
         Mover bloqueMover = new Mover(direccionAbajo);
-        int[] arrayCoordenadas = bloqueMover.ejecutarPosicion();
 
-        assertArrayEquals(new int[]{0, -1},arrayCoordenadas);
+        assertArrayEquals(new int[]{0, -1},bloqueMover.obtenerDireccion().obtenerCoordenadas());
     }
 
     @Test
@@ -42,9 +37,8 @@ public class MoverTest {
         //creo una direccion "a la derecha" con x=1 e y=0
         Direccion direccionALaDerecha = new Direccion(1,0);
         Mover bloqueMover = new Mover(direccionALaDerecha);
-        int[] arrayCoordenadas = bloqueMover.ejecutarPosicion();
 
-        assertArrayEquals(new int[]{1, 0},arrayCoordenadas);
+        assertArrayEquals(new int[]{1, 0}, bloqueMover.obtenerDireccion().obtenerCoordenadas());
     }
 
     @Test
@@ -52,9 +46,8 @@ public class MoverTest {
         //creo una direccion "a la izquierda" con x=-1 e y=0
         Direccion direccionALaIzquierda = new Direccion(-1,0);
         Mover bloqueMover = new Mover(direccionALaIzquierda);
-        int[] arrayCoordenadas = bloqueMover.ejecutarPosicion();
 
-        assertArrayEquals(new int[]{-1, 0},arrayCoordenadas);
+        assertArrayEquals(new int[]{-1, 0}, bloqueMover.obtenerDireccion().obtenerCoordenadas());
     }
 
 

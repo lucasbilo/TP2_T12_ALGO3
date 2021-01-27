@@ -7,61 +7,29 @@ import static org.junit.jupiter.api.Assertions.*;
 class PersonajeTest {
 
     @Test
-    public void test01SeCreaPersonajePorDefectoConLapizArriba(){
+    public void test01SeCreaPersonajePorDefectoConLapizArriba() {
         Personaje personaje = new Personaje();
         EstadoLapiz estadoLapiz = personaje.obtenerEstadoLapiz();
 
-        assertEquals("Arriba", estadoLapiz.obtenerTipoEstado());
+        assertEquals(true, estadoLapiz.lapizArriba());
     }
 
     @Test
-    public void test02SeModificaElEstadoDelLapizDelPersonajeALapizAbajo(){
+    public void test02SeModificaElEstadoDelLapizDelPersonajeALapizAbajo() {
         Personaje personaje = new Personaje();
         personaje.modificarEstadoLapiz(new LapizAbajo());
         EstadoLapiz estadoLapiz = personaje.obtenerEstadoLapiz();
 
-        assertEquals("Abajo", estadoLapiz.obtenerTipoEstado());
+        assertEquals(true, estadoLapiz.lapizAbajo());
     }
 
     @Test
-    public void test03SeAgregaUnBloqueMoverArribaAlAlgoritmoDelPersonaje(){
+    public void test03SeModificaLaPosicionDelPersonajeCincoLugaresHaciaArriba() {
         Personaje personaje = new Personaje();
-        Direccion direccionArriba = new Direccion(0,1);
-        Mover bloqueMoverArriba = new Mover(direccionArriba);
-        personaje.agregarBloque(bloqueMoverArriba);
+        Direccion direccionArriba = new Direccion(0, 5);
+        personaje.modificarPosicion(direccionArriba);
+        Posicion posicion = personaje.obtenerPosicion();
 
-        personaje.ejecutarPrograma();
-
-        assertArrayEquals(new int[] {0,1}, personaje.obtenerPosicion());
+        assertEquals(5, posicion.obtenerX());
     }
-
-    @Test
-    public void test04SeAgregaUnBloqueMoverArribaYUnBloqueMoverALaDerechaAlAlgoritmoDelPersonaje(){
-        Personaje personaje = new Personaje();
-        Direccion direccionDerecha = new Direccion(1,0);
-        Mover bloqueMoverALaDerecha = new Mover(direccionDerecha);
-        personaje.agregarBloque(bloqueMoverALaDerecha);
-        Direccion direccionArriba = new Direccion(0,1);
-        Mover bloqueMoverArriba = new Mover(direccionArriba);
-        personaje.agregarBloque(bloqueMoverArriba);
-
-        personaje.ejecutarPrograma();
-
-        assertArrayEquals(new int[] {1,1}, personaje.obtenerPosicion());
-    }
-
-    @Test
-    public void test04SeAgregaUnBloqueMoverArribaYUnBloqueBajarLapizAlAlgoritmoDelPersonaje(){
-        Personaje personaje = new Personaje();
-        BajarLapiz bloqueBajarLapiz = new BajarLapiz();
-        personaje.agregarBloque(bloqueBajarLapiz);
-        Direccion direccionArriba = new Direccion(0,1);
-        Mover bloqueMoverArriba = new Mover(direccionArriba);
-        personaje.agregarBloque(bloqueMoverArriba);
-
-        personaje.ejecutarPrograma();
-
-        assertEquals("Abajo", personaje.obtenerEstadoLapiz().obtenerTipoEstado());
-    }
-
 }

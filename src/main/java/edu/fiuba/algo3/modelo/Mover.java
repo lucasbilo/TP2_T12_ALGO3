@@ -14,4 +14,8 @@ public class Mover extends Bloque {
         personaje.modificarPosicion(direccion);
     }
 
+    public Direccion obtenerDireccion (){
+        return this.direccion;
+    }
+
 }
