@@ -2,13 +2,11 @@ package edu.fiuba.algo3.modelo;
 
 public class BajarLapiz extends Bloque{
 
-    private LapizAbajo estadoLapiz;
+    private LapizAbajo estado;
 
-    public BajarLapiz(){ this.estadoLapiz = new LapizAbajo();}
+    public BajarLapiz(){ this.estado = new LapizAbajo();}
 
-    public BajarLapiz (Personaje personaje){ personaje.modificarEstadoLapiz(new LapizAbajo()); }
-
-    public EstadoLapiz ejecutarEstado(EstadoLapiz estado){ return this.estadoLapiz; }
-
-    public int[] ejecutarPosicion(){ return new int[] {0,0}; }
+    public void ejecutar(Personaje personaje){
+        personaje.modificarEstadoLapiz(estado);
+    }
 }

@@ -12,7 +12,10 @@ public class Algoritmo {
 
     public void agregarBloque(Bloque unBloque) { algoritmo.add(unBloque); }
 
-    public Bloque obtenerBloqueEnPosicion(int pos){ return algoritmo.get(pos); }
+    public void ejecutar(Personaje personaje){
+        for (int i = 0; i < algoritmo.size(); i++){
+            algoritmo.get(i).ejecutar(personaje);
+        }
 
-    public int tamaño() { return algoritmo.size(); }
+    }
 }
