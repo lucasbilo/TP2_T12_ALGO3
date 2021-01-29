@@ -9,4 +9,9 @@ public class LevantarLapiz extends Bloque{
     public void ejecutar(Personaje personaje){
         personaje.modificarEstadoLapiz(estado);
     }
+
+    public void ejecutarInvertido(Personaje personaje) {
+        EstadoLapiz lapizAbajo = new LapizAbajo();
+        personaje.modificarEstadoLapiz(lapizAbajo);
+    }
 }

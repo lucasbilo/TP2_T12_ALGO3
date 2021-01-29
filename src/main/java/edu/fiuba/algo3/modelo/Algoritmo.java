@@ -17,4 +17,10 @@ public class Algoritmo {
             algoritmo.get(i).ejecutar(personaje);
         }
     }
+
+    public void ejecutarInvertido(Personaje personaje){
+        for (int i = 0; i < algoritmo.size(); i++){
+            algoritmo.get(i).ejecutarInvertido(personaje);
+        }
+    }
 }

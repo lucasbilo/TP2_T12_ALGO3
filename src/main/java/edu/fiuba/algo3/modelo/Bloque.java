@@ -4,4 +4,5 @@ public abstract class Bloque {
 
     abstract void ejecutar(Personaje personaje);
 
+    public abstract void ejecutarInvertido(Personaje personaje);
 }

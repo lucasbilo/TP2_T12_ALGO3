@@ -13,7 +13,14 @@ public class Direccion {
         this.coordenadas[1] = coordenadaY;
     }
 
-    public int[] obtenerCoordenadas() {
-        return coordenadas;
+    public int[] obtenerCoordenadas() { return coordenadas; }
+
+    public Direccion invertir(){
+
+        int coordenadaX = (-1) * coordenadas[0];
+        int coordenadaY = (-1) * coordenadas[1];
+        Direccion direccionInvertida = new Direccion(coordenadaX,coordenadaY);
+        return direccionInvertida;
+
     }
 }
