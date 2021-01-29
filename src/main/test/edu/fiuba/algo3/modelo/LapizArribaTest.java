@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class LapizArribaTest {
 
@@ -10,13 +10,13 @@ public class LapizArribaTest {
     public void test01SeCreaLapizArribaYSeLlamaALapizArriba(){
         EstadoLapiz lapiz = new LapizArriba();
 
-        assertEquals(true, lapiz.lapizArriba());
+        assertTrue(lapiz.lapizArriba());
     }
 
     @Test
     public void test02SeCreaLapizArribaYSeLlamaALapizAbajo(){
         EstadoLapiz lapiz = new LapizArriba();
 
-        assertEquals(false, lapiz.lapizAbajo());
+        assertFalse(lapiz.lapizAbajo());
     }
 }
