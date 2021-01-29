@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class MoverTest {
@@ -49,6 +50,29 @@ public class MoverTest {
         assertArrayEquals(new int[]{-1, 0}, bloqueMover.obtenerDireccion().obtenerCoordenadas());
     }
 
+    @Test
+    public void test06SeCreaObjetoMoverArribaYSeLoEjecuta(){
+        //creo una direccion "arriba" con x=0 e y=1
+        Direccion direccionArriba = new Direccion(0,1);
+        Mover bloqueMover = new Mover(direccionArriba);
+
+        Personaje personaje = new Personaje();
+        bloqueMover.ejecutar(personaje);
+
+        assertEquals(1, personaje.obtenerPosicion().obtenerY());
+    }
+
+    @Test
+    public void test06SeCreaObjetoMoverArribaYSeLoEjecutaInvertido(){
+        //creo una direccion "arriba" con x=0 e y=1
+        Direccion direccionArriba = new Direccion(0,1);
+        Mover bloqueMover = new Mover(direccionArriba);
+
+        Personaje personaje = new Personaje();
+        bloqueMover.ejecutarInvertido(personaje);
+
+        assertEquals(-1, personaje.obtenerPosicion().obtenerY());
+    }
 
 
 }

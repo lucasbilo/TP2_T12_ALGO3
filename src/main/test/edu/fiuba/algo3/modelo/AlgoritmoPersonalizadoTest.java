@@ -19,21 +19,35 @@ public class AlgoritmoPersonalizadoTest {
     }
 
     @Test
-    public void test02SeCreaUnBloqueAlgoritmoPersonalizadoConAlgoritmoYaCreado(){
-        Algoritmo algoritmo = new Algoritmo();
+    public void test02SeCreaUnBloqueAlgoritmoPersonalizadoConAlgoritmoYaCreadoYSeLoEjecuta(){
         Personaje personaje = new Personaje();
+        Algoritmo algoritmo = new Algoritmo();
         Direccion direccionArriba = new Direccion(0,1);
         Mover bloqueMoverArriba = new Mover(direccionArriba);
         algoritmo.agregarBloque(bloqueMoverArriba);
+
         AlgoritmoPersonalizado algoritmoPersonalizado = new AlgoritmoPersonalizado(algoritmo);
-        Algoritmo algoritmoGuardado = algoritmoPersonalizado.obtenerAlgoritmo();
-        algoritmo.ejecutar(personaje);
+        algoritmoPersonalizado.ejecutar(personaje);
 
         assertEquals(1,personaje.obtenerPosicion().obtenerY());
     }
 
     @Test
-    public void test03SeCreaUnBloqueAlgoritmoPersonalizadoConAlgoritmoYSeAgregaAOtroAlgoritmo(){
+    public void test03SeCreaUnBloqueAlgoritmoPersonalizadoConAlgoritmoYaCreadoYSeLoEjecutaInvertido(){
+        Personaje personaje = new Personaje();
+        Algoritmo algoritmo = new Algoritmo();
+        Direccion direccionArriba = new Direccion(0,1);
+        Mover bloqueMoverArriba = new Mover(direccionArriba);
+        algoritmo.agregarBloque(bloqueMoverArriba);
+
+        AlgoritmoPersonalizado algoritmoPersonalizado = new AlgoritmoPersonalizado(algoritmo);
+        algoritmoPersonalizado.ejecutarInvertido(personaje);
+
+        assertEquals(-1,personaje.obtenerPosicion().obtenerY());
+    }
+
+    @Test
+    public void test04SeCreaUnBloqueAlgoritmoPersonalizadoConAlgoritmoYSeAgregaAOtroAlgoritmo(){
         Algoritmo algoritmoUno = new Algoritmo();
         Algoritmo algoritmoDos = new Algoritmo();
 

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AlgoritmoTest {
 
@@ -67,7 +67,34 @@ public class AlgoritmoTest {
         algoritmo.agregarBloque(bloque);
         algoritmo.ejecutar(personaje);
 
-        assertEquals(true, personaje.obtenerEstadoLapiz().lapizAbajo());
+        assertTrue(personaje.obtenerEstadoLapiz().lapizAbajo());
+
+    }
+
+    @Test
+    public void test06SeCreaUnAlgoritmoConUnBloqueMoverYSeLoEjecutaInvertido(){
+        Algoritmo algoritmo = new Algoritmo();
+        Personaje personaje = new Personaje();
+        Direccion direccionArriba = new Direccion(0,1);
+        Mover bloqueMoverArriba = new Mover(direccionArriba);
+
+        algoritmo.agregarBloque(bloqueMoverArriba);
+        algoritmo.ejecutarInvertido(personaje);
+
+        assertEquals(-1, personaje.obtenerPosicion().obtenerY());
+
+    }
+
+    @Test
+    public void test07SeCreaUnAlgoritmoConUnBloqueBajarLapizYSeLoEjecutaInvertido(){
+        Algoritmo algoritmo = new Algoritmo();
+        Personaje personaje = new Personaje();
+        Bloque bloque = new BajarLapiz();
+
+        algoritmo.agregarBloque(bloque);
+        algoritmo.ejecutarInvertido(personaje);
+
+        assertFalse(personaje.obtenerEstadoLapiz().lapizAbajo());
 
     }
 

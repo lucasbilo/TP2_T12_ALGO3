@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class InvertirTest {
 
@@ -18,36 +19,81 @@ public class InvertirTest {
     }
 
     @Test
-    public void test02SeCreaUnBloqueInvertirConAlgoritmoHaciaLaDerechaYPersonajeVaALaIzquierda(){
+    public void test02SeCreaUnBloqueInvertirSeAgregaBloqueMoverDerechaYPersonajeVaALaIzquierda(){
         Personaje personaje = new Personaje();
-        Algoritmo algoritmo = new Algoritmo();
         Direccion derecha = new Direccion(1,0);
         Mover moverDerecha = new Mover(derecha);
         Invertir bloqueInvertir = new Invertir();
+
         bloqueInvertir.agregarBloque(moverDerecha);
-        algoritmo.agregarBloque(bloqueInvertir);
-        algoritmo.ejecutar(personaje);
+        bloqueInvertir.ejecutar(personaje);
 
         assertEquals(-1,personaje.obtenerPosicion().obtenerX());
     }
 
     @Test
-    public void test03SeCreaUnBloqueInvertirConAlgoritmoBajarLapizYPersonajeSubeElLapiz(){
+    public void test03SeCreaUnBloqueInvertirConAlgoritmoHaciaLaDerechaYPersonajeVaALaIzquierda(){
         Personaje personaje = new Personaje();
-        Algoritmo algoritmoUno = new Algoritmo();
-        Algoritmo algoritmoDos = new Algoritmo(); //en este caso agrego todo un algoritmo
-
-        BajarLapiz bloqueBajarLapiz = new BajarLapiz();
+        Algoritmo algoritmo = new Algoritmo();
         Direccion derecha = new Direccion(1,0);
         Mover moverDerecha = new Mover(derecha);
+        algoritmo.agregarBloque(moverDerecha);
 
-        algoritmoDos.agregarBloque(bloqueBajarLapiz);
-        algoritmoDos.agregarBloque(moverDerecha);
+        Invertir bloqueInvertir = new Invertir(algoritmo);
+        bloqueInvertir.ejecutar(personaje);
 
-        Invertir bloqueInvertir = new Invertir(algoritmoDos);
-        algoritmoUno.agregarBloque(bloqueInvertir);
-        algoritmoUno.ejecutar(personaje);
+        assertEquals(-1,personaje.obtenerPosicion().obtenerX());
+    }
 
-        assertEquals(false, personaje.obtenerEstadoLapiz().lapizAbajo() );
+    @Test
+    public void test04SeCreaUnBloqueInvertirSeAgregaBloqueBajarLapizYPersonajeSubeLapiz(){
+        Personaje personaje = new Personaje();
+        BajarLapiz bloqueBajarLapiz = new BajarLapiz();
+        Invertir bloqueInvertir = new Invertir();
+
+        bloqueInvertir.agregarBloque(bloqueBajarLapiz);
+        bloqueInvertir.ejecutar(personaje);
+
+        assertFalse(personaje.obtenerEstadoLapiz().lapizAbajo());
+    }
+
+    @Test
+    public void test05SeCreaUnBloqueInvertirConAlgoritmoBajarLapizYPersonajeSubeLapiz(){
+        Personaje personaje = new Personaje();
+        Algoritmo algoritmo = new Algoritmo();
+        BajarLapiz bloqueBajarLapiz = new BajarLapiz();
+
+        algoritmo.agregarBloque(bloqueBajarLapiz);
+        Invertir bloqueInvertir = new Invertir(algoritmo);
+        bloqueInvertir.ejecutar(personaje);
+
+        assertFalse(personaje.obtenerEstadoLapiz().lapizAbajo());
+    }
+
+    @Test
+    public void test06SeCreaUnBloqueInvertirSeAgregaBloqueMoverDerechaYSeLoEjecutaInvertido(){
+        Personaje personaje = new Personaje();
+        Direccion derecha = new Direccion(1,0);
+        Mover moverDerecha = new Mover(derecha);
+        Invertir bloqueInvertir = new Invertir();
+
+        bloqueInvertir.agregarBloque(moverDerecha);
+        bloqueInvertir.ejecutarInvertido(personaje);
+
+        assertEquals(1,personaje.obtenerPosicion().obtenerX());
+    }
+
+    @Test
+    public void test07SeCreaUnBloqueInvertirConAlgoritmoHaciaLaDerechaYSeLoEjecutaInvertido(){
+        Personaje personaje = new Personaje();
+        Algoritmo algoritmo = new Algoritmo();
+        Direccion derecha = new Direccion(1,0);
+        Mover moverDerecha = new Mover(derecha);
+        algoritmo.agregarBloque(moverDerecha);
+
+        Invertir bloqueInvertir = new Invertir(algoritmo);
+        bloqueInvertir.ejecutarInvertido(personaje);
+
+        assertEquals(1,personaje.obtenerPosicion().obtenerX());
     }
 }

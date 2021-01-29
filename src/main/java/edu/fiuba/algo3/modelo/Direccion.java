@@ -19,8 +19,6 @@ public class Direccion {
 
         int coordenadaX = (-1) * coordenadas[0];
         int coordenadaY = (-1) * coordenadas[1];
-        Direccion direccionInvertida = new Direccion(coordenadaX,coordenadaY);
-        return direccionInvertida;
-
+        return new Direccion(coordenadaX,coordenadaY);
     }
 }

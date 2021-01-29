@@ -18,31 +18,55 @@ public class RepetirTest {
     }
 
     @Test
-    public void test02SeCreaUnBloqueRepetirConAlgoritmoHaciaLaDerechaYPersonajeCambiaSuPosicion(){
+    public void test02SeCreaUnBloqueRepetirConBloqueMoverYSeLoEjecuta(){
         Personaje personaje = new Personaje();
-        Algoritmo algoritmo = new Algoritmo();
         Direccion derecha = new Direccion(1,0);
         Mover moverDerecha = new Mover(derecha);
         Repetir bloqueRepetir = new Repetir();
+
         bloqueRepetir.agregarBloque(moverDerecha);
-        algoritmo.agregarBloque(bloqueRepetir);
-        algoritmo.ejecutar(personaje);
+        bloqueRepetir.ejecutar(personaje);
         //Por default, el bloque Repetir se repite 2 veces
         assertEquals(2,personaje.obtenerPosicion().obtenerX());
     }
 
     @Test
-    public void test03SeCreaUnBloqueRepetirConAlgoritmoHaciaLaDerechaYPersonajeCambiaSuPosicion(){
+    public void test03SeCreaUnBloqueRepetirTresVecesConBloqueMoverYSeLoEjecuta(){
         Personaje personaje = new Personaje();
-        Algoritmo algoritmo = new Algoritmo();
         Direccion derecha = new Direccion(1,0);
         Mover moverDerecha = new Mover(derecha);
         Repetir bloqueRepetir = new Repetir(3);
+
         bloqueRepetir.agregarBloque(moverDerecha);
-        algoritmo.agregarBloque(bloqueRepetir);
-        algoritmo.ejecutar(personaje);
-        //Por default, el bloque Repetir se repite 2 veces
+        bloqueRepetir.ejecutar(personaje);
+
         assertEquals(3,personaje.obtenerPosicion().obtenerX());
+    }
+
+    @Test
+    public void test04SeCreaUnBloqueRepetirConBloqueMoverYSeLoEjecutaInvertido(){
+        Personaje personaje = new Personaje();
+        Direccion derecha = new Direccion(1,0);
+        Mover moverDerecha = new Mover(derecha);
+        Repetir bloqueRepetir = new Repetir();
+
+        bloqueRepetir.agregarBloque(moverDerecha);
+        bloqueRepetir.ejecutarInvertido(personaje);
+        //Por default, el bloque Repetir se repite 2 veces
+        assertEquals(-2,personaje.obtenerPosicion().obtenerX());
+    }
+
+    @Test
+    public void test05SeCreaUnBloqueRepetirTresVecesConBloqueMoverYSeLoEjecutaInvertido(){
+        Personaje personaje = new Personaje();
+        Direccion derecha = new Direccion(1,0);
+        Mover moverDerecha = new Mover(derecha);
+        Repetir bloqueRepetir = new Repetir(3);
+
+        bloqueRepetir.agregarBloque(moverDerecha);
+        bloqueRepetir.ejecutarInvertido(personaje);
+
+        assertEquals(-3,personaje.obtenerPosicion().obtenerX());
     }
 
 }
