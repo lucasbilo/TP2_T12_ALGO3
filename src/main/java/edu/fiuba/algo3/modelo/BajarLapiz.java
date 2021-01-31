@@ -7,6 +7,7 @@ public class BajarLapiz extends Bloque{
     public BajarLapiz(){ this.estado = new LapizAbajo();}
 
     public void ejecutar(Personaje personaje){
+
         personaje.modificarEstadoLapiz(estado);
     }
 

@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 public class Posicion {
     private int x;
     private int y;
+    private EstadoLapiz estadoLapiz = new LapizArriba();
 
     public Posicion(){
         this.x = 0;
@@ -22,5 +23,12 @@ public class Posicion {
         return y;
     }
 
+    public EstadoLapiz obtenerEstadoLapiz(){
+        return this.estadoLapiz;
+    }
+
+    public void modificarEstadoLapiz(EstadoLapiz nuevoEstado){
+        this.estadoLapiz = nuevoEstado;
+    }
 
 }

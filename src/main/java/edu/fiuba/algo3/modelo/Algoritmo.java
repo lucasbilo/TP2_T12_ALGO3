@@ -12,9 +12,9 @@ public class Algoritmo {
 
     public void agregarBloque(Bloque unBloque) { algoritmo.add(unBloque); }
 
-    public void ejecutar(Personaje personaje){
+    public void ejecutar(Personaje personaje, Tablero tablero){
         for (int i = 0; i < algoritmo.size(); i++){
-            algoritmo.get(i).ejecutar(personaje);
+            algoritmo.get(i).ejecutar(personaje, tablero);
         }
     }
 

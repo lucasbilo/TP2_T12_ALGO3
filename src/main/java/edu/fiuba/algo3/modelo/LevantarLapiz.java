@@ -6,7 +6,7 @@ public class LevantarLapiz extends Bloque{
 
     public LevantarLapiz(){this.estado = new LapizArriba(); }
 
-    public void ejecutar(Personaje personaje){
+    public void ejecutar(Personaje personaje, Tablero tablero){
         personaje.modificarEstadoLapiz(estado);
     }
 
