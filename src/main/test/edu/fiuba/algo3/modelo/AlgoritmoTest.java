@@ -48,11 +48,12 @@ public class AlgoritmoTest {
     public void test04SeCreaUnAlgoritmoConUnBloqueMoverYSeLoEjecuta(){
         Algoritmo algoritmo = new Algoritmo();
         Personaje personaje = new Personaje();
+        Tablero tablero = new Tablero();
         Direccion direccionArriba = new Direccion(0,1);
         Mover bloqueMoverArriba = new Mover(direccionArriba);
 
         algoritmo.agregarBloque(bloqueMoverArriba);
-        algoritmo.ejecutar(personaje);
+        algoritmo.ejecutar(personaje, tablero);
 
         assertEquals(1, personaje.obtenerPosicion().obtenerY());
 
@@ -62,10 +63,11 @@ public class AlgoritmoTest {
     public void test05SeCreaUnAlgoritmoConUnBloqueBajarLapizYSeLoEjecuta(){
         Algoritmo algoritmo = new Algoritmo();
         Personaje personaje = new Personaje();
+        Tablero tablero = new Tablero();
         Bloque bloque = new BajarLapiz();
 
         algoritmo.agregarBloque(bloque);
-        algoritmo.ejecutar(personaje);
+        algoritmo.ejecutar(personaje, tablero);
 
         assertTrue(personaje.obtenerEstadoLapiz().lapizAbajo());
 
@@ -75,11 +77,12 @@ public class AlgoritmoTest {
     public void test06SeCreaUnAlgoritmoConUnBloqueMoverYSeLoEjecutaInvertido(){
         Algoritmo algoritmo = new Algoritmo();
         Personaje personaje = new Personaje();
+        Tablero tablero = new Tablero();
         Direccion direccionArriba = new Direccion(0,1);
         Mover bloqueMoverArriba = new Mover(direccionArriba);
 
         algoritmo.agregarBloque(bloqueMoverArriba);
-        algoritmo.ejecutarInvertido(personaje);
+        algoritmo.ejecutarInvertido(personaje, tablero);
 
         assertEquals(-1, personaje.obtenerPosicion().obtenerY());
 
@@ -89,10 +92,11 @@ public class AlgoritmoTest {
     public void test07SeCreaUnAlgoritmoConUnBloqueBajarLapizYSeLoEjecutaInvertido(){
         Algoritmo algoritmo = new Algoritmo();
         Personaje personaje = new Personaje();
+        Tablero tablero = new Tablero();
         Bloque bloque = new BajarLapiz();
 
         algoritmo.agregarBloque(bloque);
-        algoritmo.ejecutarInvertido(personaje);
+        algoritmo.ejecutarInvertido(personaje, tablero);
 
         assertFalse(personaje.obtenerEstadoLapiz().lapizAbajo());
 

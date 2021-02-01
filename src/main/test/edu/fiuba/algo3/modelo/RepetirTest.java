@@ -20,12 +20,13 @@ public class RepetirTest {
     @Test
     public void test02SeCreaUnBloqueRepetirConBloqueMoverYSeLoEjecuta(){
         Personaje personaje = new Personaje();
+        Tablero tablero = new Tablero();
         Direccion derecha = new Direccion(1,0);
         Mover moverDerecha = new Mover(derecha);
         Repetir bloqueRepetir = new Repetir();
 
         bloqueRepetir.agregarBloque(moverDerecha);
-        bloqueRepetir.ejecutar(personaje);
+        bloqueRepetir.ejecutar(personaje, tablero);
         //Por default, el bloque Repetir se repite 2 veces
         assertEquals(2,personaje.obtenerPosicion().obtenerX());
     }
@@ -33,12 +34,13 @@ public class RepetirTest {
     @Test
     public void test03SeCreaUnBloqueRepetirTresVecesConBloqueMoverYSeLoEjecuta(){
         Personaje personaje = new Personaje();
+        Tablero tablero = new Tablero();
         Direccion derecha = new Direccion(1,0);
         Mover moverDerecha = new Mover(derecha);
         Repetir bloqueRepetir = new Repetir(3);
 
         bloqueRepetir.agregarBloque(moverDerecha);
-        bloqueRepetir.ejecutar(personaje);
+        bloqueRepetir.ejecutar(personaje, tablero);
 
         assertEquals(3,personaje.obtenerPosicion().obtenerX());
     }
@@ -46,12 +48,13 @@ public class RepetirTest {
     @Test
     public void test04SeCreaUnBloqueRepetirConBloqueMoverYSeLoEjecutaInvertido(){
         Personaje personaje = new Personaje();
+        Tablero tablero = new Tablero();
         Direccion derecha = new Direccion(1,0);
         Mover moverDerecha = new Mover(derecha);
         Repetir bloqueRepetir = new Repetir();
 
         bloqueRepetir.agregarBloque(moverDerecha);
-        bloqueRepetir.ejecutarInvertido(personaje);
+        bloqueRepetir.ejecutarInvertido(personaje, tablero);
         //Por default, el bloque Repetir se repite 2 veces
         assertEquals(-2,personaje.obtenerPosicion().obtenerX());
     }
@@ -59,12 +62,13 @@ public class RepetirTest {
     @Test
     public void test05SeCreaUnBloqueRepetirTresVecesConBloqueMoverYSeLoEjecutaInvertido(){
         Personaje personaje = new Personaje();
+        Tablero tablero = new Tablero();
         Direccion derecha = new Direccion(1,0);
         Mover moverDerecha = new Mover(derecha);
         Repetir bloqueRepetir = new Repetir(3);
 
         bloqueRepetir.agregarBloque(moverDerecha);
-        bloqueRepetir.ejecutarInvertido(personaje);
+        bloqueRepetir.ejecutarInvertido(personaje, tablero);
 
         assertEquals(-3,personaje.obtenerPosicion().obtenerX());
     }

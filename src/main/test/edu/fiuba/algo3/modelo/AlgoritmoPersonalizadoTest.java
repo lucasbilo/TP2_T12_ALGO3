@@ -21,13 +21,14 @@ public class AlgoritmoPersonalizadoTest {
     @Test
     public void test02SeCreaUnBloqueAlgoritmoPersonalizadoConAlgoritmoYaCreadoYSeLoEjecuta(){
         Personaje personaje = new Personaje();
+        Tablero tablero = new Tablero();
         Algoritmo algoritmo = new Algoritmo();
         Direccion direccionArriba = new Direccion(0,1);
         Mover bloqueMoverArriba = new Mover(direccionArriba);
         algoritmo.agregarBloque(bloqueMoverArriba);
 
         AlgoritmoPersonalizado algoritmoPersonalizado = new AlgoritmoPersonalizado(algoritmo);
-        algoritmoPersonalizado.ejecutar(personaje);
+        algoritmoPersonalizado.ejecutar(personaje, tablero);
 
         assertEquals(1,personaje.obtenerPosicion().obtenerY());
     }
@@ -35,13 +36,14 @@ public class AlgoritmoPersonalizadoTest {
     @Test
     public void test03SeCreaUnBloqueAlgoritmoPersonalizadoConAlgoritmoYaCreadoYSeLoEjecutaInvertido(){
         Personaje personaje = new Personaje();
+        Tablero tablero = new Tablero();
         Algoritmo algoritmo = new Algoritmo();
         Direccion direccionArriba = new Direccion(0,1);
         Mover bloqueMoverArriba = new Mover(direccionArriba);
         algoritmo.agregarBloque(bloqueMoverArriba);
 
         AlgoritmoPersonalizado algoritmoPersonalizado = new AlgoritmoPersonalizado(algoritmo);
-        algoritmoPersonalizado.ejecutarInvertido(personaje);
+        algoritmoPersonalizado.ejecutarInvertido(personaje, tablero);
 
         assertEquals(-1,personaje.obtenerPosicion().obtenerY());
     }

@@ -28,6 +28,7 @@ public class Posicion {
     }
 
     public void modificarEstadoLapiz(EstadoLapiz nuevoEstado){
+
         this.estadoLapiz = nuevoEstado;
     }
 

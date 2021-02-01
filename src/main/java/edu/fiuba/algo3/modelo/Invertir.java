@@ -12,7 +12,13 @@ public class Invertir extends Bloque{
 
     public Algoritmo obtenerAlgoritmo(){ return algoritmoInvertido; }
 
-    public void ejecutar(Personaje personaje){ algoritmoInvertido.ejecutarInvertido(personaje); }
+    public void ejecutar(Personaje personaje, Tablero tablero){
 
-    public void ejecutarInvertido(Personaje personaje) {algoritmoInvertido.ejecutar(personaje);}
+        algoritmoInvertido.ejecutarInvertido(personaje, tablero);
+    }
+
+    public void ejecutarInvertido(Personaje personaje, Tablero tablero){
+
+        algoritmoInvertido.ejecutar(personaje, tablero);
+    }
 }

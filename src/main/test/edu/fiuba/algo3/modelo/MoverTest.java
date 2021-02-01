@@ -57,7 +57,8 @@ public class MoverTest {
         Mover bloqueMover = new Mover(direccionArriba);
 
         Personaje personaje = new Personaje();
-        bloqueMover.ejecutar(personaje);
+        Tablero tablero = new Tablero();
+        bloqueMover.ejecutar(personaje, tablero);
 
         assertEquals(1, personaje.obtenerPosicion().obtenerY());
     }
@@ -69,7 +70,8 @@ public class MoverTest {
         Mover bloqueMover = new Mover(direccionArriba);
 
         Personaje personaje = new Personaje();
-        bloqueMover.ejecutarInvertido(personaje);
+        Tablero tablero = new Tablero();
+        bloqueMover.ejecutarInvertido(personaje, tablero);
 
         assertEquals(-1, personaje.obtenerPosicion().obtenerY());
     }

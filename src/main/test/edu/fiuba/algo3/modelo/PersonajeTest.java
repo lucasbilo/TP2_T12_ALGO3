@@ -26,8 +26,9 @@ class PersonajeTest {
     @Test
     public void test03SeModificaLaPosicionDelPersonajeCincoLugaresHaciaArriba() {
         Personaje personaje = new Personaje();
+        Tablero tablero = new Tablero();
         Direccion direccionArriba = new Direccion(0, 5);
-        personaje.modificarPosicion(direccionArriba);
+        personaje.modificarPosicion(direccionArriba, tablero);
 
         assertEquals(5, personaje.obtenerPosicion().obtenerY());
     }

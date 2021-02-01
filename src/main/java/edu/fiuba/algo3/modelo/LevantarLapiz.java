@@ -10,7 +10,7 @@ public class LevantarLapiz extends Bloque{
         personaje.modificarEstadoLapiz(estado);
     }
 
-    public void ejecutarInvertido(Personaje personaje) {
+    public void ejecutarInvertido(Personaje personaje, Tablero tablero) {
         EstadoLapiz lapizAbajo = new LapizAbajo();
         personaje.modificarEstadoLapiz(lapizAbajo);
     }

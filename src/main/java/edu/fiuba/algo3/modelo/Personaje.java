@@ -27,6 +27,7 @@ public class Personaje {
     }
 
     public void modificarEstadoLapiz(EstadoLapiz nuevoEstado){
+
         this.posicion.modificarEstadoLapiz(nuevoEstado);
     }
 

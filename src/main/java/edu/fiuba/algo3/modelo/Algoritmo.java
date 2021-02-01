@@ -18,9 +18,9 @@ public class Algoritmo {
         }
     }
 
-    public void ejecutarInvertido(Personaje personaje){
+    public void ejecutarInvertido(Personaje personaje, Tablero tablero){
         for (int i = 0; i < algoritmo.size(); i++){
-            algoritmo.get(i).ejecutarInvertido(personaje);
+            algoritmo.get(i).ejecutarInvertido(personaje, tablero);
         }
     }
 }

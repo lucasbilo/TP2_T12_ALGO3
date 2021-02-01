@@ -10,11 +10,12 @@ public class AlgoritmoPersonalizado extends Bloque{
 
     public Algoritmo obtenerAlgoritmo(){return algoritmoGuardado;}
 
-    public void ejecutar(Personaje personaje){
-        algoritmoGuardado.ejecutar(personaje);
+    public void ejecutar(Personaje personaje, Tablero tablero){
+        algoritmoGuardado.ejecutar(personaje, tablero);
     }
 
-    public void ejecutarInvertido(Personaje personaje){
-        algoritmoGuardado.ejecutarInvertido(personaje);
+    public void ejecutarInvertido(Personaje personaje, Tablero tablero){
+
+        algoritmoGuardado.ejecutarInvertido(personaje, tablero);
     }
 }

@@ -6,12 +6,12 @@ public class BajarLapiz extends Bloque{
 
     public BajarLapiz(){ this.estado = new LapizAbajo();}
 
-    public void ejecutar(Personaje personaje){
+    public void ejecutar(Personaje personaje, Tablero tablero){
 
         personaje.modificarEstadoLapiz(estado);
     }
 
-    public void ejecutarInvertido(Personaje personaje) {
+    public void ejecutarInvertido(Personaje personaje, Tablero tablero) {
         EstadoLapiz lapizArriba = new LapizArriba();
         personaje.modificarEstadoLapiz(lapizArriba);
     }
