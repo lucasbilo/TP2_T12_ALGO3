@@ -6,6 +6,16 @@ public class Dibujo {
     private Personaje personaje = new Personaje();
     private Tablero tablero = new Tablero();
 
+    public Dibujo(){}
+
+    public Personaje personaje(){
+        return this.personaje;
+    }
+
+    public Tablero tablero(){
+        return this.tablero;
+    }
+
     public void moverArriba(){
         Direccion direccionArriba = new Direccion(0,1);
         Mover moverArriba = new Mover(direccionArriba);
@@ -40,23 +50,23 @@ public class Dibujo {
         this.algoritmo.agregarBloque(bajarLapiz);
     }
 
-    public void repetirDosVeces(){
-        Repetir repetirDosVeces = new Repetir(2);
+    public void repetirDosVeces(Algoritmo algoritmo){
+        Repetir repetirDosVeces = new Repetir(2, algoritmo);
         this.algoritmo.agregarBloque(repetirDosVeces);
     }
 
-    public void repetirTresVeces(){
-        Repetir repetirTresVeces = new Repetir(3);
+    public void repetirTresVeces(Algoritmo algoritmo){
+        Repetir repetirTresVeces = new Repetir(3, algoritmo);
         this.algoritmo.agregarBloque(repetirTresVeces);
     }
 
-    public void invertir(){
-        Invertir invertir = new Invertir();
+    public void invertir(Algoritmo algoritmo){
+        Invertir invertir = new Invertir(algoritmo);
         this.algoritmo.agregarBloque(invertir);
     }
 
-    public void algoritmoPersonalizado(){
-        AlgoritmoPersonalizado algoritmoPersonalizado = new AlgoritmoPersonalizado();
+    public void algoritmoPersonalizado(Algoritmo algoritmo){
+        AlgoritmoPersonalizado algoritmoPersonalizado = new AlgoritmoPersonalizado(algoritmo);
         this.algoritmo.agregarBloque(algoritmoPersonalizado);
     }
 
