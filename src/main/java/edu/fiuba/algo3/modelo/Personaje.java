@@ -20,10 +20,8 @@ public class Personaje {
         return this.posicion;
     }
 
-    public void modificarPosicion(Direccion direccion, Tablero tablero){
-
-        posicion.modificar(direccion);
-        tablero.escribir(this.posicion);
+    public void modificarPosicion(Direccion direccion){
+        this.posicion.modificar(direccion);
     }
 
     public void modificarEstadoLapiz(EstadoLapiz nuevoEstado){

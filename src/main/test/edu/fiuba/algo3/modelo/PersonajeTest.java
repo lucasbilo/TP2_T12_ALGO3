@@ -11,7 +11,7 @@ class PersonajeTest {
         Personaje personaje = new Personaje();
         EstadoLapiz estadoLapiz = personaje.obtenerEstadoLapiz();
 
-        assertEquals(true, estadoLapiz.lapizArriba());
+        assertTrue(estadoLapiz.lapizArriba());
     }
 
     @Test
@@ -20,15 +20,14 @@ class PersonajeTest {
         personaje.modificarEstadoLapiz(new LapizAbajo());
         EstadoLapiz estadoLapiz = personaje.obtenerEstadoLapiz();
 
-        assertEquals(true, estadoLapiz.lapizAbajo());
+        assertTrue(estadoLapiz.lapizAbajo());
     }
 
     @Test
     public void test03SeModificaLaPosicionDelPersonajeCincoLugaresHaciaArriba() {
         Personaje personaje = new Personaje();
-        Tablero tablero = new Tablero();
         Direccion direccionArriba = new Direccion(0, 5);
-        personaje.modificarPosicion(direccionArriba, tablero);
+        personaje.modificarPosicion(direccionArriba);
 
         assertEquals(5, personaje.obtenerPosicion().obtenerY());
     }
