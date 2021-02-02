@@ -12,6 +12,11 @@ public class Repetir extends Bloque{
         this.numVeces = numVeces;
     }
 
+    public Repetir(int numVeces, Algoritmo algoritmo){
+        this.numVeces = numVeces;
+        this.algoritmoRepetido = algoritmo;
+    }
+
     public Algoritmo obtenerAlgoritmo(){ return algoritmoRepetido; }
 
     public void agregarBloque(Bloque unBloque){ algoritmoRepetido.agregarBloque(unBloque);}
