@@ -13,6 +13,7 @@ public class Algoritmo {
     public void agregarBloque(Bloque unBloque) { algoritmo.add(unBloque); }
 
     public void ejecutar(Personaje personaje, Tablero tablero){
+        tablero.actualizar(personaje.obtenerPosicion());
         for (int i = 0; i < algoritmo.size(); i++){
             algoritmo.get(i).ejecutar(personaje, tablero);
             tablero.actualizar(personaje.obtenerPosicion()); // Cada vez que se ejecuta un bloque se actualiza el tablero
