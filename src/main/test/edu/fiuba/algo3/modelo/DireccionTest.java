@@ -7,42 +7,42 @@ import static org.junit.jupiter.api.Assertions.*;
 public class DireccionTest {
 
     @Test
-    void test01SeCreaObjetoDireccion() {
+    public void test01SeCreaObjetoDireccion() {
         Direccion direccion = new Direccion();
 
         assertTrue(direccion.coordenadasIgualesA(0,0));
     }
 
     @Test
-    void test02SeCreaObjetoDireccionArriba() {
+    public void test02SeCreaObjetoDireccionArriba() {
         Direccion direccionArriba = new Direccion(0,1);
 
         assertTrue(direccionArriba.coordenadasIgualesA(0,1));
     }
 
     @Test
-    void test03SeCreaObjetoDireccionAbajo() {
+    public void test03SeCreaObjetoDireccionAbajo() {
         Direccion direccionAbajo = new Direccion(0,-1);
 
         assertTrue(direccionAbajo.coordenadasIgualesA(0,-1));
     }
 
     @Test
-    void test04SeCreaObjetoDireccionDerecha() {
+    public void test04SeCreaObjetoDireccionDerecha() {
         Direccion direccionDerecha = new Direccion(1,0);
 
         assertTrue(direccionDerecha.coordenadasIgualesA(1,0));
     }
 
     @Test
-    void test05SeCreaObjetoDireccionIzquierda() {
+    public void test05SeCreaObjetoDireccionIzquierda() {
         Direccion direccionIzquierda = new Direccion(-1,0);
 
         assertTrue(direccionIzquierda.coordenadasIgualesA(-1,0));
     }
 
     @Test
-    void test06SeCreaObjetoDireccionArribaYSeLoObtieneInvertido() {
+    public void test06SeCreaObjetoDireccionArribaYSeLoObtieneInvertido() {
         Direccion direccion = new Direccion(0,1);
         Direccion direccionInvertida = direccion.invertir();
 
@@ -50,7 +50,7 @@ public class DireccionTest {
     }
 
     @Test
-    void test07SeCreaObjetoDireccionAbajoYSeLoObtieneInvertido() {
+    public void test07SeCreaObjetoDireccionAbajoYSeLoObtieneInvertido() {
         Direccion direccion = new Direccion(0,-1);
         Direccion direccionInvertida = direccion.invertir();
 
