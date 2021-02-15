@@ -60,7 +60,10 @@ public class MoverTest {
         Tablero tablero = new Tablero();
         bloqueMover.ejecutar(personaje, tablero);
 
-        assertEquals(1, personaje.obtenerPosicion().obtenerY());
+        Posicion posicionActual = personaje.obtenerPosicion();
+        Posicion posicionEsperada = new Posicion(0,1);
+
+        assertTrue(posicionActual.igualA(posicionEsperada));
     }
 
     @Test
@@ -73,7 +76,10 @@ public class MoverTest {
         Tablero tablero = new Tablero();
         bloqueMover.ejecutarInvertido(personaje, tablero);
 
-        assertEquals(-1, personaje.obtenerPosicion().obtenerY());
+        Posicion posicionActual = personaje.obtenerPosicion();
+        Posicion posicionEsperada = new Posicion(0,-1);
+
+        assertTrue(posicionActual.igualA(posicionEsperada));
     }
 
 

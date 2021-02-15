@@ -45,7 +45,7 @@ public class AlgoritmoTest {
     }
 
     @Test
-    public void test04SeCreaUnAlgoritmoConUnBloqueMoverYSeLoEjecuta(){
+    public void test04SeCreaUnAlgoritmoConUnBloqueMoverArribaYSeLoEjecuta(){
         Algoritmo algoritmo = new Algoritmo();
         Personaje personaje = new Personaje();
         Tablero tablero = new Tablero();
@@ -55,7 +55,10 @@ public class AlgoritmoTest {
         algoritmo.agregarBloque(bloqueMoverArriba);
         algoritmo.ejecutar(personaje, tablero);
 
-        assertEquals(1, personaje.obtenerPosicion().obtenerY());
+        Posicion posicionActual = personaje.obtenerPosicion();
+        Posicion posicionEsperada = new Posicion(0,1);
+
+        assertTrue(posicionActual.igualA(posicionEsperada));
 
     }
 
@@ -69,8 +72,9 @@ public class AlgoritmoTest {
         algoritmo.agregarBloque(bloque);
         algoritmo.ejecutar(personaje, tablero);
 
-        assertTrue(personaje.obtenerEstadoLapiz().lapizAbajo());
+        EstadoLapiz estado = personaje.obtenerEstadoLapiz();
 
+        assertTrue(estado.lapizAbajo());
     }
 
     @Test
@@ -84,7 +88,10 @@ public class AlgoritmoTest {
         algoritmo.agregarBloque(bloqueMoverArriba);
         algoritmo.ejecutarInvertido(personaje, tablero);
 
-        assertEquals(-1, personaje.obtenerPosicion().obtenerY());
+        Posicion posicionActual = personaje.obtenerPosicion();
+        Posicion posicionEsperada = new Posicion(0,-1);
+
+        assertTrue(posicionActual.igualA(posicionEsperada));
 
     }
 
@@ -98,7 +105,9 @@ public class AlgoritmoTest {
         algoritmo.agregarBloque(bloque);
         algoritmo.ejecutarInvertido(personaje, tablero);
 
-        assertFalse(personaje.obtenerEstadoLapiz().lapizAbajo());
+        EstadoLapiz estado = personaje.obtenerEstadoLapiz();
+
+        assertFalse(estado.lapizAbajo());
 
     }
 

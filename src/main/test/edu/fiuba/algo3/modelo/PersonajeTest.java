@@ -30,6 +30,9 @@ public class PersonajeTest {
         Direccion direccionArriba = new Direccion(0, 5);
         personaje.modificarPosicion(direccionArriba, tablero);
 
-        assertEquals(5, personaje.obtenerPosicion().obtenerY());
+        Posicion posicionActual = personaje.obtenerPosicion();
+        Posicion posicionEsperada = new Posicion(0,5);
+
+        assertTrue(posicionActual.igualA(posicionEsperada));
     }
 }

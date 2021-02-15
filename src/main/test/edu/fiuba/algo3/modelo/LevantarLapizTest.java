@@ -15,7 +15,9 @@ public class LevantarLapizTest {
 
         bloque.ejecutar(personaje, tablero);
 
-        assertTrue(personaje.obtenerEstadoLapiz().lapizArriba());
+        EstadoLapiz estado = personaje.obtenerEstadoLapiz();
+
+        assertTrue(estado.lapizArriba());
     }
 
     @Test
@@ -27,7 +29,9 @@ public class LevantarLapizTest {
 
         bloque.ejecutarInvertido(personaje, tablero);
 
-        assertFalse(personaje.obtenerEstadoLapiz().lapizArriba());
+        EstadoLapiz estado = personaje.obtenerEstadoLapiz();
+
+        assertFalse(estado.lapizArriba());
     }
 }
 

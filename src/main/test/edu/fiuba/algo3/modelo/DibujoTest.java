@@ -14,7 +14,10 @@ public class DibujoTest {
         dibujo.agregarBloque(moverArriba);
         dibujo.ejecutar();
 
-        assertEquals(1, dibujo.personaje().obtenerPosicion().obtenerY());
+        Posicion posicionActual = dibujo.personaje().obtenerPosicion();
+        Posicion posicionEsperada = new Posicion (0,1);
+
+        assertTrue(posicionActual.igualA(posicionEsperada));
     }
 
     @Test
@@ -25,7 +28,10 @@ public class DibujoTest {
         dibujo.agregarBloque(moverAbajo);
         dibujo.ejecutar();
 
-        assertEquals(-1, dibujo.personaje().obtenerPosicion().obtenerY());
+        Posicion posicionActual = dibujo.personaje().obtenerPosicion();
+        Posicion posicionEsperada = new Posicion(0,-1);
+
+        assertTrue(posicionActual.igualA(posicionEsperada));
     }
 
     @Test
@@ -36,7 +42,10 @@ public class DibujoTest {
         dibujo.agregarBloque(moverDerecha);
         dibujo.ejecutar();
 
-        assertEquals(1, dibujo.personaje().obtenerPosicion().obtenerX());
+        Posicion posicionActual = dibujo.personaje().obtenerPosicion();
+        Posicion posicionEsperada = new Posicion (1,0);
+
+        assertTrue(posicionActual.igualA(posicionEsperada));
     }
 
     @Test
@@ -47,7 +56,10 @@ public class DibujoTest {
         dibujo.agregarBloque(moverIzquierda);
         dibujo.ejecutar();
 
-        assertEquals(-1, dibujo.personaje().obtenerPosicion().obtenerX());
+        Posicion posicionActual = dibujo.personaje().obtenerPosicion();
+        Posicion posicionEsperada = new Posicion(-1,0);
+
+        assertTrue(posicionActual.igualA(posicionEsperada));
     }
 
     @Test
@@ -56,7 +68,9 @@ public class DibujoTest {
         dibujo.personaje().modificarEstadoLapiz(new LapizArriba());
         dibujo.ejecutar();
 
-        assertTrue(dibujo.personaje().obtenerEstadoLapiz().lapizArriba());
+        EstadoLapiz estado = dibujo.personaje().obtenerEstadoLapiz();
+
+        assertTrue(estado.lapizArriba());
     }
 
     @Test
@@ -65,7 +79,9 @@ public class DibujoTest {
         dibujo.personaje().modificarEstadoLapiz(new LapizAbajo());
         dibujo.ejecutar();
 
-        assertTrue(dibujo.personaje().obtenerEstadoLapiz().lapizAbajo());
+        EstadoLapiz estado = dibujo.personaje().obtenerEstadoLapiz();
+
+        assertTrue(estado.lapizAbajo());
     }
 
     @Test
@@ -80,7 +96,10 @@ public class DibujoTest {
         dibujo.agregarBloque(invertir);
         dibujo.ejecutar();
 
-        assertEquals(-1, dibujo.personaje().obtenerPosicion().obtenerX());
+        Posicion posicionActual = dibujo.personaje().obtenerPosicion();
+        Posicion posicionEsperada = new Posicion(-1,0);
+
+        assertTrue(posicionActual.igualA(posicionEsperada));
     }
 
     @Test
@@ -93,7 +112,10 @@ public class DibujoTest {
         dibujo.ejecutar();
         algoritmoPersonalizado.ejecutar(dibujo.personaje(),dibujo.tablero());
 
-        assertEquals(1,dibujo.personaje().obtenerPosicion().obtenerY());
+        Posicion posicionActual = dibujo.personaje().obtenerPosicion();
+        Posicion posicionEsperada = new Posicion (0,1);
+
+        assertTrue(posicionActual.igualA(posicionEsperada));
     }
 
     @Test

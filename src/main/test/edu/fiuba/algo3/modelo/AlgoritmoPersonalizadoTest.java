@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class AlgoritmoPersonalizadoTest {
@@ -26,11 +27,12 @@ public class AlgoritmoPersonalizadoTest {
         Direccion direccionArriba = new Direccion(0,1);
         Mover bloqueMoverArriba = new Mover(direccionArriba);
         algoritmo.agregarBloque(bloqueMoverArriba);
-
         AlgoritmoPersonalizado algoritmoPersonalizado = new AlgoritmoPersonalizado(algoritmo);
         algoritmoPersonalizado.ejecutar(personaje, tablero);
+        Posicion posicionEsperada = new Posicion(0,1);
+        Posicion posicionActual = personaje.obtenerPosicion();
 
-        assertEquals(1,personaje.obtenerPosicion().obtenerY());
+        assertTrue(posicionActual.igualA(posicionEsperada));
     }
 
     @Test
@@ -44,8 +46,10 @@ public class AlgoritmoPersonalizadoTest {
 
         AlgoritmoPersonalizado algoritmoPersonalizado = new AlgoritmoPersonalizado(algoritmo);
         algoritmoPersonalizado.ejecutarInvertido(personaje, tablero);
+        Posicion posicionActual = personaje.obtenerPosicion();
+        Posicion posicionEsperada = new Posicion(0,-1);
 
-        assertEquals(-1,personaje.obtenerPosicion().obtenerY());
+        assertTrue(posicionActual.igualA(posicionEsperada));
     }
 
     @Test

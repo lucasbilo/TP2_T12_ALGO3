@@ -4,8 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class InvertirTest {
 
@@ -29,11 +28,14 @@ public class InvertirTest {
         bloqueInvertir.agregarBloque(moverDerecha);
         bloqueInvertir.ejecutar(personaje, tablero);
 
-        assertEquals(-1,personaje.obtenerPosicion().obtenerX());
+        Posicion posicionActual = personaje.obtenerPosicion();
+        Posicion posicionEsperada = new Posicion(-1,0);
+
+        assertTrue(posicionActual.igualA(posicionEsperada));
     }
 
     @Test
-    public void test03SeCreaUnBloqueInvertirConAlgoritmoHaciaLaDerechaYPersonajeVaALaIzquierda(){
+    public void test03SeCreaUnBloqueInvertirConAlgoritmoHaciaLaDerechaYLoInviertoALaIzquierda(){
         Personaje personaje = new Personaje();
         Tablero tablero = new Tablero();
         Algoritmo algoritmo = new Algoritmo();
@@ -44,7 +46,10 @@ public class InvertirTest {
         Invertir bloqueInvertir = new Invertir(algoritmo);
         bloqueInvertir.ejecutar(personaje, tablero);
 
-        assertEquals(-1,personaje.obtenerPosicion().obtenerX());
+        Posicion posicionActual = personaje.obtenerPosicion();
+        Posicion posicionEsperada = new Posicion(-1,0);
+
+        assertTrue(posicionActual.igualA(posicionEsperada));
     }
 
     @Test
@@ -57,7 +62,9 @@ public class InvertirTest {
         bloqueInvertir.agregarBloque(bloqueBajarLapiz);
         bloqueInvertir.ejecutar(personaje, tablero);
 
-        assertFalse(personaje.obtenerEstadoLapiz().lapizAbajo());
+        EstadoLapiz estado = personaje.obtenerEstadoLapiz();
+
+        assertFalse(estado.lapizAbajo());
     }
 
     @Test
@@ -71,7 +78,9 @@ public class InvertirTest {
         Invertir bloqueInvertir = new Invertir(algoritmo);
         bloqueInvertir.ejecutar(personaje, tablero);
 
-        assertFalse(personaje.obtenerEstadoLapiz().lapizAbajo());
+        EstadoLapiz estado = personaje.obtenerEstadoLapiz();
+
+        assertFalse(estado.lapizAbajo());
     }
 
     @Test
@@ -85,7 +94,10 @@ public class InvertirTest {
         bloqueInvertir.agregarBloque(moverDerecha);
         bloqueInvertir.ejecutarInvertido(personaje, tablero);
 
-        assertEquals(1,personaje.obtenerPosicion().obtenerX());
+        Posicion posicionActual = personaje.obtenerPosicion();
+        Posicion posicionEsperada = new Posicion(1,0);
+
+        assertTrue(posicionActual.igualA(posicionEsperada));
     }
 
     @Test
@@ -100,6 +112,9 @@ public class InvertirTest {
         Invertir bloqueInvertir = new Invertir(algoritmo);
         bloqueInvertir.ejecutarInvertido(personaje, tablero);
 
-        assertEquals(1,personaje.obtenerPosicion().obtenerX());
+        Posicion posicionActual = personaje.obtenerPosicion();
+        Posicion posicionEsperada = new Posicion(1,0);
+
+        assertTrue(posicionActual.igualA(posicionEsperada));
     }
 }

@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RepetirTest {
 
@@ -27,8 +28,12 @@ public class RepetirTest {
 
         bloqueRepetir.agregarBloque(moverDerecha);
         bloqueRepetir.ejecutar(personaje, tablero);
+
+        Posicion posicionActual = personaje.obtenerPosicion();
+        Posicion posicionEsperada = new Posicion(2,0);
+
         //Por default, el bloque Repetir se repite 2 veces
-        assertEquals(2,personaje.obtenerPosicion().obtenerX());
+        assertTrue(posicionActual.igualA(posicionEsperada));
     }
 
     @Test
@@ -42,7 +47,10 @@ public class RepetirTest {
         bloqueRepetir.agregarBloque(moverDerecha);
         bloqueRepetir.ejecutar(personaje, tablero);
 
-        assertEquals(3,personaje.obtenerPosicion().obtenerX());
+        Posicion posicionActual = personaje.obtenerPosicion();
+        Posicion posicionEsperada = new Posicion(3,0);
+
+        assertTrue(posicionActual.igualA(posicionEsperada));
     }
 
     @Test
@@ -55,8 +63,12 @@ public class RepetirTest {
 
         bloqueRepetir.agregarBloque(moverDerecha);
         bloqueRepetir.ejecutarInvertido(personaje, tablero);
+
+        Posicion posicionActual = personaje.obtenerPosicion();
+        Posicion posicionEsperada = new Posicion(-2,0);
+
         //Por default, el bloque Repetir se repite 2 veces
-        assertEquals(-2,personaje.obtenerPosicion().obtenerX());
+        assertTrue(posicionActual.igualA(posicionEsperada));
     }
 
     @Test
@@ -70,7 +82,10 @@ public class RepetirTest {
         bloqueRepetir.agregarBloque(moverDerecha);
         bloqueRepetir.ejecutarInvertido(personaje, tablero);
 
-        assertEquals(-3,personaje.obtenerPosicion().obtenerX());
+        Posicion posicionActual = personaje.obtenerPosicion();
+        Posicion posicionEsperada = new Posicion(-3,0);
+
+        assertTrue(posicionActual.igualA(posicionEsperada));
     }
 
 }
