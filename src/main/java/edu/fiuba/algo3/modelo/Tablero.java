@@ -9,9 +9,10 @@ public class Tablero {
     public Tablero(){}
 
     public void escribir(Posicion posicion){
-        //Optional<Posicion> nuevaPosicion = this.obtenerPosicion(posicion);
-        //nuevaPosicion.ifPresent().OrElse(posiciones.add(posicion));
-        this.posiciones.add(posicion);
+        Optional<Posicion> nuevaPosicion = this.obtenerPosicion(posicion);
+        if(nuevaPosicion.isEmpty()){
+            this.posiciones.add(posicion);
+        }
     }
 
     public Optional<Posicion> obtenerPosicion(Posicion pos){
