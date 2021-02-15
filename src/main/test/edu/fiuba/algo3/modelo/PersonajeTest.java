@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-class PersonajeTest {
+public class PersonajeTest {
 
     @Test
     public void test01SeCreaPersonajePorDefectoConLapizArriba() {

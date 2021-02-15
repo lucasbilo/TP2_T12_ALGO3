@@ -110,9 +110,9 @@ public class DibujoTest {
         dibujo.agregarBloque(moverArriba);
         dibujo.ejecutar();
 
-        assertFalse(dibujo.tablero().existePosicion(0, 0));
-        assertTrue(dibujo.tablero().existePosicion(0,1));
-        assertFalse(dibujo.tablero().existePosicion(0,2));
+        assertFalse(dibujo.tablero().existePosicion(new Posicion(0,0)));
+        assertTrue(dibujo.tablero().existePosicion(new Posicion(0,1)));
+        assertFalse(dibujo.tablero().existePosicion(new Posicion(0,2)));
 
     }
 

@@ -6,22 +6,17 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TableroTest {
 
     @Test
-    public void test01CreoUnTableroSinPosiciones(){
-        Tablero tablero = new Tablero();
-        assertNull(tablero.obtenerPosicion(0,0));
-    }
-
-    @Test
-    public void test02AgregoUnaPosicionAlTableroYLaBusco(){
+    public void test01AgregoUnaPosicionAlTableroYLaBusco(){
         Tablero tablero = new Tablero();
         Posicion posicion = new Posicion(); // x=0, y=0
         tablero.escribir(posicion);
+        Posicion posicionEsperada = new Posicion(0, 0);
 
-        assertEquals(posicion, tablero.obtenerPosicion(0, 0));
+        assertTrue(posicionEsperada.igualA(posicion));
     }
 
     @Test
-    public void test03AgregoDosPosicionAlTableroYBuscoUna(){
+    public void test02AgregoDosPosicionAlTableroYBuscoUna(){
         Tablero tablero = new Tablero();
         Posicion posicionUno = new Posicion(); // x=0, y=0
         Posicion posicionDos = new Posicion(1,0);
@@ -29,16 +24,18 @@ public class TableroTest {
         tablero.escribir(posicionUno);
         tablero.escribir(posicionDos);
 
-        assertEquals(posicionDos, tablero.obtenerPosicion(1, 0));
+        Posicion posicionEsperada = new Posicion(1, 0);
+
+        assertTrue(posicionEsperada.igualA(posicionDos));
     }
 
     @Test
-    public void test04SeActualizaElTableroConUnaNuevaPosicion(){
+    public void test03SeActualizaElTableroConUnaNuevaPosicion(){
         Tablero tablero = new Tablero();
         Personaje personaje = new Personaje();
         personaje.modificarPosicion(new Direccion(1,5), tablero);
         tablero.actualizar(personaje.obtenerPosicion());
 
-        assertTrue(tablero.existePosicion(1, 5));
+        assertTrue(tablero.existePosicion(new Posicion(1,5)));
     }
 }

@@ -1,5 +1,4 @@
 package edu.fiuba.algo3.modelo;
-
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -10,23 +9,21 @@ public class Tablero {
     public Tablero(){}
 
     public void escribir(Posicion posicion){
-        Posicion nuevaPosicion = this.obtenerPosicion(posicion.obtenerX(), posicion.obtenerY());
-        if(nuevaPosicion == null) { //si entra al if significa que la posicion no esta cargada en el tablero
-            this.posiciones.add(posicion);
-        }
+        //Optional<Posicion> nuevaPosicion = this.obtenerPosicion(posicion);
+        //nuevaPosicion.ifPresent().OrElse(posiciones.add(posicion));
+        this.posiciones.add(posicion);
     }
 
-    public Posicion obtenerPosicion(int x, int y){
+    public Optional<Posicion> obtenerPosicion(Posicion pos){
         Optional<Posicion> buscada = this.posiciones.stream()
-                .filter(posicion -> (posicion.obtenerX() == x)
-                        && (posicion.obtenerY() == y))
+                .filter(posicion -> posicion.igualA(pos))
                 .findFirst();
-        return buscada.orElse(null); //devuelve NULL si no se encuentra
+        return buscada; //devuelve NULL si no se encuentra
     }
 
-    public boolean existePosicion(int x, int y){
+    public boolean existePosicion(Posicion pos){
         return this.posiciones.stream()
-                .anyMatch(posicion -> (posicion.obtenerX() == x) && (posicion.obtenerY() == y));
+                .anyMatch(posicion -> posicion.igualA(pos));
     }
 
     public void actualizar(Posicion posicion){

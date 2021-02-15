@@ -9,24 +9,20 @@ public class PosicionTest {
     @Test
     void test01SeCreaObjetoPosicionVacia() {
         Posicion posicion = new Posicion();
+        Posicion posicionEsperada = new Posicion(0, 0);
 
-        assertTrue(posicion.coordenadasIgualesA(0, 0));
+        assertTrue(posicion.igualA(posicionEsperada));
     }
 
     @Test
-    void test02SeCreaObjetoPosicionConCoordenadas() {
-        Posicion posicion = new Posicion(2, 5);
-
-        assertTrue(posicion.coordenadasIgualesA(2, 5));
-    }
-
-    @Test
-    void test03SeCreaObjetoPosicionConCoordenadasYSeLoMueveHaciaArriba() {
+    void test02SeCreaObjetoPosicionConCoordenadasYSeLoMueveHaciaArriba() {
         Posicion posicion = new Posicion(0, 3);
         Direccion direccionArriba = new Direccion(0,1);
         Posicion nuevaPosicion = posicion.mover(direccionArriba);
 
-        assertTrue(nuevaPosicion.coordenadasIgualesA(0, 4));
+        Posicion posicionEsperada = new Posicion(0, 4);
+
+        assertTrue(nuevaPosicion.igualA(posicionEsperada));
     }
 
 

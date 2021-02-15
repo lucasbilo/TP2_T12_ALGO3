@@ -26,8 +26,8 @@ public class Posicion {
         return y;
     }
 
-    public boolean coordenadasIgualesA(int coordenadaX, int coordenadaY){
-        return (coordenadaX == this.x) && (coordenadaY == this.y);
+    public boolean igualA(Posicion pos){
+        return (pos.obtenerX() == this.x) && (pos.obtenerY() == this.y);
     }
 
 }

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class DireccionTest {
+public class DireccionTest {
 
     @Test
     void test01SeCreaObjetoDireccion() {
