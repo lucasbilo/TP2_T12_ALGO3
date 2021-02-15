@@ -13,8 +13,8 @@ public class Posicion {
 
     public Posicion mover (Direccion direccion){
         return new Posicion(
-            this.x + direccion.obtenerCoordenadas()[0],
-            this.y + direccion.obtenerCoordenadas()[1]
+            this.x + direccion.obtenerX(),
+            this.y + direccion.obtenerY()
         );
     }
 
@@ -24,6 +24,10 @@ public class Posicion {
 
     public int obtenerY(){
         return y;
+    }
+
+    public boolean coordenadasIgualesA(int coordenadaX, int coordenadaY){
+        return (coordenadaX == this.x) && (coordenadaY == this.y);
     }
 
 }

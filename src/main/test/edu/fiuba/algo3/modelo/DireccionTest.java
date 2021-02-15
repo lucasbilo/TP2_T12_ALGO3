@@ -9,65 +9,51 @@ class DireccionTest {
     @Test
     void test01SeCreaObjetoDireccion() {
         Direccion direccion = new Direccion();
-        //Se crea una direccion con coordenadas x=0 e y=0
-        int[] arrayCoordenadas = direccion.obtenerCoordenadas();
 
-        assertArrayEquals(new int[] {0,0}, arrayCoordenadas);
+        assertTrue(direccion.coordenadasIgualesA(0,0));
     }
 
     @Test
     void test02SeCreaObjetoDireccionArriba() {
         Direccion direccionArriba = new Direccion(0,1);
-        //Se crea una direccion con coordenadas x=0 e y=1
-        int[] arrayCoordenadas = direccionArriba.obtenerCoordenadas();
 
-        assertArrayEquals(new int[] {0,1}, arrayCoordenadas);
+        assertTrue(direccionArriba.coordenadasIgualesA(0,1));
     }
 
     @Test
     void test03SeCreaObjetoDireccionAbajo() {
         Direccion direccionAbajo = new Direccion(0,-1);
-        //Se crea una direccion con coordenadas x=0 e y=-1
-        int[] arrayCoordenadas = direccionAbajo.obtenerCoordenadas();
 
-        assertArrayEquals(new int[] {0,-1}, arrayCoordenadas);
+        assertTrue(direccionAbajo.coordenadasIgualesA(0,-1));
     }
 
     @Test
     void test04SeCreaObjetoDireccionDerecha() {
         Direccion direccionDerecha = new Direccion(1,0);
-        //Se crea una direccion con coordenadas x=1 e y=0
-        int[] arrayCoordenadas = direccionDerecha.obtenerCoordenadas();
 
-        assertArrayEquals(new int[] {1,0}, arrayCoordenadas);
+        assertTrue(direccionDerecha.coordenadasIgualesA(1,0));
     }
 
     @Test
     void test05SeCreaObjetoDireccionIzquierda() {
-        Direccion direccion = new Direccion(-1,0);
-        //Se crea una direccion con coordenadas x=-1 e y=0
-        int[] arrayCoordenadas = direccion.obtenerCoordenadas();
+        Direccion direccionIzquierda = new Direccion(-1,0);
 
-        assertArrayEquals(new int[] {-1,0}, arrayCoordenadas);
+        assertTrue(direccionIzquierda.coordenadasIgualesA(-1,0));
     }
 
     @Test
     void test06SeCreaObjetoDireccionArribaYSeLoObtieneInvertido() {
         Direccion direccion = new Direccion(0,1);
-        //Se crea una direccion con coordenadas x=0 e y=1
         Direccion direccionInvertida = direccion.invertir();
-        int[] arrayCoordenadas = direccionInvertida.obtenerCoordenadas();
 
-        assertArrayEquals(new int[] {0,-1}, arrayCoordenadas);
+        assertTrue(direccionInvertida.coordenadasIgualesA(0,-1));
     }
 
     @Test
     void test07SeCreaObjetoDireccionAbajoYSeLoObtieneInvertido() {
         Direccion direccion = new Direccion(0,-1);
-        //Se crea una direccion con coordenadas x=0 e y=-1
         Direccion direccionInvertida = direccion.invertir();
-        int[] arrayCoordenadas = direccionInvertida.obtenerCoordenadas();
 
-        assertArrayEquals(new int[] {0,1}, arrayCoordenadas);
+        assertTrue(direccionInvertida.coordenadasIgualesA(0,1));
     }
 }

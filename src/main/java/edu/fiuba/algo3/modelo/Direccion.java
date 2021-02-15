@@ -1,24 +1,33 @@
 package edu.fiuba.algo3.modelo;
 
 public class Direccion {
-    //Atributos
-    private int[] coordenadas = {0,0};
+    private int x;
+    private int y;
 
     //Constructor
     public Direccion(){
     }
 
     public Direccion(int coordenadaX, int coordenadaY){
-        this.coordenadas[0] = coordenadaX;
-        this.coordenadas[1] = coordenadaY;
+        this.x = coordenadaX;
+        this.y = coordenadaY;
     }
 
-    public int[] obtenerCoordenadas() { return coordenadas; }
+    public int obtenerX(){
+        return this.x;
+    }
+    public int obtenerY(){
+        return this.y;
+    }
 
     public Direccion invertir(){
-
-        int coordenadaX = (-1) * coordenadas[0];
-        int coordenadaY = (-1) * coordenadas[1];
+        int coordenadaX = (-1) * this.x;
+        int coordenadaY = (-1) * this.y;
         return new Direccion(coordenadaX,coordenadaY);
     }
+
+    public boolean coordenadasIgualesA(int coordenadaX, int coordenadaY){
+        return (coordenadaX == this.x) && (coordenadaY == this.y);
+    }
+
 }
