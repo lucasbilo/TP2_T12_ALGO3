@@ -30,8 +30,7 @@ public class Tablero {
     }
 
     public void actualizar(Posicion posicion){
-        Posicion posicionNueva = new Posicion(posicion.obtenerX(), posicion.obtenerY());
-        posicionNueva.modificarEstadoLapiz(posicion.obtenerEstadoLapiz());
+        Posicion posicionNueva = new Posicion(posicion.obtenerX(),posicion.obtenerY());
         this.escribir(posicionNueva);
     }
 

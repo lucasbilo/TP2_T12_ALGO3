@@ -35,8 +35,9 @@ public class TableroTest {
     @Test
     public void test04SeActualizaElTableroConUnaNuevaPosicion(){
         Tablero tablero = new Tablero();
-        Posicion posicion = new Posicion(1, 5);
-        tablero.actualizar(posicion);
+        Personaje personaje = new Personaje();
+        personaje.modificarPosicion(new Direccion(1,5), tablero);
+        tablero.actualizar(personaje.obtenerPosicion());
 
         assertTrue(tablero.existePosicion(1, 5));
     }

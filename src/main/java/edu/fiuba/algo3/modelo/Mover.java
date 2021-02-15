@@ -10,13 +10,12 @@ public class Mover extends Bloque {
         this.direccion = direccion;
     }
 
-    public void ejecutar(Personaje personaje, Tablero tablero){
-        personaje.modificarPosicion(direccion);
+    public void ejecutar(Personaje personaje, Tablero tablero){ personaje.modificarPosicion(direccion, tablero);
     }
 
     public void ejecutarInvertido(Personaje personaje, Tablero tablero) {
         Direccion direccionInvertida = direccion.invertir();
-        personaje.modificarPosicion(direccionInvertida);
+        personaje.modificarPosicion(direccionInvertida, tablero);
     }
 
     public Direccion obtenerDireccion (){

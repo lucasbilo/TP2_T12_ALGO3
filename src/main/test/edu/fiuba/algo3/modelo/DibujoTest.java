@@ -9,7 +9,9 @@ public class DibujoTest {
     @Test
     public void test01SeAgregaBloqueMoverArribaAlAlgoritmoYSeEjecuta(){
         Dibujo dibujo = new Dibujo();
-        dibujo.moverArriba();
+        Direccion direccionArriba = new Direccion(0,1);
+        Mover moverArriba = new Mover(direccionArriba);
+        dibujo.agregarBloque(moverArriba);
         dibujo.ejecutar();
 
         assertEquals(1, dibujo.personaje().obtenerPosicion().obtenerY());
@@ -18,7 +20,9 @@ public class DibujoTest {
     @Test
     public void test02SeAgregaBloqueMoverAbajoAlAlgoritmoYSeEjecuta(){
         Dibujo dibujo = new Dibujo();
-        dibujo.moverAbajo();
+        Direccion direccionAbajo = new Direccion(0,-1);
+        Mover moverAbajo = new Mover(direccionAbajo);
+        dibujo.agregarBloque(moverAbajo);
         dibujo.ejecutar();
 
         assertEquals(-1, dibujo.personaje().obtenerPosicion().obtenerY());
@@ -27,7 +31,9 @@ public class DibujoTest {
     @Test
     public void test03SeAgregaBloqueMoverDerechaAlAlgoritmoYSeEjecuta(){
         Dibujo dibujo = new Dibujo();
-        dibujo.moverDerecha();
+        Direccion direccionDerecha = new Direccion(1,0);
+        Mover moverDerecha = new Mover(direccionDerecha);
+        dibujo.agregarBloque(moverDerecha);
         dibujo.ejecutar();
 
         assertEquals(1, dibujo.personaje().obtenerPosicion().obtenerX());
@@ -36,7 +42,9 @@ public class DibujoTest {
     @Test
     public void test04SeAgregaBloqueMoverIzquierdaAlAlgoritmoYSeEjecuta(){
         Dibujo dibujo = new Dibujo();
-        dibujo.moverIzquierda();
+        Direccion direccionIzquierda = new Direccion(-1,0);
+        Mover moverIzquierda = new Mover(direccionIzquierda);
+        dibujo.agregarBloque(moverIzquierda);
         dibujo.ejecutar();
 
         assertEquals(-1, dibujo.personaje().obtenerPosicion().obtenerX());
@@ -45,7 +53,7 @@ public class DibujoTest {
     @Test
     public void test05SeAgregaBloqueLevantarLapizAlAlgoritmoYSeEjecuta(){
         Dibujo dibujo = new Dibujo();
-        dibujo.levantarLapiz();
+        dibujo.personaje().modificarEstadoLapiz(new LapizArriba());
         dibujo.ejecutar();
 
         assertTrue(dibujo.personaje().obtenerEstadoLapiz().lapizArriba());
@@ -54,78 +62,57 @@ public class DibujoTest {
     @Test
     public void test06SeAgregaBloqueBajarLapizAlAlgoritmoYSeEjecuta(){
         Dibujo dibujo = new Dibujo();
-        dibujo.bajarLapiz();
+        dibujo.personaje().modificarEstadoLapiz(new LapizAbajo());
         dibujo.ejecutar();
 
         assertTrue(dibujo.personaje().obtenerEstadoLapiz().lapizAbajo());
     }
 
     @Test
-    public void test07SeAgregaBloqueRepetirDosVecesConUnAlgoritmoYSeEjecuta(){
+    public void test07SeAgregaBloqueInvertirConBloqueMoverDerechaAlAlgoritmoYSeEjecuta(){
         Dibujo dibujo = new Dibujo();
         Algoritmo algoritmo = new Algoritmo();
         Direccion derecha = new Direccion(1,0);
         Mover moverDerecha = new Mover(derecha);
         algoritmo.agregarBloque(moverDerecha);
-
-        dibujo.repetirDosVeces(algoritmo);
-        dibujo.ejecutar();
-
-        assertEquals(2, dibujo.personaje().obtenerPosicion().obtenerX());
-    }
-
-    @Test
-    public void test08SeAgregaBloqueRepetirTresVecesConUnAlgoritmoYSeEjecuta(){
-        Dibujo dibujo = new Dibujo();
-        Algoritmo algoritmo = new Algoritmo();
-        Direccion derecha = new Direccion(1,0);
-        Mover moverDerecha = new Mover(derecha);
-        algoritmo.agregarBloque(moverDerecha);
-
-        dibujo.repetirTresVeces(algoritmo);
-        dibujo.ejecutar();
-
-        assertEquals(3, dibujo.personaje().obtenerPosicion().obtenerX());
-    }
-
-    @Test
-    public void test09SeAgregaBloqueInvertirConBloqueMoverDerechaAlAlgoritmoYSeEjecuta(){
-        Dibujo dibujo = new Dibujo();
-        Algoritmo algoritmo = new Algoritmo();
-        Direccion derecha = new Direccion(1,0);
-        Mover moverDerecha = new Mover(derecha);
-        algoritmo.agregarBloque(moverDerecha);
-
-        dibujo.invertir(algoritmo);
+        Invertir invertir = new Invertir();
+        invertir.agregarBloque(moverDerecha);
+        dibujo.agregarBloque(invertir);
         dibujo.ejecutar();
 
         assertEquals(-1, dibujo.personaje().obtenerPosicion().obtenerX());
     }
 
     @Test
-    public void test10SeAgregaBloqueAlgoritmoPersonalizadoConUnAlgoritmoYSeEjecuta(){
+    public void test08SeAgregaBloqueAlgoritmoPersonalizadoConUnAlgoritmoYSeEjecuta(){
         Dibujo dibujo = new Dibujo();
         Algoritmo algoritmo = new Algoritmo();
-        Direccion direccionArriba = new Direccion(0,1);
-        Mover bloqueMoverArriba = new Mover(direccionArriba);
-        algoritmo.agregarBloque(bloqueMoverArriba);
-
-        dibujo.algoritmoPersonalizado(algoritmo);
+        Mover moverArriba = new Mover(new Direccion(0,1));
+        algoritmo.agregarBloque(moverArriba);
+        AlgoritmoPersonalizado algoritmoPersonalizado = new AlgoritmoPersonalizado(algoritmo);
         dibujo.ejecutar();
+        algoritmoPersonalizado.ejecutar(dibujo.personaje(),dibujo.tablero());
 
         assertEquals(1,dibujo.personaje().obtenerPosicion().obtenerY());
     }
 
     @Test
-    public void test11SeAgregaBloqueBajarLapizYMoverArribaTableroDebeEstarPintado(){
+    public void test09SeAgregaBloqueBajarLapizYMoverArribaTableroDebeEstarPintado(){
         // Arranca en 0,0 y termina en 0,2, deberia estar pintado las posiciones 0,0 y 0,1.
         Dibujo dibujo = new Dibujo();
-        dibujo.bajarLapiz();
-        dibujo.moverArriba();
-        dibujo.moverArriba();
+        BajarLapiz lapizAbajo = new BajarLapiz();
+        LevantarLapiz lapizArriba = new LevantarLapiz();
+        Mover moverArriba = new Mover(new Direccion(0,1));
+        dibujo.agregarBloque(moverArriba);
+        dibujo.agregarBloque(lapizAbajo);
+        dibujo.agregarBloque(moverArriba);
+        dibujo.agregarBloque(lapizArriba);
+        dibujo.agregarBloque(moverArriba);
         dibujo.ejecutar();
 
-        assertTrue(dibujo.tablero().obtenerPosicion(0, 0).estaPintado());
+        assertFalse(dibujo.tablero().existePosicion(0, 0));
+        assertTrue(dibujo.tablero().existePosicion(0,1));
+        assertFalse(dibujo.tablero().existePosicion(0,2));
 
     }
 
