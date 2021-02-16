@@ -15,8 +15,19 @@ public class App extends Application {
     public void start(Stage stage) {
         var javaVersion = SystemInfo.javaVersion();
         var javafxVersion = SystemInfo.javafxVersion();
+        try {
+            var input = new java.io.FileInputStream("static_avatar.png");
+            var image = new javafx.scene.image.Image(input);
+            var imageView = new javafx.scene.image.ImageView(image);
+        }
 
-        var label = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
+        catch(java.io.FileNotFoundException ex) {
+            System.err.println("An IOException was caught!");
+            ex.printStackTrace();
+        }
+
+
+        var label = new Label("AlgoBlock");
         var scene = new Scene(new StackPane(label), 640, 480);
         stage.setScene(scene);
         stage.show();
