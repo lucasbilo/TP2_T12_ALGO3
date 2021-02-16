@@ -13,9 +13,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) {
-
         try {
-            var input = new java.io.FileInputStream("static_avatar.png");
+            var input = new java.io.FileInputStream("src/main/java/edu/fiuba/algo3/static_avatar.png");
             var image = new javafx.scene.image.Image(input);
             var imageView = new javafx.scene.image.ImageView(image);
             var label = new Label("AlgoBlock", imageView);
