@@ -14,6 +14,8 @@ public class Dibujo {
 
     public Tablero tablero(){ return this.tablero; }
 
+    public Algoritmo algoritmo(){return this.algoritmo;}
+
     public void agregarBloque (Bloque bloque){
         this.algoritmo.agregarBloque(bloque);
     }
