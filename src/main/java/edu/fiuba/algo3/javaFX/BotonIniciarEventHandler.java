@@ -19,53 +19,49 @@ public class BotonIniciarEventHandler implements EventHandler<ActionEvent> {
     }
 
     public void handle(ActionEvent actionEvent){
-        Button botonArriba = new Button();
-        botonArriba.setText("Mover Arriba");
-        EventoMoverArribaEventHandler eventoMoverArribaEventHandler = new EventoMoverArribaEventHandler(dibujo);
+        VBox algoritmo = new VBox();
+        algoritmo.setAlignment(Pos.CENTER);
+        algoritmo.setSpacing(40);
+
+        Button botonArriba = new Button("Mover Arriba");
+        EventoMoverArribaEventHandler eventoMoverArribaEventHandler = new EventoMoverArribaEventHandler(dibujo, algoritmo);
         botonArriba.setOnAction(eventoMoverArribaEventHandler);
 
-        Button botonAbajo = new Button();
-        botonAbajo.setText("Mover Abajo");
-        EventoMoverAbajoEventHandler eventoMoverAbajoEventHandler = new EventoMoverAbajoEventHandler(dibujo);
+        Button botonAbajo = new Button("Mover Abajo");
+        EventoMoverAbajoEventHandler eventoMoverAbajoEventHandler = new EventoMoverAbajoEventHandler(dibujo, algoritmo);
         botonAbajo.setOnAction(eventoMoverAbajoEventHandler);
 
-        Button botonIzquierda = new Button();
-        botonIzquierda.setText("Mover Izquierda");
-        EventoMoverIzquierdaEventHandler eventoMoverIzquierdaEventHandler = new EventoMoverIzquierdaEventHandler(dibujo);
+        Button botonIzquierda = new Button("Mover Izquierda");
+        EventoMoverIzquierdaEventHandler eventoMoverIzquierdaEventHandler = new EventoMoverIzquierdaEventHandler(dibujo, algoritmo);
         botonIzquierda.setOnAction(eventoMoverIzquierdaEventHandler);
 
-        Button botonDerecha = new Button();
-        botonDerecha.setText("Mover Derecha");
-        EventoMoverDerechaEventHandler eventoMoverDerechaEventHandler = new EventoMoverDerechaEventHandler(dibujo);
+        Button botonDerecha = new Button("Mover Derecha");
+        EventoMoverDerechaEventHandler eventoMoverDerechaEventHandler = new EventoMoverDerechaEventHandler(dibujo, algoritmo);
         botonDerecha.setOnAction(eventoMoverDerechaEventHandler);
 
-        Button botonBajarLapiz = new Button();
-        botonBajarLapiz.setText("Bajar Lapiz");
-        EventoBajarLapizEventHandler eventoBajarLapizEventHandler = new EventoBajarLapizEventHandler(dibujo);
+        Button botonBajarLapiz = new Button("Bajar Lapiz");
+        EventoBajarLapizEventHandler eventoBajarLapizEventHandler = new EventoBajarLapizEventHandler(dibujo, algoritmo);
         botonBajarLapiz.setOnAction(eventoBajarLapizEventHandler);
 
-        Button botonLevantarLapiz = new Button();
-        botonLevantarLapiz.setText("Subir Lapiz");
-        EventoLevantarLapizEventHandler eventoLevantarLapizEventHandler = new EventoLevantarLapizEventHandler(dibujo);
+        Button botonLevantarLapiz = new Button("Levantar Lapiz");
+        EventoLevantarLapizEventHandler eventoLevantarLapizEventHandler = new EventoLevantarLapizEventHandler(dibujo, algoritmo);
         botonLevantarLapiz.setOnAction(eventoLevantarLapizEventHandler);
 
-        Button botonAlgoritmoPersonalizado = new Button();
-        botonAlgoritmoPersonalizado.setText("Algoritmo Personalizado");
-        EventoAlgoritmoPersonalizadoEventHandler eventoAlgoritmoPersonalizadoEventHandler = new EventoAlgoritmoPersonalizadoEventHandler(dibujo);
+        Button botonAlgoritmoPersonalizado = new Button("Algoritmo Personalizado");
+        EventoAlgoritmoPersonalizadoEventHandler eventoAlgoritmoPersonalizadoEventHandler = new EventoAlgoritmoPersonalizadoEventHandler(dibujo, algoritmo);
         botonAlgoritmoPersonalizado.setOnAction(eventoAlgoritmoPersonalizadoEventHandler);
 
         TextArea panelDibujo = new TextArea();
-        TextArea algoritmo  = new TextArea();
 
         VBox contenedorVertical = new VBox (botonArriba, botonAbajo, botonIzquierda, botonDerecha, botonBajarLapiz, botonLevantarLapiz, botonAlgoritmoPersonalizado);
-        contenedorVertical.setSpacing(50);
+        contenedorVertical.setSpacing(40);
         contenedorVertical.setAlignment(Pos.CENTER);
         HBox contenedorHorizontal = new HBox(panelDibujo, contenedorVertical, algoritmo);
         contenedorHorizontal.setAlignment(Pos.CENTER);
 
         Stage programa = new Stage();
 
-        Scene scene = new Scene(contenedorHorizontal,1200,1000);
+        Scene scene = new Scene(contenedorHorizontal,600,600);
 
         programa.setScene(scene);
 
