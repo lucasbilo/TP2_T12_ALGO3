@@ -2,6 +2,8 @@ package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DibujoTest {
@@ -136,6 +138,20 @@ public class DibujoTest {
         assertTrue(dibujo.tablero().existePosicion(new Posicion(0,1)));
         assertFalse(dibujo.tablero().existePosicion(new Posicion(0,2)));
 
+    }
+
+    @Test
+    public void test10SeAgreganDosBloquesYLuegoSeBorraUno(){
+        Dibujo dibujo = new Dibujo();
+        ArrayList<Bloque> arrayDeBloques = dibujo.algoritmo().obtenerAlgoritmo();
+        BajarLapiz lapizAbajo = new BajarLapiz();
+        LevantarLapiz lapizArriba = new LevantarLapiz();
+        dibujo.agregarBloque(lapizAbajo);
+        dibujo.agregarBloque(lapizArriba);
+
+        assertEquals(2,arrayDeBloques.size());
+        dibujo.eliminarBloque(lapizAbajo);
+        assertEquals(1,arrayDeBloques.size());
     }
 
 

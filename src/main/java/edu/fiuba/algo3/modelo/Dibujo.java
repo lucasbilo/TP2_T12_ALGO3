@@ -23,4 +23,6 @@ public class Dibujo {
     public void ejecutar(){
         this.algoritmo.ejecutar(this.personaje,this.tablero);
     }
+
+    public void eliminarBloque(Bloque bloque){ this.algoritmo.eliminarBloque(bloque);}
 }

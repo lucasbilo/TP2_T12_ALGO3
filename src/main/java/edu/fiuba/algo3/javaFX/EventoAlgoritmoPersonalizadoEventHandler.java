@@ -24,6 +24,8 @@ public class EventoAlgoritmoPersonalizadoEventHandler implements EventHandler<Ac
         dibujo.agregarBloque(algoritmoPersonalizado);
 
         Button botonAlgoritmoPersonalizado = new Button("Algoritmo Personalizado");
+        EventoEliminarBloqueEventHandler eventoBorrarBloqueEventHandler = new EventoEliminarBloqueEventHandler(dibujo, algoritmoPersonalizado, algoritmo, botonAlgoritmoPersonalizado);
+        botonAlgoritmoPersonalizado.setOnAction(eventoBorrarBloqueEventHandler);
         algoritmo.getChildren().add(botonAlgoritmoPersonalizado);
     }
 

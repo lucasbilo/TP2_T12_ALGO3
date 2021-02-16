@@ -21,6 +21,8 @@ public class EventoBajarLapizEventHandler implements EventHandler<ActionEvent> {
         dibujo.agregarBloque(bloque);
 
         Button botonBajarLapiz = new Button("Bajar Lapiz");
+        EventoEliminarBloqueEventHandler eventoBorrarBloqueEventHandler = new EventoEliminarBloqueEventHandler(dibujo, bloque, algoritmo, botonBajarLapiz);
+        botonBajarLapiz.setOnAction(eventoBorrarBloqueEventHandler);
         algoritmo.getChildren().add(botonBajarLapiz);
     }
 
