@@ -13,12 +13,15 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) {
-        var javaVersion = SystemInfo.javaVersion();
-        var javafxVersion = SystemInfo.javafxVersion();
+
         try {
             var input = new java.io.FileInputStream("static_avatar.png");
             var image = new javafx.scene.image.Image(input);
             var imageView = new javafx.scene.image.ImageView(image);
+            var label = new Label("AlgoBlock", imageView);
+            var scene = new Scene(new StackPane(label), 640, 480);
+            stage.setScene(scene);
+            stage.show();
         }
 
         catch(java.io.FileNotFoundException ex) {
@@ -27,10 +30,8 @@ public class App extends Application {
         }
 
 
-        var label = new Label("AlgoBlock");
-        var scene = new Scene(new StackPane(label), 640, 480);
-        stage.setScene(scene);
-        stage.show();
+
+
     }
 
     public static void main(String[] args) {
