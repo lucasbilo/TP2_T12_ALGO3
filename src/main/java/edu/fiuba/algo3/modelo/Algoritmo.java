@@ -23,4 +23,12 @@ public class Algoritmo {
             algoritmo.get(i).ejecutarInvertido(personaje, tablero);
         }
     }
+
+    public void eliminarBloque(Bloque bloque) {
+        for(int i = 0; i < algoritmo.size(); i++){
+            if (bloque == algoritmo.get(i)) {
+                algoritmo.remove(i);
+            }
+        }
+    }
 }

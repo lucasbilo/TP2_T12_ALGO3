@@ -111,4 +111,16 @@ public class AlgoritmoTest {
 
     }
 
+    @Test
+    public void test08SeCreaUnAlgoritmoConUnBloqueYLuegoSeBorraDichoBloque(){
+        Algoritmo algoritmo = new Algoritmo();
+        Bloque bloque = new BajarLapiz();
+        algoritmo.agregarBloque(bloque);
+        ArrayList<Bloque> arrayDeBloques = algoritmo.obtenerAlgoritmo();
+
+        assertEquals(1,arrayDeBloques.size());
+        algoritmo.eliminarBloque(bloque);
+        assertEquals(0,arrayDeBloques.size());
+    }
+
 }
