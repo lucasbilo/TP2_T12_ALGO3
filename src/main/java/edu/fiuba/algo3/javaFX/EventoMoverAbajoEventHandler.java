@@ -25,6 +25,8 @@ public class EventoMoverAbajoEventHandler implements EventHandler<ActionEvent> {
         dibujo.agregarBloque(moverAbajo);
 
         Button botonAbajo = new Button("Mover Abajo");
+        EventoEliminarBloqueEventHandler eventoBorrarBloqueEventHandler = new EventoEliminarBloqueEventHandler(dibujo, moverAbajo, algoritmo, botonAbajo);
+        botonAbajo.setOnAction(eventoBorrarBloqueEventHandler);
         this.algoritmo.getChildren().add(botonAbajo);
     }
 
