@@ -2,6 +2,7 @@ package edu.fiuba.algo3.javaFX;
 
 import edu.fiuba.algo3.modelo.*;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
@@ -96,12 +97,16 @@ public class SectorIconos {
         contenedorDeIconos.getChildren().add(imgInvertir);
     }
 
-    public void crearIconoAlgoritmoPersonalizado() {
+    public void crearIconoAlgoritmoPersonalizado(VBox contenedorDeAlgoritmos) {
         ImageView imgAlgoritmoPersonalizado = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/algoritmoPersonalizado.png" );
-        AlgoritmoPersonalizado algoritmoPersonalizado = new AlgoritmoPersonalizado();
-        EventoDragAndDrop drag = new EventoDragAndDrop(imgAlgoritmoPersonalizado, sectorAlgoritmo.obtenerContenedorDeBloques(), dibujo, algoritmoPersonalizado);//, deletePanel);
-        drag.empezarDragAndDrop();
-        contenedorDeIconos.getChildren().add(imgAlgoritmoPersonalizado);
+        Button botonAlgoritmoPersonalizado = new Button();
+        botonAlgoritmoPersonalizado.setGraphic(imgAlgoritmoPersonalizado);
+        //AlgoritmoPersonalizado algoritmoPersonalizado = new AlgoritmoPersonalizado();
+        EventoAlgoritmoPersonalizadoEventHandler eventoAlgoritmoPersonalizadoEventHandler = new EventoAlgoritmoPersonalizadoEventHandler(contenedorDeAlgoritmos, dibujo, sectorAlgoritmo.obtenerContenedorDeBloques());
+        //EventoDragAndDrop drag = new EventoDragAndDrop(imgAlgoritmoPersonalizado, sectorAlgoritmo.obtenerContenedorDeBloques(), dibujo, algoritmoPersonalizado);//, deletePanel);
+        //drag.empezarDragAndDrop();
+        contenedorDeIconos.getChildren().add(botonAlgoritmoPersonalizado);
+        botonAlgoritmoPersonalizado.setOnAction(eventoAlgoritmoPersonalizadoEventHandler);
     }
 
     public ImageView generarImagenesLabels(String ruta){

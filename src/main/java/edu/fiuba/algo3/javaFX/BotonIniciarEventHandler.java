@@ -23,6 +23,12 @@ public class BotonIniciarEventHandler implements EventHandler<ActionEvent> {
         //sector de algoritmo
         SectorAlgoritmo sectorAlgoritmo = new SectorAlgoritmo();
 
+        //sector de algoritmos personalizados
+        VBox algoritmosPersonalizados = new VBox();
+        algoritmosPersonalizados.setPrefHeight(200);
+        algoritmosPersonalizados.setAlignment(Pos.CENTER);
+
+
         //sector de iconos que se arrastran al sector Algoritmo
         SectorIconos sectorIconos = new SectorIconos(sectorAlgoritmo, dibujo);
         sectorIconos.crearIconoMoverArriba();
@@ -33,7 +39,7 @@ public class BotonIniciarEventHandler implements EventHandler<ActionEvent> {
         sectorIconos.crearIconoBajarLapiz();
         sectorIconos.crearIconoRepetir();
         sectorIconos.crearIconoInvertir();
-        sectorIconos.crearIconoAlgoritmoPersonalizado();
+        sectorIconos.crearIconoAlgoritmoPersonalizado(algoritmosPersonalizados);
 
 
         //sector de dibujo
@@ -43,7 +49,7 @@ public class BotonIniciarEventHandler implements EventHandler<ActionEvent> {
         gc.fillRect(0,0,500,500);
 
         //todalapagina
-        HBox contenedorHorizontal = new HBox(canvas, sectorIconos.obtenerContenedorDeIconos(), sectorAlgoritmo.obtenerContenedorDeAlgoritmo());//, deletePanel);
+        HBox contenedorHorizontal = new HBox(canvas, sectorIconos.obtenerContenedorDeIconos(), sectorAlgoritmo.obtenerContenedorDeAlgoritmo(),algoritmosPersonalizados);//, deletePanel);
         contenedorHorizontal.setSpacing(20);
         contenedorHorizontal.setAlignment(Pos.CENTER);
 
