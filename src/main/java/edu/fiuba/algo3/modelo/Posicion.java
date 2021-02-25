@@ -1,8 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
 public class Posicion {
-    private int x = 250;
-    private int y = 250;
+    private int x = 0;
+    private int y = 0;
 
     public Posicion(){}
 

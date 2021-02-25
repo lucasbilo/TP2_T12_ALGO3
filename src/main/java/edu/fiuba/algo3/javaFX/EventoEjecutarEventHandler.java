@@ -29,12 +29,12 @@ public class EventoEjecutarEventHandler implements EventHandler<ActionEvent> {
             Posicion posicionAnterior = dibujo.personaje().obtenerPosicion();
             algoritmo.get(i).ejecutar(dibujo.personaje(), dibujo.tablero());
             if(dibujo.tablero().existePosicion(posicionAnterior)){
-                gc.lineTo(dibujo.personaje().obtenerPosicion().obtenerX(), (dibujo.personaje().obtenerPosicion().obtenerY()));
+                gc.lineTo(250 + dibujo.personaje().obtenerPosicion().obtenerX(), 250 + (dibujo.personaje().obtenerPosicion().obtenerY()));
                 //System.out.println(dibujo.personaje().obtenerPosicion().obtenerX());
                 //System.out.println(dibujo.personaje().obtenerPosicion().obtenerY());
             }
             else{
-                gc.moveTo(dibujo.personaje().obtenerPosicion().obtenerX(), (dibujo.personaje().obtenerPosicion().obtenerY()));
+                gc.moveTo(250 + dibujo.personaje().obtenerPosicion().obtenerX(), 250 + (dibujo.personaje().obtenerPosicion().obtenerY()));
             }
 
         }
