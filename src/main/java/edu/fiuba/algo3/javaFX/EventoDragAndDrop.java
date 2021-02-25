@@ -16,10 +16,8 @@ public class EventoDragAndDrop {
     VBox target;
     Dibujo dibujo;
     Bloque bloque;
-    //EventHandler <ActionEvent> eventoBoton;
-    //VBox bin;
 
-    public EventoDragAndDrop(ImageView source, VBox target, Dibujo dibujo, Bloque bloque){// VBox bin) {
+    public EventoDragAndDrop(ImageView source, VBox target, Dibujo dibujo, Bloque bloque){
         this.source = source;
         this.target = target;
         this.dibujo = dibujo;
@@ -58,7 +56,6 @@ public class EventoDragAndDrop {
         target.setOnDragEntered(new EventHandler<DragEvent>() {
             public void handle(DragEvent event) {
                 /* the drag-and-drop gesture entered the target */
-                //System.out.println("onDragEntered");
                 /* show to the user that it is an actual gesture target */
                 if (event.getGestureSource() != target &&
                         event.getDragboard().hasImage()) {
@@ -81,23 +78,11 @@ public class EventoDragAndDrop {
         target.setOnDragDropped(new EventHandler<DragEvent>() {
             public void handle(DragEvent event) {
                 /* data dropped */
-                //System.out.println("onDragDropped");
-                /* if there is a string data on dragboard, read it and use it */
                 Dragboard db = event.getDragboard();
                 boolean success = false;
                 if (db.hasImage()) {
-                    ImageView image = new ImageView(db.getImage());
-                    Button button = new Button();
-                    button.setGraphic(image);
-                    button.setOnAction(new EventoEliminarBloqueEventHandler(dibujo, bloque, target, button));
-                    target.getChildren().add(button);
-                    target.setAlignment(Pos.BOTTOM_CENTER);
-                    //DragAndDrop drag = new DragAndDrop(image,target2,target2);
                     success = true;
-                    //eliminarBloque eliminarBloque = new eliminarBloque(image,bin,target);
                 }
-                /* let the source know whether the string was successfully
-                 * transferred and used */
                 event.setDropCompleted(success);
 
                 event.consume();
@@ -109,6 +94,13 @@ public class EventoDragAndDrop {
                 /* the drag-and-drop gesture ended */
                 //System.out.println("onDragDone");
                 /* if the data was successfully moved, clear it */
+                Dragboard db = event.getDragboard();
+                ImageView image = new ImageView(db.getImage());
+                Button button = new Button();
+                button.setGraphic(image);
+                button.setOnAction(new EventoEliminarBloqueEventHandler(dibujo, bloque, target, button));
+                target.getChildren().add(button);
+                target.setAlignment(Pos.BOTTOM_CENTER);
                 dibujo.agregarBloque(bloque);
                 event.consume();
             }
