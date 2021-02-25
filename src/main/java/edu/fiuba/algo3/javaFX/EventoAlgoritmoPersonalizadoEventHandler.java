@@ -2,8 +2,6 @@ package edu.fiuba.algo3.javaFX;
 
 import edu.fiuba.algo3.modelo.AlgoritmoPersonalizado;
 import edu.fiuba.algo3.modelo.Dibujo;
-import edu.fiuba.algo3.modelo.Direccion;
-import edu.fiuba.algo3.modelo.Mover;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -14,7 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class EventoAlgoritmoPersonalizadoEventHandler implements EventHandler<ActionEvent> {

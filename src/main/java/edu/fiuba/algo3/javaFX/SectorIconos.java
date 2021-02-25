@@ -5,12 +5,14 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.canvas.*;
 
 public class SectorIconos {
 
     private SectorAlgoritmo sectorAlgoritmo;
     private Dibujo dibujo;
     private VBox contenedorDeIconos;
+    private Button botonEjecutar;
 
     public SectorIconos(SectorAlgoritmo sectorAlgoritmo, Dibujo dibujo) {
 
@@ -25,10 +27,23 @@ public class SectorIconos {
         return this.contenedorDeIconos;
     }
 
+    public Button obtenerEjecutar(){
+        return this.botonEjecutar;
+    }
+
+    public void crearIconoEjecutar(Canvas canva) {
+        ImageView imgEjecutar = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/Images/ejecutar.png" );
+        Button botonEjecutar = new Button();
+        botonEjecutar.setGraphic(imgEjecutar);
+        EventoEjecutarEventHandler eventoEjecutarEventHandler = new EventoEjecutarEventHandler(dibujo, canva);
+        botonEjecutar.setOnAction(eventoEjecutarEventHandler);
+        this.botonEjecutar = botonEjecutar;
+    }
+
     public void crearIconoMoverArriba() {
 
-        ImageView imgMoverArriba = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/moverArriba.png");
-        Direccion direccionArriba = new Direccion(0, 1);
+        ImageView imgMoverArriba = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/Images/moverArriba.png");
+        Direccion direccionArriba = new Direccion(0, 25);
         Mover moverArriba = new Mover(direccionArriba);
         EventoDragAndDrop drag = new EventoDragAndDrop(imgMoverArriba, sectorAlgoritmo.obtenerContenedorDeBloques(), dibujo, moverArriba);//, deletePanel);
         drag.empezarDragAndDrop();
@@ -36,8 +51,8 @@ public class SectorIconos {
     }
 
     public void crearIconoMoverAbajo() {
-        ImageView imgMoverAbajo = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/moverAbajo.png");
-        Direccion direccionAbajo = new Direccion(0, -1);
+        ImageView imgMoverAbajo = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/Images/moverAbajo.png");
+        Direccion direccionAbajo = new Direccion(0, -25);
         Mover moverAbajo = new Mover(direccionAbajo);
         EventoDragAndDrop drag = new EventoDragAndDrop(imgMoverAbajo, sectorAlgoritmo.obtenerContenedorDeBloques(), dibujo, moverAbajo);//, deletePanel);
         drag.empezarDragAndDrop();
@@ -45,8 +60,8 @@ public class SectorIconos {
     }
 
     public void crearIconoMoverDerecha() {
-        ImageView imgMoverDerecha = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/moverDerecha.png" );
-        Direccion direccionDerecha = new Direccion(1, 0);
+        ImageView imgMoverDerecha = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/Images/moverDerecha.png" );
+        Direccion direccionDerecha = new Direccion(25, 0);
         Mover moverDerecha = new Mover(direccionDerecha);
         EventoDragAndDrop drag = new EventoDragAndDrop(imgMoverDerecha, sectorAlgoritmo.obtenerContenedorDeBloques(), dibujo, moverDerecha);//, deletePanel);
         drag.empezarDragAndDrop();
@@ -54,8 +69,8 @@ public class SectorIconos {
     }
 
     public void crearIconoMoverIzquierda() {
-        ImageView imgMoverIzquierda = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/moverIzquierda.png");
-        Direccion direccionIzquierda = new Direccion(-1, 0);
+        ImageView imgMoverIzquierda = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/Images/moverIzquierda.png");
+        Direccion direccionIzquierda = new Direccion(-25, 0);
         Mover moverIzquierda = new Mover(direccionIzquierda);
         EventoDragAndDrop drag = new EventoDragAndDrop(imgMoverIzquierda, sectorAlgoritmo.obtenerContenedorDeBloques(), dibujo, moverIzquierda);//, deletePanel);
         drag.empezarDragAndDrop();
@@ -64,16 +79,24 @@ public class SectorIconos {
 
     public void crearIconoLevantarLapiz() {
 
-        ImageView imgLevantarLapiz = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/levantarLapiz.png");
+        ImageView imgLevantarLapiz = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/Images/levantarLapiz.png");
         LevantarLapiz levantarLapiz = new LevantarLapiz();
         EventoDragAndDrop drag = new EventoDragAndDrop(imgLevantarLapiz, sectorAlgoritmo.obtenerContenedorDeBloques(), dibujo, levantarLapiz);//, deletePanel);
         drag.empezarDragAndDrop();
         contenedorDeIconos.getChildren().add(imgLevantarLapiz);
     }
 
+    public void crearIconoInvertir() {
+        ImageView imgInvertir = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/Images/Invertir.png");
+        Invertir invertir = new Invertir();
+        EventoDragAndDrop drag = new EventoDragAndDrop(imgInvertir, sectorAlgoritmo.obtenerContenedorDeBloques(), dibujo, invertir);//, deletePanel);
+        drag.empezarDragAndDrop();
+        contenedorDeIconos.getChildren().add(imgInvertir);
+    }
+
     public void crearIconoBajarLapiz() {
 
-        ImageView imgBajarLapiz = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/bajarLapiz.png");
+        ImageView imgBajarLapiz = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/Images/bajarLapiz.png");
         BajarLapiz bajarLapiz = new BajarLapiz();
         EventoDragAndDrop drag = new EventoDragAndDrop(imgBajarLapiz, sectorAlgoritmo.obtenerContenedorDeBloques(), dibujo, bajarLapiz);//, deletePanel);
         drag.empezarDragAndDrop();
@@ -82,23 +105,15 @@ public class SectorIconos {
 
     public void crearIconoRepetir() {
 
-        ImageView imgRepetir = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/Repetir.png" );
+        ImageView imgRepetir = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/Images/Repetir.png" );
         Repetir repetir = new Repetir();
         EventoDragAndDrop drag = new EventoDragAndDrop(imgRepetir, sectorAlgoritmo.obtenerContenedorDeBloques(), dibujo, repetir);//, deletePanel);
         drag.empezarDragAndDrop();
         contenedorDeIconos.getChildren().add(imgRepetir);
     }
 
-    public void crearIconoInvertir() {
-        ImageView imgInvertir = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/Invertir.png");
-        Invertir invertir = new Invertir();
-        EventoDragAndDrop drag = new EventoDragAndDrop(imgInvertir, sectorAlgoritmo.obtenerContenedorDeBloques(), dibujo, invertir);//, deletePanel);
-        drag.empezarDragAndDrop();
-        contenedorDeIconos.getChildren().add(imgInvertir);
-    }
-
     public void crearIconoAlgoritmoPersonalizado(VBox contenedorDeAlgoritmos) {
-        ImageView imgAlgoritmoPersonalizado = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/algoritmoPersonalizado.png" );
+        ImageView imgAlgoritmoPersonalizado = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/Images/algoritmoPersonalizado.png" );
         Button botonAlgoritmoPersonalizado = new Button();
         botonAlgoritmoPersonalizado.setGraphic(imgAlgoritmoPersonalizado);
         //AlgoritmoPersonalizado algoritmoPersonalizado = new AlgoritmoPersonalizado();

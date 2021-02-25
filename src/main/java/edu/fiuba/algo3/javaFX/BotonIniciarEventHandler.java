@@ -3,7 +3,6 @@ package edu.fiuba.algo3.javaFX;
 import edu.fiuba.algo3.modelo.Dibujo;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.*;
 import javafx.scene.canvas.*;
@@ -39,17 +38,20 @@ public class BotonIniciarEventHandler implements EventHandler<ActionEvent> {
         sectorIconos.crearIconoBajarLapiz();
         sectorIconos.crearIconoRepetir();
         sectorIconos.crearIconoInvertir();
+
         sectorIconos.crearIconoAlgoritmoPersonalizado(algoritmosPersonalizados);
 
 
         //sector de dibujo
-        final Canvas canvas = new Canvas(500,500);
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.setFill(Color.WHITE);
-        gc.fillRect(0,0,500,500);
+        SectorDibujo sectorDibujo = new SectorDibujo();
+
+        //Boton ejecutar
+        sectorIconos.crearIconoEjecutar(sectorDibujo.obtenerCanva());
+
+        VBox contenedorVertical = new VBox(sectorDibujo.obtenerCanva(),sectorIconos.obtenerEjecutar());
 
         //todalapagina
-        HBox contenedorHorizontal = new HBox(canvas, sectorIconos.obtenerContenedorDeIconos(), sectorAlgoritmo.obtenerContenedorDeAlgoritmo(),algoritmosPersonalizados);//, deletePanel);
+        HBox contenedorHorizontal = new HBox(contenedorVertical, sectorIconos.obtenerContenedorDeIconos(), sectorAlgoritmo.obtenerContenedorDeAlgoritmo(),algoritmosPersonalizados);//, deletePanel);
         contenedorHorizontal.setSpacing(20);
         contenedorHorizontal.setAlignment(Pos.CENTER);
 

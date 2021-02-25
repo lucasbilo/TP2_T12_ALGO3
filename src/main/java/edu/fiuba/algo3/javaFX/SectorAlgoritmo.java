@@ -13,7 +13,7 @@ public class SectorAlgoritmo {
         VBox bloques = new VBox();
         bloques.setPrefHeight(600);
         this.bloques = bloques;
-        ImageView imgTituloAlgoritmo = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/tituloAlgoritmo.png" );
+        ImageView imgTituloAlgoritmo = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/Images/tituloAlgoritmo.png" );
         VBox algoritmo = new VBox(imgTituloAlgoritmo, bloques);
         algoritmo.setStyle("-fx-background-color: #336699;");
         algoritmo.setPrefWidth(400);
