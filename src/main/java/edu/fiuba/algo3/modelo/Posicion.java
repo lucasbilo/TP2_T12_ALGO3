@@ -31,7 +31,7 @@ public class Posicion {
     }
 
     public void resetearCoordenadas() {
-        this.x = 250;
-        this.y = 250;
+        this.x = 0;
+        this.y = 0;
     }
 }
