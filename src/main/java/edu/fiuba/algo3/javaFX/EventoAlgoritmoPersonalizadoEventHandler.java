@@ -52,7 +52,7 @@ public class EventoAlgoritmoPersonalizadoEventHandler implements EventHandler<Ac
     public void handle(ActionEvent actionEvent){
         AlgoritmoPersonalizado algoritmoPersonalizado = new AlgoritmoPersonalizado(dibujo.algoritmo());
         Label nombreAlgoritmo = guardarNombreAlgoritmo();
-        ImageView imgAlgoritmoGuardado = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/guardarAlgoritmo.png");
+        ImageView imgAlgoritmoGuardado = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/Images/guardarAlgoritmo.png");
         HBox contenedorHorizontal = new HBox(imgAlgoritmoGuardado, nombreAlgoritmo);
         contenedorHorizontal.setSpacing(10);
         contenedorDeAlgoritmos.getChildren().add(contenedorHorizontal);

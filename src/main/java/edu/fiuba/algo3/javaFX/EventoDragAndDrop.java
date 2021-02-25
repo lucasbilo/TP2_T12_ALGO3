@@ -89,7 +89,6 @@ public class EventoDragAndDrop {
                     ImageView image = new ImageView(db.getImage());
                     Button button = new Button();
                     button.setGraphic(image);
-                    dibujo.agregarBloque(bloque);
                     button.setOnAction(new EventoEliminarBloqueEventHandler(dibujo, bloque, target, button));
                     target.getChildren().add(button);
                     target.setAlignment(Pos.BOTTOM_CENTER);
@@ -110,7 +109,7 @@ public class EventoDragAndDrop {
                 /* the drag-and-drop gesture ended */
                 //System.out.println("onDragDone");
                 /* if the data was successfully moved, clear it */
-
+                dibujo.agregarBloque(bloque);
                 event.consume();
             }
         });

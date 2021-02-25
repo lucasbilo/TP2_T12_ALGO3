@@ -30,4 +30,6 @@ public class Personaje {
         this.estadoLapiz = nuevoEstado;
     }
 
+    public void resetearPosicion(){posicion.resetearCoordenadas();}
+
 }

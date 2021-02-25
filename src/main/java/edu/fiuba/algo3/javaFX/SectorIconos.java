@@ -13,6 +13,7 @@ public class SectorIconos {
     private Dibujo dibujo;
     private VBox contenedorDeIconos;
     private Button botonEjecutar;
+    private Button botonBorrar;
 
     public SectorIconos(SectorAlgoritmo sectorAlgoritmo, Dibujo dibujo) {
 
@@ -31,6 +32,8 @@ public class SectorIconos {
         return this.botonEjecutar;
     }
 
+    public Button obtenerBorrar() { return botonBorrar; }
+
     public void crearIconoEjecutar(Canvas canva) {
         ImageView imgEjecutar = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/Images/ejecutar.png" );
         Button botonEjecutar = new Button();
@@ -40,10 +43,19 @@ public class SectorIconos {
         this.botonEjecutar = botonEjecutar;
     }
 
+    public void crearIconoBorrar(Canvas canva){
+        ImageView imgBorrar = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/Images/delete.png" );
+        Button botonBorrar = new Button();
+        botonBorrar.setGraphic(imgBorrar);
+        EventoBorrarEventHandler eventoBorrarEventHandler = new EventoBorrarEventHandler(dibujo,canva);
+        botonBorrar.setOnAction(eventoBorrarEventHandler);
+        this.botonBorrar = botonBorrar;
+    }
+
     public void crearIconoMoverArriba() {
 
         ImageView imgMoverArriba = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/Images/moverArriba.png");
-        Direccion direccionArriba = new Direccion(0, 25);
+        Direccion direccionArriba = new Direccion(0, -25);
         Mover moverArriba = new Mover(direccionArriba);
         EventoDragAndDrop drag = new EventoDragAndDrop(imgMoverArriba, sectorAlgoritmo.obtenerContenedorDeBloques(), dibujo, moverArriba);//, deletePanel);
         drag.empezarDragAndDrop();
@@ -52,7 +64,7 @@ public class SectorIconos {
 
     public void crearIconoMoverAbajo() {
         ImageView imgMoverAbajo = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/Images/moverAbajo.png");
-        Direccion direccionAbajo = new Direccion(0, -25);
+        Direccion direccionAbajo = new Direccion(0, 25);
         Mover moverAbajo = new Mover(direccionAbajo);
         EventoDragAndDrop drag = new EventoDragAndDrop(imgMoverAbajo, sectorAlgoritmo.obtenerContenedorDeBloques(), dibujo, moverAbajo);//, deletePanel);
         drag.empezarDragAndDrop();

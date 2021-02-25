@@ -19,6 +19,7 @@ public class BotonIniciarEventHandler implements EventHandler<ActionEvent> {
 
 
     public void handle(ActionEvent actionEvent){
+
         //sector de algoritmo
         SectorAlgoritmo sectorAlgoritmo = new SectorAlgoritmo();
 
@@ -48,7 +49,11 @@ public class BotonIniciarEventHandler implements EventHandler<ActionEvent> {
         //Boton ejecutar
         sectorIconos.crearIconoEjecutar(sectorDibujo.obtenerCanva());
 
-        VBox contenedorVertical = new VBox(sectorDibujo.obtenerCanva(),sectorIconos.obtenerEjecutar());
+        //Boton borrar canvas
+        sectorIconos.crearIconoBorrar(sectorDibujo.obtenerCanva());
+
+        HBox contenedorBotonesControladores = new HBox(sectorIconos.obtenerEjecutar(),sectorIconos.obtenerBorrar());
+        VBox contenedorVertical = new VBox(sectorDibujo.obtenerCanva(),contenedorBotonesControladores);
 
         //todalapagina
         HBox contenedorHorizontal = new HBox(contenedorVertical, sectorIconos.obtenerContenedorDeIconos(), sectorAlgoritmo.obtenerContenedorDeAlgoritmo(),algoritmosPersonalizados);//, deletePanel);
