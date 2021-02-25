@@ -3,6 +3,7 @@ package edu.fiuba.algo3.javaFX;
 import edu.fiuba.algo3.modelo.Dibujo;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.input.Dragboard;
 import javafx.scene.layout.*;
 import javafx.scene.paint.*;
 import javafx.scene.canvas.*;
@@ -12,13 +13,19 @@ import javafx.stage.Stage;
 
 public class BotonIniciarEventHandler implements EventHandler<ActionEvent> {
     private Dibujo dibujo;
+    private Stage stageBienvenida;
 
-    public BotonIniciarEventHandler(Dibujo dibujo){
+    public BotonIniciarEventHandler(Dibujo dibujo, Stage stageBienvenida){
+
         this.dibujo = dibujo;
+        this.stageBienvenida = stageBienvenida;
     }
 
 
     public void handle(ActionEvent actionEvent){
+
+        //cierro ventana de bienvenida
+        stageBienvenida.close();
 
         //sector de algoritmo
         SectorAlgoritmo sectorAlgoritmo = new SectorAlgoritmo();
@@ -66,7 +73,7 @@ public class BotonIniciarEventHandler implements EventHandler<ActionEvent> {
         Scene scene = new Scene(contenedorHorizontal,600,600);
 
         programa.setScene(scene);
-
+        programa.setMaximized(true);
         programa.show();
     }
 

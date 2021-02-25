@@ -28,7 +28,7 @@ public class App extends Application {
             var label = new Label("¡¡Bienvenido a AlgoBlocks!!", imageView);
             var botonIniciar = new Button();
             botonIniciar.setText("Iniciar Programa");
-            BotonIniciarEventHandler botonIniciarEventHandler = new BotonIniciarEventHandler(dibujo);
+            BotonIniciarEventHandler botonIniciarEventHandler = new BotonIniciarEventHandler(dibujo,stage);
             botonIniciar.setOnAction(botonIniciarEventHandler);
             VBox contenedorVertical = new VBox(label,botonIniciar);
             contenedorVertical.setAlignment(Pos.CENTER);
