@@ -24,7 +24,6 @@ public class EventoEliminarBloqueEventHandler implements EventHandler<ActionEven
     public void handle(ActionEvent actionEvent){
 
         dibujo.eliminarBloque(bloque);
-        //System.out.println("Se elimino. Quedan " + dibujo.algoritmo().obtenerAlgoritmo().size());
         contenedorVertical.getChildren().remove(boton);
     }
 }

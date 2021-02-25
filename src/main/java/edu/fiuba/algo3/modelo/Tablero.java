@@ -4,7 +4,7 @@ import java.util.Optional;
 
 public class Tablero {
 
-    private ArrayList<Posicion> posiciones = new ArrayList<Posicion>();
+    private ArrayList<Posicion> posiciones = new ArrayList<>();
 
     public Tablero(){}
 
@@ -30,6 +30,10 @@ public class Tablero {
     public void actualizar(Posicion posicion){
         Posicion posicionNueva = new Posicion(posicion.obtenerX(),posicion.obtenerY());
         this.escribir(posicionNueva);
+    }
+
+    public void resetear(){
+        this.posiciones = new ArrayList<>();
     }
 
 }

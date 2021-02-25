@@ -27,15 +27,16 @@ public class EventoEjecutarEventHandler implements EventHandler<ActionEvent> {
         double yMedio = gc.getCanvas().getHeight() / 2;
         gc.moveTo(xMedio,yMedio);
         ArrayList<Bloque> algoritmo = dibujo.algoritmo().obtenerAlgoritmo();
+        dibujo.tablero().resetear();
         for (int i = 0; i < algoritmo.size(); i++){
             Posicion posicionAnterior = dibujo.personaje().obtenerPosicion();
             algoritmo.get(i).ejecutar(dibujo.personaje(), dibujo.tablero());
             if(dibujo.tablero().existePosicion(posicionAnterior)){
-                gc.lineTo(xMedio + dibujo.personaje().obtenerPosicion().obtenerX(), yMedio + (dibujo.personaje().obtenerPosicion().obtenerY()));
+                gc.lineTo(xMedio + dibujo.personaje().obtenerPosicion().obtenerX(), yMedio + dibujo.personaje().obtenerPosicion().obtenerY());
 
             }
             else{
-                gc.moveTo(xMedio + dibujo.personaje().obtenerPosicion().obtenerX(), yMedio + (dibujo.personaje().obtenerPosicion().obtenerY()));
+                gc.moveTo(xMedio + dibujo.personaje().obtenerPosicion().obtenerX(), yMedio + dibujo.personaje().obtenerPosicion().obtenerY());
             }
 
         }
