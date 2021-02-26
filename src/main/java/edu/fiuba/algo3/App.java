@@ -1,6 +1,6 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.javaFX.Eventos.EventoBotonIniciarEventHandler;
+import edu.fiuba.algo3.vista.Eventos.EventoBotonIniciarEventHandler;
 import edu.fiuba.algo3.modelo.Dibujo;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -11,9 +11,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 
-/**
- * JavaFX App
- */
 public class App extends Application {
 
     @Override
@@ -21,8 +18,8 @@ public class App extends Application {
         try {
 
 
-            Dibujo dibujo = new Dibujo();
-            var input = new java.io.FileInputStream("src/main/java/edu/fiuba/algo3/javaFX/Images/static_avatar.png");
+            Dibujo dibujo = new Dibujo(499, 499);
+            var input = new java.io.FileInputStream("src/main/java/edu/fiuba/algo3/vista/Images/static_avatar.png");
             var image = new javafx.scene.image.Image(input);
             var imageView = new javafx.scene.image.ImageView(image);
             var label = new Label("¡¡Bienvenido a AlgoBlocks!!", imageView);

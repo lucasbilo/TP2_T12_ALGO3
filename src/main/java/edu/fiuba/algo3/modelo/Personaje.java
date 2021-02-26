@@ -22,14 +22,14 @@ public class Personaje {
 
     public void modificarPosicion(Direccion direccion, Tablero tablero){
         Posicion nuevaPosicion = this.posicion.mover(direccion);
-        this.estadoLapiz.esDibujo(tablero, posicion);
-        this.posicion = nuevaPosicion;
+        if(tablero.posicionEsValida(nuevaPosicion)){
+            this.estadoLapiz.esDibujo(tablero, posicion);
+            this.posicion = nuevaPosicion;
+        }
     }
 
     public void modificarEstadoLapiz(EstadoLapiz nuevoEstado){
         this.estadoLapiz = nuevoEstado;
     }
-
-    public void resetearPosicion(){posicion.resetearCoordenadas();}
 
 }

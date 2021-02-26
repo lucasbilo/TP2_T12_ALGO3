@@ -1,10 +1,7 @@
-package edu.fiuba.algo3.javaFX;
+package edu.fiuba.algo3.vista;
 
-import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
-import javafx.scene.control.ScrollBar;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class SectorAlgoritmo {
@@ -16,7 +13,7 @@ public class SectorAlgoritmo {
         VBox bloques = new VBox();
         bloques.setPrefHeight(600);
         this.bloques = bloques;
-        ImageView imgTituloAlgoritmo = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/Images/tituloAlgoritmo.png" );
+        ImageView imgTituloAlgoritmo = generarImagenesLabels("src/main/java/edu/fiuba/algo3/vista/Images/tituloAlgoritmo.png" );
         VBox algoritmo = new VBox(imgTituloAlgoritmo, bloques);
         algoritmo.setStyle("-fx-background-color: #336699;");
         algoritmo.setPrefWidth(400);
@@ -38,8 +35,7 @@ public class SectorAlgoritmo {
         try {
             var input = new java.io.FileInputStream(ruta);
             var image = new javafx.scene.image.Image(input);
-            ImageView imageView = new javafx.scene.image.ImageView(image);
-            return imageView;
+            return new javafx.scene.image.ImageView(image);
         }
         catch(java.io.FileNotFoundException ex) {
             System.err.println("An IOException was caught!");

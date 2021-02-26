@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.javaFX;
+package edu.fiuba.algo3.vista;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.*;

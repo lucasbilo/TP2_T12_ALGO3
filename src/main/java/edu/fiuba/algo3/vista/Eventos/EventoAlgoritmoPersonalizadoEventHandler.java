@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.javaFX.Eventos;
+package edu.fiuba.algo3.vista.Eventos;
 
 import edu.fiuba.algo3.modelo.AlgoritmoPersonalizado;
 import edu.fiuba.algo3.modelo.Dibujo;
@@ -65,8 +65,7 @@ public class EventoAlgoritmoPersonalizadoEventHandler implements EventHandler<Ac
         try {
             var input = new java.io.FileInputStream(ruta);
             var image = new javafx.scene.image.Image(input);
-            ImageView imageView = new javafx.scene.image.ImageView(image);
-            return imageView;
+            return new javafx.scene.image.ImageView(image);
         }
         catch(java.io.FileNotFoundException ex) {
             System.err.println("An IOException was caught!");

@@ -1,15 +1,12 @@
-package edu.fiuba.algo3.javaFX.Eventos;
+package edu.fiuba.algo3.vista.Eventos;
 
-import edu.fiuba.algo3.javaFX.SectorAlgoritmo;
-import edu.fiuba.algo3.javaFX.SectorDibujo;
-import edu.fiuba.algo3.javaFX.SectorIconos;
+import edu.fiuba.algo3.vista.SectorAlgoritmo;
+import edu.fiuba.algo3.vista.SectorDibujo;
+import edu.fiuba.algo3.vista.SectorIconos;
 import edu.fiuba.algo3.modelo.Dibujo;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.input.Dragboard;
 import javafx.scene.layout.*;
-import javafx.scene.paint.*;
-import javafx.scene.canvas.*;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.stage.Stage;

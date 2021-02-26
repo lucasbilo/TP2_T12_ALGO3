@@ -1,9 +1,8 @@
-package edu.fiuba.algo3.javaFX;
+package edu.fiuba.algo3.vista;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.*;
 import javafx.scene.paint.Color;
-import javafx.scene.text.TextAlignment;
 
 public class SectorPersonaje {
     private double x;

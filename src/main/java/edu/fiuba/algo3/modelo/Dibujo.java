@@ -4,9 +4,13 @@ public class Dibujo {
 
     private Algoritmo algoritmo = new Algoritmo();
     private Personaje personaje = new Personaje();
-    private Tablero tablero = new Tablero();
+    private Tablero tablero = new Tablero(10, 10);
 
-    public Dibujo(){}
+    public Dibujo(){ }
+
+    public Dibujo(int alto, int ancho){
+        this.tablero = new Tablero(alto, ancho);
+    }
 
     public Personaje personaje(){
         return this.personaje;

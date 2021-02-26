@@ -38,4 +38,24 @@ public class TableroTest {
 
         assertTrue(tablero.existePosicion(new Posicion(1,5)));
     }
+
+    @Test
+    public void test04SeAgregaUnaPosicionAlTableroYLuegoSeLoResetea(){
+        Tablero tablero = new Tablero();
+        Posicion posicion = new Posicion();
+        tablero.escribir(posicion);
+
+        tablero.resetear();
+        Posicion posicionEsperada = new Posicion(0, 0);
+
+        assertFalse(tablero.existePosicion(posicionEsperada));
+    }
+
+    @Test
+    public void test05SeVerificaQueUnaPosicionConCoordenadasMayoresAlTamanioDelTableroEsInvalida(){
+        Tablero tablero = new Tablero(5, 5);
+        Posicion posicion = new Posicion(6, 6);
+
+        assertFalse(tablero.posicionEsValida(posicion));
+    }
 }

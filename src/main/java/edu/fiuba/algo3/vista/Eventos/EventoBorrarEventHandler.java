@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.javaFX.Eventos;
+package edu.fiuba.algo3.vista.Eventos;
 
 import edu.fiuba.algo3.modelo.*;
 import javafx.event.ActionEvent;
@@ -6,8 +6,6 @@ import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-
-import java.util.ArrayList;
 
 public class EventoBorrarEventHandler implements EventHandler<ActionEvent>{
 

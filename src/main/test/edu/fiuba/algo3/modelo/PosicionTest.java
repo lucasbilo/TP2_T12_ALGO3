@@ -25,5 +25,13 @@ public class PosicionTest {
         assertTrue(nuevaPosicion.igualA(posicionEsperada));
     }
 
+    @Test
+    public void test03SeCreaObjetoPosicionConCoordenadasYSeLoResetea() {
+        Posicion posicion = new Posicion(3, 5);
+        posicion.resetearCoordenadas();
 
+        Posicion posicionEsperada = new Posicion(0, 0);
+
+        assertTrue(posicion.igualA(posicionEsperada));
+    }
 }
