@@ -12,16 +12,12 @@ public class Algoritmo {
 
     public void agregarBloque(Bloque unBloque) { algoritmo.add(unBloque); }
 
-    public void ejecutar(Personaje personaje, Tablero tablero){
-        for (int i = 0; i < algoritmo.size(); i++){
-            algoritmo.get(i).ejecutar(personaje, tablero);
-        }
+    public void ejecutar(Personaje personaje, Tablero tablero, int indice){
+            algoritmo.get(indice).ejecutar(personaje, tablero);
     }
 
-    public void ejecutarInvertido(Personaje personaje, Tablero tablero){
-        for (int i = 0; i < algoritmo.size(); i++){
-            algoritmo.get(i).ejecutarInvertido(personaje, tablero);
-        }
+    public void ejecutarInvertido(Personaje personaje, Tablero tablero, int indice){
+            algoritmo.get(indice).ejecutarInvertido(personaje, tablero);
     }
 
     public void eliminarBloque(Bloque bloque) {

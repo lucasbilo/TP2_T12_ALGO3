@@ -53,8 +53,9 @@ public class AlgoritmoTest {
         Mover bloqueMoverArriba = new Mover(direccionArriba);
 
         algoritmo.agregarBloque(bloqueMoverArriba);
-        algoritmo.ejecutar(personaje, tablero);
-
+        for (int i = 0; i < algoritmo.obtenerAlgoritmo().size(); i++){
+            algoritmo.ejecutar(personaje, tablero, i);
+        }
         Posicion posicionActual = personaje.obtenerPosicion();
         Posicion posicionEsperada = new Posicion(0,1);
 
@@ -70,7 +71,9 @@ public class AlgoritmoTest {
         Bloque bloque = new BajarLapiz();
 
         algoritmo.agregarBloque(bloque);
-        algoritmo.ejecutar(personaje, tablero);
+        for (int i = 0; i < algoritmo.obtenerAlgoritmo().size(); i++){
+            algoritmo.ejecutar(personaje, tablero, i);
+        }
 
         EstadoLapiz estado = personaje.obtenerEstadoLapiz();
 
@@ -86,7 +89,9 @@ public class AlgoritmoTest {
         Mover bloqueMoverArriba = new Mover(direccionArriba);
 
         algoritmo.agregarBloque(bloqueMoverArriba);
-        algoritmo.ejecutarInvertido(personaje, tablero);
+        for (int i = 0; i < algoritmo.obtenerAlgoritmo().size(); i++){
+            algoritmo.ejecutarInvertido(personaje, tablero, i);
+        }
 
         Posicion posicionActual = personaje.obtenerPosicion();
         Posicion posicionEsperada = new Posicion(0,-1);
@@ -103,7 +108,9 @@ public class AlgoritmoTest {
         Bloque bloque = new BajarLapiz();
 
         algoritmo.agregarBloque(bloque);
-        algoritmo.ejecutarInvertido(personaje, tablero);
+        for (int i = 0; i < algoritmo.obtenerAlgoritmo().size(); i++){
+            algoritmo.ejecutarInvertido(personaje, tablero, i);
+        }
 
         EstadoLapiz estado = personaje.obtenerEstadoLapiz();
 

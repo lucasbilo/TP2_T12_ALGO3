@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.javaFX.Eventos;
-import edu.fiuba.algo3.modelo.Algoritmo;
-import edu.fiuba.algo3.modelo.Bloque;
-import edu.fiuba.algo3.modelo.Dibujo;
-import edu.fiuba.algo3.modelo.Posicion;
+import edu.fiuba.algo3.javaFX.SectorPersonaje;
+import edu.fiuba.algo3.modelo.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.*;
@@ -26,21 +24,22 @@ public class EventoEjecutarEventHandler implements EventHandler<ActionEvent> {
         double xMedio = gc.getCanvas().getWidth() / 2;
         double yMedio = gc.getCanvas().getHeight() / 2;
         gc.moveTo(xMedio,yMedio);
+        SectorPersonaje sectorPersonaje = new SectorPersonaje(gc,xMedio,yMedio);
         ArrayList<Bloque> algoritmo = dibujo.algoritmo().obtenerAlgoritmo();
         dibujo.tablero().resetear();
-        for (int i = 0; i < algoritmo.size(); i++){
+        Iterador iterador = new Iterador(algoritmo);
+        while (iterador.tieneSiguiente()){
             Posicion posicionAnterior = dibujo.personaje().obtenerPosicion();
-            algoritmo.get(i).ejecutar(dibujo.personaje(), dibujo.tablero());
+            dibujo.ejecutar(iterador.actual());
             if(dibujo.tablero().existePosicion(posicionAnterior)){
                 gc.lineTo(xMedio + dibujo.personaje().obtenerPosicion().obtenerX(), yMedio + dibujo.personaje().obtenerPosicion().obtenerY());
-
             }
             else{
                 gc.moveTo(xMedio + dibujo.personaje().obtenerPosicion().obtenerX(), yMedio + dibujo.personaje().obtenerPosicion().obtenerY());
             }
-
+            iterador.siguiente();
+            sectorPersonaje.actualizarPosicion(xMedio + dibujo.personaje().obtenerPosicion().obtenerX(), yMedio + dibujo.personaje().obtenerPosicion().obtenerY());
         }
         gc.stroke();
+        }
     }
-
-}

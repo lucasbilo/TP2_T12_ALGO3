@@ -11,10 +11,19 @@ public class AlgoritmoPersonalizado extends Bloque{
     public Algoritmo obtenerAlgoritmo(){return algoritmoGuardado;}
 
     public void ejecutar(Personaje personaje, Tablero tablero){
-        algoritmoGuardado.ejecutar(personaje, tablero);
+        Iterador iterador = new Iterador(algoritmoGuardado.obtenerAlgoritmo());
+        while (iterador.tieneSiguiente()){
+            algoritmoGuardado.ejecutar(personaje, tablero, iterador.actual());
+            iterador.siguiente();
+        }
     }
 
+
     public void ejecutarInvertido(Personaje personaje, Tablero tablero){
-        algoritmoGuardado.ejecutarInvertido(personaje, tablero);
+        Iterador iterador = new Iterador(algoritmoGuardado.obtenerAlgoritmo());
+        while (iterador.tieneSiguiente()){
+            algoritmoGuardado.ejecutarInvertido(personaje, tablero, iterador.actual());
+            iterador.siguiente();
+        }
     }
 }

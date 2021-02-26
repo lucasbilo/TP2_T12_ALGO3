@@ -20,8 +20,8 @@ public class Dibujo {
         this.algoritmo.agregarBloque(bloque);
     }
 
-    public void ejecutar(){
-        this.algoritmo.ejecutar(this.personaje,this.tablero);
+    public void ejecutar(int indice){
+            this.algoritmo.ejecutar(this.personaje,this.tablero,indice);
     }
 
     public void eliminarBloque(Bloque bloque){ this.algoritmo.eliminarBloque(bloque);}

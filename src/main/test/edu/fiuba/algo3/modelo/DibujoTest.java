@@ -14,8 +14,9 @@ public class DibujoTest {
         Direccion direccionArriba = new Direccion(0,1);
         Mover moverArriba = new Mover(direccionArriba);
         dibujo.agregarBloque(moverArriba);
-        dibujo.ejecutar();
-
+        for (int i = 0; i < dibujo.algoritmo().obtenerAlgoritmo().size() ; i++){
+            dibujo.ejecutar(i);
+        }
         Posicion posicionActual = dibujo.personaje().obtenerPosicion();
         Posicion posicionEsperada = new Posicion (0,1);
 
@@ -28,7 +29,9 @@ public class DibujoTest {
         Direccion direccionAbajo = new Direccion(0,-1);
         Mover moverAbajo = new Mover(direccionAbajo);
         dibujo.agregarBloque(moverAbajo);
-        dibujo.ejecutar();
+        for (int i = 0; i < dibujo.algoritmo().obtenerAlgoritmo().size() ; i++){
+            dibujo.ejecutar(i);
+        }
 
         Posicion posicionActual = dibujo.personaje().obtenerPosicion();
         Posicion posicionEsperada = new Posicion(0,-1);
@@ -42,7 +45,9 @@ public class DibujoTest {
         Direccion direccionDerecha = new Direccion(1,0);
         Mover moverDerecha = new Mover(direccionDerecha);
         dibujo.agregarBloque(moverDerecha);
-        dibujo.ejecutar();
+        for (int i = 0; i < dibujo.algoritmo().obtenerAlgoritmo().size() ; i++){
+            dibujo.ejecutar(i);
+        }
 
         Posicion posicionActual = dibujo.personaje().obtenerPosicion();
         Posicion posicionEsperada = new Posicion (1,0);
@@ -56,7 +61,9 @@ public class DibujoTest {
         Direccion direccionIzquierda = new Direccion(-1,0);
         Mover moverIzquierda = new Mover(direccionIzquierda);
         dibujo.agregarBloque(moverIzquierda);
-        dibujo.ejecutar();
+        for (int i = 0; i < dibujo.algoritmo().obtenerAlgoritmo().size() ; i++){
+            dibujo.ejecutar(i);
+        }
 
         Posicion posicionActual = dibujo.personaje().obtenerPosicion();
         Posicion posicionEsperada = new Posicion(-1,0);
@@ -68,7 +75,9 @@ public class DibujoTest {
     public void test05SeAgregaBloqueLevantarLapizAlAlgoritmoYSeEjecuta(){
         Dibujo dibujo = new Dibujo();
         dibujo.personaje().modificarEstadoLapiz(new LapizArriba());
-        dibujo.ejecutar();
+        for (int i = 0; i < dibujo.algoritmo().obtenerAlgoritmo().size() ; i++){
+            dibujo.ejecutar(i);
+        }
 
         EstadoLapiz estado = dibujo.personaje().obtenerEstadoLapiz();
 
@@ -79,7 +88,9 @@ public class DibujoTest {
     public void test06SeAgregaBloqueBajarLapizAlAlgoritmoYSeEjecuta(){
         Dibujo dibujo = new Dibujo();
         dibujo.personaje().modificarEstadoLapiz(new LapizAbajo());
-        dibujo.ejecutar();
+        for (int i = 0; i < dibujo.algoritmo().obtenerAlgoritmo().size() ; i++){
+            dibujo.ejecutar(i);
+        }
 
         EstadoLapiz estado = dibujo.personaje().obtenerEstadoLapiz();
 
@@ -96,7 +107,9 @@ public class DibujoTest {
         Invertir invertir = new Invertir();
         invertir.agregarBloque(moverDerecha);
         dibujo.agregarBloque(invertir);
-        dibujo.ejecutar();
+        for (int i = 0; i < dibujo.algoritmo().obtenerAlgoritmo().size() ; i++){
+            dibujo.ejecutar(i);
+        }
 
         Posicion posicionActual = dibujo.personaje().obtenerPosicion();
         Posicion posicionEsperada = new Posicion(-1,0);
@@ -111,7 +124,9 @@ public class DibujoTest {
         Mover moverArriba = new Mover(new Direccion(0,1));
         algoritmo.agregarBloque(moverArriba);
         AlgoritmoPersonalizado algoritmoPersonalizado = new AlgoritmoPersonalizado(algoritmo);
-        dibujo.ejecutar();
+        for (int i = 0; i < dibujo.algoritmo().obtenerAlgoritmo().size() ; i++){
+            dibujo.ejecutar(i);
+        }
         algoritmoPersonalizado.ejecutar(dibujo.personaje(),dibujo.tablero());
 
         Posicion posicionActual = dibujo.personaje().obtenerPosicion();
@@ -132,7 +147,9 @@ public class DibujoTest {
         dibujo.agregarBloque(moverArriba);
         dibujo.agregarBloque(lapizArriba);
         dibujo.agregarBloque(moverArriba);
-        dibujo.ejecutar();
+        for (int i = 0; i < dibujo.algoritmo().obtenerAlgoritmo().size() ; i++){
+            dibujo.ejecutar(i);
+        }
 
         assertFalse(dibujo.tablero().existePosicion(new Posicion(0,0)));
         assertTrue(dibujo.tablero().existePosicion(new Posicion(0,1)));

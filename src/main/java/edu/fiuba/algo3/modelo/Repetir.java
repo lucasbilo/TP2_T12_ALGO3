@@ -22,14 +22,23 @@ public class Repetir extends Bloque{
     public void agregarBloque(Bloque unBloque){ algoritmoRepetido.agregarBloque(unBloque);}
 
     public void ejecutar(Personaje personaje, Tablero tablero){
+
         for(int i = 0; i < numVeces; i = i + 1) {
-            algoritmoRepetido.ejecutar(personaje, tablero);
+            Iterador iterador = new Iterador(algoritmoRepetido.obtenerAlgoritmo());
+            while (iterador.tieneSiguiente()){
+                algoritmoRepetido.ejecutar(personaje, tablero, iterador.actual());
+                iterador.siguiente();
+            }
         }
     }
 
     public void ejecutarInvertido(Personaje personaje, Tablero tablero) {
         for (int i = 0; i < numVeces; i = i + 1) {
-            algoritmoRepetido.ejecutarInvertido(personaje, tablero);
+            Iterador iterador = new Iterador(algoritmoRepetido.obtenerAlgoritmo());
+            while (iterador.tieneSiguiente()) {
+                algoritmoRepetido.ejecutar(personaje, tablero, iterador.actual());
+                iterador.siguiente();
+            }
         }
     }
 }
