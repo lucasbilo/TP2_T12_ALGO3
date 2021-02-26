@@ -16,11 +16,11 @@ public class SectorPersonaje {
         this.y = y;
         this.gc = gc;
         gc.setFill(Color.RED);
-        gc.fillOval(x,y,10,10);
+        gc.fillOval(x - 5,y - 5,10,10);
     }
 
     public void actualizarPosicion(double x, double y){
-        gc.fillOval(x,y,10,10);
+        gc.fillOval(x-5,y-5,10,10);
     }
 }
 
