@@ -1,6 +1,6 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.javaFX.BotonIniciarEventHandler;
+import edu.fiuba.algo3.javaFX.Eventos.EventoBotonIniciarEventHandler;
 import edu.fiuba.algo3.modelo.Dibujo;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -28,7 +28,7 @@ public class App extends Application {
             var label = new Label("¡¡Bienvenido a AlgoBlocks!!", imageView);
             var botonIniciar = new Button();
             botonIniciar.setText("Iniciar Programa");
-            BotonIniciarEventHandler botonIniciarEventHandler = new BotonIniciarEventHandler(dibujo,stage);
+            EventoBotonIniciarEventHandler botonIniciarEventHandler = new EventoBotonIniciarEventHandler(dibujo,stage);
             botonIniciar.setOnAction(botonIniciarEventHandler);
             VBox contenedorVertical = new VBox(label,botonIniciar);
             contenedorVertical.setAlignment(Pos.CENTER);

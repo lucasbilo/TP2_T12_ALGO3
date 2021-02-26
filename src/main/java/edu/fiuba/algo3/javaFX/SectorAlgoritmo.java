@@ -1,7 +1,10 @@
 package edu.fiuba.algo3.javaFX;
 
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
+import javafx.scene.control.ScrollBar;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class SectorAlgoritmo {
@@ -20,6 +23,7 @@ public class SectorAlgoritmo {
         algoritmo.setAlignment(Pos.TOP_CENTER);
         algoritmo.setSpacing(5);
         this.algoritmo = algoritmo;
+
     }
 
     public VBox obtenerContenedorDeAlgoritmo(){

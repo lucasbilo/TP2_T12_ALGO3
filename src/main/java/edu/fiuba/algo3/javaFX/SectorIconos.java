@@ -1,5 +1,9 @@
 package edu.fiuba.algo3.javaFX;
 
+import edu.fiuba.algo3.javaFX.Eventos.EventoAlgoritmoPersonalizadoEventHandler;
+import edu.fiuba.algo3.javaFX.Eventos.EventoBorrarEventHandler;
+import edu.fiuba.algo3.javaFX.Eventos.EventoDragAndDrop;
+import edu.fiuba.algo3.javaFX.Eventos.EventoEjecutarEventHandler;
 import edu.fiuba.algo3.modelo.*;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;

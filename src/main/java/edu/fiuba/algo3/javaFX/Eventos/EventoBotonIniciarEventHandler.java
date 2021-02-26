@@ -1,5 +1,8 @@
-package edu.fiuba.algo3.javaFX;
+package edu.fiuba.algo3.javaFX.Eventos;
 
+import edu.fiuba.algo3.javaFX.SectorAlgoritmo;
+import edu.fiuba.algo3.javaFX.SectorDibujo;
+import edu.fiuba.algo3.javaFX.SectorIconos;
 import edu.fiuba.algo3.modelo.Dibujo;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -11,11 +14,11 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class BotonIniciarEventHandler implements EventHandler<ActionEvent> {
+public class EventoBotonIniciarEventHandler implements EventHandler<ActionEvent> {
     private Dibujo dibujo;
     private Stage stageBienvenida;
 
-    public BotonIniciarEventHandler(Dibujo dibujo, Stage stageBienvenida){
+    public EventoBotonIniciarEventHandler(Dibujo dibujo, Stage stageBienvenida){
 
         this.dibujo = dibujo;
         this.stageBienvenida = stageBienvenida;

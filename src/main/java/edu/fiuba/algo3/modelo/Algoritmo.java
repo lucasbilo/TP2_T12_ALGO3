@@ -27,7 +27,6 @@ public class Algoritmo {
     public void eliminarBloque(Bloque bloque) {
         for(int i = 0; i < algoritmo.size(); i++){
             if (bloque == algoritmo.get(i)) {
-                System.out.println("Se remueve el de la posicion " + i);
                 algoritmo.remove(i);
             }
         }

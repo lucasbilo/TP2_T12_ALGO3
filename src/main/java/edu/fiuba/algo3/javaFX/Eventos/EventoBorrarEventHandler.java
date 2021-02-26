@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.javaFX;
+package edu.fiuba.algo3.javaFX.Eventos;
 
 import edu.fiuba.algo3.modelo.*;
 import javafx.event.ActionEvent;

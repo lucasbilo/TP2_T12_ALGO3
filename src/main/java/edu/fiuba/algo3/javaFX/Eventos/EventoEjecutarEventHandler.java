@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.javaFX;
+package edu.fiuba.algo3.javaFX.Eventos;
 import edu.fiuba.algo3.modelo.Algoritmo;
 import edu.fiuba.algo3.modelo.Bloque;
 import edu.fiuba.algo3.modelo.Dibujo;

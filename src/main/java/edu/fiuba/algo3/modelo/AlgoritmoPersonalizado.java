@@ -15,7 +15,6 @@ public class AlgoritmoPersonalizado extends Bloque{
     }
 
     public void ejecutarInvertido(Personaje personaje, Tablero tablero){
-
         algoritmoGuardado.ejecutarInvertido(personaje, tablero);
     }
 }
