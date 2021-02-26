@@ -36,7 +36,7 @@ public class Repetir extends Bloque{
         for (int i = 0; i < numVeces; i = i + 1) {
             Iterador iterador = new Iterador(algoritmoRepetido.obtenerAlgoritmo());
             while (iterador.tieneSiguiente()) {
-                algoritmoRepetido.ejecutar(personaje, tablero, iterador.actual());
+                algoritmoRepetido.ejecutarInvertido(personaje, tablero, iterador.actual());
                 iterador.siguiente();
             }
         }
