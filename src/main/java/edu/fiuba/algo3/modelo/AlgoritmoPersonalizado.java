@@ -8,6 +8,8 @@ public class AlgoritmoPersonalizado extends Bloque{
 
     public AlgoritmoPersonalizado(Algoritmo algoritmo){this.algoritmoGuardado = algoritmo;}
 
+    public void agregarAlgoritmo(Algoritmo algoritmo){this.algoritmoGuardado = algoritmo;}
+
     public Algoritmo obtenerAlgoritmo(){return algoritmoGuardado;}
 
     public void ejecutar(Personaje personaje, Tablero tablero){

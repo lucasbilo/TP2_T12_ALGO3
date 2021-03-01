@@ -12,7 +12,7 @@ public class EventoEjecutarEventHandler implements EventHandler<ActionEvent> {
     private final Dibujo dibujo;
     private final Canvas canva;
 
-    public EventoEjecutarEventHandler(Dibujo dibujo, Canvas canva){
+    public EventoEjecutarEventHandler(Dibujo dibujo, Canvas canva) {
         this.dibujo = dibujo;
         this.canva = canva;
     }

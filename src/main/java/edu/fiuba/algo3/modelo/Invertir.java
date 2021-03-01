@@ -12,6 +12,8 @@ public class Invertir extends Bloque{
 
     public Algoritmo obtenerAlgoritmo(){ return algoritmoInvertido; }
 
+    public void agregarAlgoritmo(Algoritmo algoritmo){this.algoritmoInvertido = algoritmo;}
+
     public void ejecutar(Personaje personaje, Tablero tablero){
         Iterador iterador = new Iterador(algoritmoInvertido.obtenerAlgoritmo());
         while (iterador.tieneSiguiente()){

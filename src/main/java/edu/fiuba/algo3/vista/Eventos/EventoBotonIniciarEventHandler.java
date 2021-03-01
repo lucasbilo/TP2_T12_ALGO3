@@ -27,6 +27,9 @@ public class EventoBotonIniciarEventHandler implements EventHandler<ActionEvent>
         //cierro ventana de bienvenida
         stageBienvenida.close();
 
+        //creo nueva ventana
+        Stage programa = new Stage();
+
         //sector de algoritmo
         SectorAlgoritmo sectorAlgoritmo = new SectorAlgoritmo();
 
@@ -38,37 +41,38 @@ public class EventoBotonIniciarEventHandler implements EventHandler<ActionEvent>
 
         //sector de iconos que se arrastran al sector Algoritmo
         SectorIconos sectorIconos = new SectorIconos(sectorAlgoritmo, dibujo);
+
         sectorIconos.crearIconoMoverArriba();
         sectorIconos.crearIconoMoverAbajo();
         sectorIconos.crearIconoMoverDerecha();
         sectorIconos.crearIconoMoverIzquierda();
         sectorIconos.crearIconoLevantarLapiz();
         sectorIconos.crearIconoBajarLapiz();
-        sectorIconos.crearIconoRepetir();
-        sectorIconos.crearIconoInvertir();
 
+        sectorIconos.crearIconoInvertir(algoritmosPersonalizados);
+        sectorIconos.crearIconoRepetir(algoritmosPersonalizados);
         sectorIconos.crearIconoAlgoritmoPersonalizado(algoritmosPersonalizados);
 
 
         //sector de dibujo
         SectorDibujo sectorDibujo = new SectorDibujo();
 
-        //Boton ejecutar
-        sectorIconos.crearIconoEjecutar(sectorDibujo.obtenerCanva());
+        //Botones Controladores
+        sectorIconos.crearIconosControladores(sectorDibujo.obtenerCanva(), programa);
 
-        //Boton borrar canvas
-        sectorIconos.crearIconoBorrar(sectorDibujo.obtenerCanva());
-
-        HBox contenedorBotonesControladores = new HBox(sectorIconos.obtenerEjecutar(),sectorIconos.obtenerBorrar());
+        HBox contenedorBotonesControladores = new HBox(sectorIconos.obtenerEjecutar(),sectorIconos.obtenerBorrar(), sectorIconos.obtenerSalir());
+        contenedorBotonesControladores.setSpacing(10);
         VBox contenedorVertical = new VBox(sectorDibujo.obtenerCanva(),contenedorBotonesControladores);
+        contenedorVertical.setAlignment(Pos.CENTER);
 
-        //todalapagina
+        //toda la pagina
         HBox contenedorHorizontal = new HBox(contenedorVertical, sectorIconos.obtenerContenedorDeIconos(), sectorAlgoritmo.obtenerContenedorDeAlgoritmo(),algoritmosPersonalizados);//, deletePanel);
         contenedorHorizontal.setSpacing(20);
         contenedorHorizontal.setAlignment(Pos.CENTER);
 
 
-        Stage programa = new Stage();
+
+
 
         Scene scene = new Scene(contenedorHorizontal,600,600);
 

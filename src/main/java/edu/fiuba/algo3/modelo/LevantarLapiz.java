@@ -8,6 +8,8 @@ public class LevantarLapiz extends Bloque{
         personaje.modificarEstadoLapiz(new LapizArriba());
     }
 
+    public void agregarAlgoritmo(Algoritmo algoritmo){}
+
     public void ejecutarInvertido(Personaje personaje, Tablero tablero) {
         EstadoLapiz lapizAbajo = new LapizAbajo();
         personaje.modificarEstadoLapiz(lapizAbajo);

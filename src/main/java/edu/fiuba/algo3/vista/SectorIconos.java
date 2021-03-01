@@ -1,15 +1,16 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.vista.Eventos.EventoAlgoritmoPersonalizadoEventHandler;
-import edu.fiuba.algo3.vista.Eventos.EventoBorrarEventHandler;
-import edu.fiuba.algo3.vista.Eventos.EventoDragAndDrop;
-import edu.fiuba.algo3.vista.Eventos.EventoEjecutarEventHandler;
+import edu.fiuba.algo3.vista.Eventos.*;
 import edu.fiuba.algo3.modelo.*;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.canvas.*;
+import javafx.stage.Stage;
 
 public class SectorIconos {
 
@@ -18,6 +19,7 @@ public class SectorIconos {
     private VBox contenedorDeIconos;
     private Button botonEjecutar;
     private Button botonBorrar;
+    private Button botonSalir;
 
     public SectorIconos(SectorAlgoritmo sectorAlgoritmo, Dibujo dibujo) {
 
@@ -36,24 +38,26 @@ public class SectorIconos {
         return this.botonEjecutar;
     }
 
-    public Button obtenerBorrar() { return botonBorrar; }
+    public Button obtenerBorrar() { return this.botonBorrar; }
 
-    public void crearIconoEjecutar(Canvas canva) {
-        ImageView imgEjecutar = generarImagenesLabels("src/main/java/edu/fiuba/algo3/vista/Images/ejecutar.png" );
-        Button botonEjecutar = new Button();
-        botonEjecutar.setGraphic(imgEjecutar);
+    public Button obtenerSalir() { return this.botonSalir; }
+
+    public void crearIconosControladores(Canvas canva, Stage programa){
         EventoEjecutarEventHandler eventoEjecutarEventHandler = new EventoEjecutarEventHandler(dibujo, canva);
-        botonEjecutar.setOnAction(eventoEjecutarEventHandler);
-        this.botonEjecutar = botonEjecutar;
+        EventoBorrarEventHandler eventoBorrarEventHandler = new EventoBorrarEventHandler(dibujo,canva);
+        EventoSalirEventHandler eventoSalirEventHandler = new EventoSalirEventHandler(programa);
+        this.botonEjecutar = crearIcono("src/main/java/edu/fiuba/algo3/vista/Images/ejecutar.png", eventoEjecutarEventHandler);
+        this.botonBorrar = crearIcono("src/main/java/edu/fiuba/algo3/vista/Images/delete.png", eventoBorrarEventHandler);
+        this.botonSalir = crearIcono("src/main/java/edu/fiuba/algo3/vista/Images/salir.png", eventoSalirEventHandler);
     }
 
-    public void crearIconoBorrar(Canvas canva){
-        ImageView imgBorrar = generarImagenesLabels("src/main/java/edu/fiuba/algo3/vista/Images/delete.png" );
-        Button botonBorrar = new Button();
-        botonBorrar.setGraphic(imgBorrar);
-        EventoBorrarEventHandler eventoBorrarEventHandler = new EventoBorrarEventHandler(dibujo,canva);
-        botonBorrar.setOnAction(eventoBorrarEventHandler);
-        this.botonBorrar = botonBorrar;
+    public Button crearIcono(String ruta, EventHandler<ActionEvent> evento) {
+        ImageView imgIcono = generarImagenesLabels(ruta);
+        Button botonIcono = new Button();
+        botonIcono.setGraphic(imgIcono);
+        //EventoEjecutarEventHandler eventoEjecutarEventHandler = new EventoEjecutarEventHandler(dibujo, canva);
+        botonIcono.setOnAction(evento);
+        return botonIcono;
     }
 
     public void crearIconoMoverArriba() {
@@ -102,14 +106,6 @@ public class SectorIconos {
         contenedorDeIconos.getChildren().add(imgLevantarLapiz);
     }
 
-    public void crearIconoInvertir() {
-        ImageView imgInvertir = generarImagenesLabels("src/main/java/edu/fiuba/algo3/vista/Images/Invertir.png");
-        Invertir invertir = new Invertir();
-        EventoDragAndDrop drag = new EventoDragAndDrop(imgInvertir, sectorAlgoritmo.obtenerContenedorDeBloques(), dibujo, invertir);//, deletePanel);
-        drag.empezarDragAndDrop();
-        contenedorDeIconos.getChildren().add(imgInvertir);
-    }
-
     public void crearIconoBajarLapiz() {
 
         ImageView imgBajarLapiz = generarImagenesLabels("src/main/java/edu/fiuba/algo3/vista/Images/bajarLapiz.png");
@@ -119,25 +115,38 @@ public class SectorIconos {
         contenedorDeIconos.getChildren().add(imgBajarLapiz);
     }
 
-    public void crearIconoRepetir() {
+    public void crearIconoInvertir(VBox contenedorDeAlgoritmos) {
+        ImageView imgInvertir = generarImagenesLabels("src/main/java/edu/fiuba/algo3/vista/Images/Invertir.png");
+        Button botonInvertir = new Button();
+        Invertir invertir = new Invertir();
+        botonInvertir.setGraphic(imgInvertir);
+        EventoAlgoritmoPersonalizadoEventHandler eventoAlgoritmoPersonalizadoEventHandler = new EventoAlgoritmoPersonalizadoEventHandler(contenedorDeAlgoritmos, dibujo, sectorAlgoritmo.obtenerContenedorDeBloques(), invertir, "src/main/java/edu/fiuba/algo3/vista/Images/invertirGuardado.png");
+        botonInvertir.setOnAction(eventoAlgoritmoPersonalizadoEventHandler);
+        contenedorDeIconos.getChildren().add(botonInvertir);
+        contenedorDeIconos.getChildren().add(imgInvertir);
+    }
+
+    public void crearIconoRepetir(VBox contenedorDeAlgoritmos) {
 
         ImageView imgRepetir = generarImagenesLabels("src/main/java/edu/fiuba/algo3/vista/Images/Repetir.png" );
-        Repetir repetir = new Repetir();
-        EventoDragAndDrop drag = new EventoDragAndDrop(imgRepetir, sectorAlgoritmo.obtenerContenedorDeBloques(), dibujo, repetir);//, deletePanel);
-        drag.empezarDragAndDrop();
+        Button botonRepetir = new Button();
+        Repetir repetir = new Repetir(2);
+        botonRepetir.setGraphic(imgRepetir);
+        EventoAlgoritmoPersonalizadoEventHandler eventoAlgoritmoPersonalizadoEventHandler = new EventoAlgoritmoPersonalizadoEventHandler(contenedorDeAlgoritmos, dibujo, sectorAlgoritmo.obtenerContenedorDeBloques(), repetir, "src/main/java/edu/fiuba/algo3/vista/Images/repetirGuardado.png");
+        botonRepetir.setOnAction(eventoAlgoritmoPersonalizadoEventHandler);
+        contenedorDeIconos.getChildren().add(botonRepetir);
         contenedorDeIconos.getChildren().add(imgRepetir);
     }
 
     public void crearIconoAlgoritmoPersonalizado(VBox contenedorDeAlgoritmos) {
         ImageView imgAlgoritmoPersonalizado = generarImagenesLabels("src/main/java/edu/fiuba/algo3/vista/Images/algoritmoPersonalizado.png" );
+        //ImageView imgAlgoritmoGuardado = generarImagenesLabels("src/main/java/edu/fiuba/algo3/vista/Images/guardarAlgoritmo.png");
         Button botonAlgoritmoPersonalizado = new Button();
         botonAlgoritmoPersonalizado.setGraphic(imgAlgoritmoPersonalizado);
-        //AlgoritmoPersonalizado algoritmoPersonalizado = new AlgoritmoPersonalizado();
-        EventoAlgoritmoPersonalizadoEventHandler eventoAlgoritmoPersonalizadoEventHandler = new EventoAlgoritmoPersonalizadoEventHandler(contenedorDeAlgoritmos, dibujo, sectorAlgoritmo.obtenerContenedorDeBloques());
-        //EventoDragAndDrop drag = new EventoDragAndDrop(imgAlgoritmoPersonalizado, sectorAlgoritmo.obtenerContenedorDeBloques(), dibujo, algoritmoPersonalizado);//, deletePanel);
-        //drag.empezarDragAndDrop();
-        contenedorDeIconos.getChildren().add(botonAlgoritmoPersonalizado);
+        AlgoritmoPersonalizado algoritmoPersonalizado = new AlgoritmoPersonalizado();
+        EventoAlgoritmoPersonalizadoEventHandler eventoAlgoritmoPersonalizadoEventHandler = new EventoAlgoritmoPersonalizadoEventHandler(contenedorDeAlgoritmos, dibujo, sectorAlgoritmo.obtenerContenedorDeBloques(),algoritmoPersonalizado, "src/main/java/edu/fiuba/algo3/vista/Images/guardarAlgoritmo.png");
         botonAlgoritmoPersonalizado.setOnAction(eventoAlgoritmoPersonalizadoEventHandler);
+        contenedorDeIconos.getChildren().add(botonAlgoritmoPersonalizado);
     }
 
     public ImageView generarImagenesLabels(String ruta){

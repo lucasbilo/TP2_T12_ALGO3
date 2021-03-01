@@ -21,6 +21,8 @@ public class Repetir extends Bloque{
 
     public void agregarBloque(Bloque unBloque){ algoritmoRepetido.agregarBloque(unBloque);}
 
+    public void agregarAlgoritmo(Algoritmo algoritmo){this.algoritmoRepetido = algoritmo;}
+
     public void ejecutar(Personaje personaje, Tablero tablero){
 
         for(int i = 0; i < numVeces; i = i + 1) {

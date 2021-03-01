@@ -5,4 +5,6 @@ public abstract class Bloque {
     public abstract void ejecutar(Personaje personaje, Tablero tablero);
 
     public abstract void ejecutarInvertido(Personaje personaje, Tablero tablero);
+
+    public abstract void agregarAlgoritmo(Algoritmo algoritmo);
 }

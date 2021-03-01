@@ -103,6 +103,7 @@ public class EventoDragAndDrop {
                 target.setAlignment(Pos.BOTTOM_CENTER);
                 dibujo.agregarBloque(bloque);
                 event.consume();
+                System.out.println(dibujo.algoritmo().obtenerAlgoritmo().size());
             }
         });
 

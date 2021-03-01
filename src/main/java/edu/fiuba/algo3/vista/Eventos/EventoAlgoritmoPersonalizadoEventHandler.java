@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.vista.Eventos;
 
+import edu.fiuba.algo3.modelo.Algoritmo;
 import edu.fiuba.algo3.modelo.AlgoritmoPersonalizado;
+import edu.fiuba.algo3.modelo.Bloque;
 import edu.fiuba.algo3.modelo.Dibujo;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -16,20 +18,24 @@ import javafx.stage.Stage;
 
 public class EventoAlgoritmoPersonalizadoEventHandler implements EventHandler<ActionEvent> {
     private final Dibujo dibujo;
-    private final VBox algoritmo;
+    private final VBox contenedorDeBloques;
     private final VBox contenedorDeAlgoritmos;
+    private final String ruta;
+    private final Bloque bloque;
 
-    public EventoAlgoritmoPersonalizadoEventHandler(VBox contenedorDeAlgoritmos, Dibujo dibujo, VBox algoritmo){
+    public EventoAlgoritmoPersonalizadoEventHandler(VBox contenedorDeAlgoritmos, Dibujo dibujo, VBox contenedorDeBloques, Bloque bloque, String ruta){
         this.dibujo = dibujo;
-        this.algoritmo = algoritmo;
+        this.contenedorDeBloques = contenedorDeBloques;
         this.contenedorDeAlgoritmos = contenedorDeAlgoritmos;
         this.contenedorDeAlgoritmos.setAlignment(Pos.TOP_CENTER);
+        this.bloque = bloque;
+        this.ruta = ruta;
     }
 
     public Label guardarNombreAlgoritmo(){
         Stage ventanaTextField = new Stage();
         TextField inputField = new TextField();
-        Label consigna = new Label("Escriba el nombre de su algoritmo");
+        Label consigna = new Label("Escriba el nombre de su bloque personalizado");
         Button botonGuardar = new Button("Guardar");
         Label nombreAlgoritmo = new Label();
         VBox contenedorVertical = new VBox(consigna, inputField, botonGuardar);
@@ -38,7 +44,6 @@ public class EventoAlgoritmoPersonalizadoEventHandler implements EventHandler<Ac
         ventanaTextField.show();
 
         botonGuardar.setOnAction(e -> {
-            //Retrieving data
             String nombre = inputField.getText();
             nombreAlgoritmo.setText(nombre);
             ventanaTextField.close();
@@ -50,14 +55,16 @@ public class EventoAlgoritmoPersonalizadoEventHandler implements EventHandler<Ac
 
     @Override
     public void handle(ActionEvent actionEvent){
-        AlgoritmoPersonalizado algoritmoPersonalizado = new AlgoritmoPersonalizado(dibujo.algoritmo());
+        Algoritmo nuevoAlgoritmo = new Algoritmo();
+        bloque.agregarAlgoritmo(dibujo.algoritmo());
+        //AlgoritmoPersonalizado algoritmoPersonalizado = new AlgoritmoPersonalizado(dibujo.algoritmo());
+        dibujo.cambiarAlgoritmo(nuevoAlgoritmo);
         Label nombreAlgoritmo = guardarNombreAlgoritmo();
-        ImageView imgAlgoritmoGuardado = generarImagenesLabels("src/main/java/edu/fiuba/algo3/javaFX/Images/guardarAlgoritmo.png");
-        HBox contenedorHorizontal = new HBox(imgAlgoritmoGuardado, nombreAlgoritmo);
+        ImageView imgBloqueGuardado = generarImagenesLabels(ruta);
+        HBox contenedorHorizontal = new HBox(imgBloqueGuardado, nombreAlgoritmo);
         contenedorHorizontal.setSpacing(10);
         contenedorDeAlgoritmos.getChildren().add(contenedorHorizontal);
-        algoritmo.getChildren().removeAll();
-        EventoDragAndDrop drag = new EventoDragAndDrop(imgAlgoritmoGuardado,algoritmo,dibujo,algoritmoPersonalizado);
+        EventoDragAndDrop drag = new EventoDragAndDrop(imgBloqueGuardado, contenedorDeBloques, dibujo, bloque);
         drag.empezarDragAndDrop();
     }
 

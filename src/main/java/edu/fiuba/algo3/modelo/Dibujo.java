@@ -12,6 +12,10 @@ public class Dibujo {
         this.tablero = new Tablero(alto, ancho);
     }
 
+    public void cambiarAlgoritmo(Algoritmo algoritmo){
+        this.algoritmo = algoritmo;
+    }
+
     public Personaje personaje(){
         return this.personaje;
     }
