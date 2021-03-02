@@ -26,15 +26,8 @@ public class EventoEjecutarEventHandler implements EventHandler<ActionEvent> {
         double yMedio = (gc.getCanvas().getHeight()) / 2;
         gc.moveTo(xMedio,yMedio);
         SectorPersonaje sectorPersonaje = new SectorPersonaje(gc,xMedio,yMedio);
-        ArrayList<Bloque> algoritmo = dibujo.algoritmo().obtenerAlgoritmo();
         dibujo.tablero().resetear();
-        Iterador iterador = new Iterador(algoritmo);
-
-        while (iterador.tieneSiguiente()) {
-            //Posicion posicionAnterior = dibujo.personaje().obtenerPosicion();
-            dibujo.ejecutar(iterador.actual());
-            iterador.siguiente();
-        }
+        dibujo.ejecutar();
         
         ArrayList<Trazo> trazos = this.dibujo.tablero().obtenerTrazos();
         for (int i = 0; i < trazos.size(); i++) {

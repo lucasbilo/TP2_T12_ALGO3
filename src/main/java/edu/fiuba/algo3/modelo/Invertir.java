@@ -15,19 +15,11 @@ public class Invertir extends Bloque{
     public void agregarAlgoritmo(Algoritmo algoritmo){this.algoritmoInvertido = algoritmo;}
 
     public void ejecutar(Personaje personaje, Tablero tablero){
-        Iterador iterador = new Iterador(algoritmoInvertido.obtenerAlgoritmo());
-        while (iterador.tieneSiguiente()){
-            algoritmoInvertido.ejecutarInvertido(personaje, tablero, iterador.actual());
-            iterador.siguiente();
-        }
+        algoritmoInvertido.ejecutarInvertido(personaje, tablero);
     }
 
     public void ejecutarInvertido(Personaje personaje, Tablero tablero){
-        Iterador iterador = new Iterador(algoritmoInvertido.obtenerAlgoritmo());
-        while (iterador.tieneSiguiente()){
-            algoritmoInvertido.ejecutar(personaje, tablero, iterador.actual());
-            iterador.siguiente();
-        }
+        algoritmoInvertido.ejecutar(personaje, tablero);
     }
 
     public Invertir clonarBloque(){return new Invertir(this.algoritmoInvertido.clonarAlgoritmo());}

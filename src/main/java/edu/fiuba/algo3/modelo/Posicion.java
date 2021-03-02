@@ -14,8 +14,7 @@ public class Posicion {
     public Posicion mover (Direccion direccion){
         return new Posicion(
             this.x + direccion.obtenerX(),
-            this.y + direccion.obtenerY()
-        );
+            this.y + direccion.obtenerY());
     }
 
     public int obtenerX(){

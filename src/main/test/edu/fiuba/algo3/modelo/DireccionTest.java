@@ -7,35 +7,35 @@ import static org.junit.jupiter.api.Assertions.*;
 public class DireccionTest {
 
     @Test
-    public void test01SeCreaObjetoDireccion() {
+    public void test01SeCreaObjetoDireccionVacio() {
         Direccion direccion = new Direccion();
 
         assertTrue(direccion.coordenadasIgualesA(0,0));
     }
 
     @Test
-    public void test02SeCreaObjetoDireccionArriba() {
+    public void test02SeCreaObjetoDireccionConCoordenadasHaciaArriba() {
         Direccion direccionArriba = new Direccion(0,1);
 
         assertTrue(direccionArriba.coordenadasIgualesA(0,1));
     }
 
     @Test
-    public void test03SeCreaObjetoDireccionAbajo() {
+    public void test03SeCreaObjetoDireccionConCoordenadasHaciaAbajo() {
         Direccion direccionAbajo = new Direccion(0,-1);
 
         assertTrue(direccionAbajo.coordenadasIgualesA(0,-1));
     }
 
     @Test
-    public void test04SeCreaObjetoDireccionDerecha() {
+    public void test04SeCreaObjetoDireccionConCoordenadasHaciaLaDerecha() {
         Direccion direccionDerecha = new Direccion(1,0);
 
         assertTrue(direccionDerecha.coordenadasIgualesA(1,0));
     }
 
     @Test
-    public void test05SeCreaObjetoDireccionIzquierda() {
+    public void test05SeCreaObjetoDireccionConCoordenadasHaciaLaIzquierda() {
         Direccion direccionIzquierda = new Direccion(-1,0);
 
         assertTrue(direccionIzquierda.coordenadasIgualesA(-1,0));

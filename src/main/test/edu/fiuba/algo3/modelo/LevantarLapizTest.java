@@ -10,7 +10,6 @@ public class LevantarLapizTest {
     public void test01SeCreaUnBloqueLevantarLapizYSeLoEjecuta(){
         Personaje personaje = new Personaje();
         Tablero tablero = new Tablero();
-
         Bloque bloque = new LevantarLapiz();
 
         bloque.ejecutar(personaje, tablero);
@@ -24,7 +23,6 @@ public class LevantarLapizTest {
     public void test02SeCreaUnBloqueLevantarLapizYSeLoEjecutaInvertido(){
         Personaje personaje = new Personaje();
         Tablero tablero = new Tablero();
-
         Bloque bloque = new LevantarLapiz();
 
         bloque.ejecutarInvertido(personaje, tablero);

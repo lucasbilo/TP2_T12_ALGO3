@@ -16,28 +16,10 @@ public class Tablero {
         this.alto = alto;
         this.ancho = ancho;
     }
-    /*
-    public void escribir(Posicion posicion){
-        Optional<Posicion> nuevaPosicion = this.obtenerPosicion(posicion);
-        if(nuevaPosicion.isEmpty()){
-            this.posiciones.add(posicion);
-        }
-    }
-
-    public Optional<Posicion> obtenerPosicion(Posicion pos){
-        return this.posiciones.stream().filter(posicion -> posicion.igualA(pos)).findFirst();
-        //devuelve NULL si no se encuentra
-    }
-
-    public boolean existePosicion(Posicion pos){
-        return this.posiciones.stream().anyMatch(posicion -> posicion.igualA(pos));
-    }*/
 
     public void actualizar(Posicion posInicial, Posicion posFinal, EstadoLapiz estadoLapiz){
         Trazo trazo = new Trazo(posInicial, posFinal, estadoLapiz);
         trazos.add(trazo);
-        // posicionNueva = new Posicion(posicion.obtenerX(),posicion.obtenerY());
-        //this.escribir(posicionNueva);
     }
 
     public boolean posicionEsValida(Posicion posicion) {
