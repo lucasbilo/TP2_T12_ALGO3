@@ -55,10 +55,10 @@ public class EventoAlgoritmoPersonalizadoEventHandler implements EventHandler<Ac
 
     @Override
     public void handle(ActionEvent actionEvent){
-        Algoritmo nuevoAlgoritmo = new Algoritmo();
-        bloque.agregarAlgoritmo(dibujo.algoritmo());
+        Algoritmo nuevoAlgoritmo = dibujo.algoritmo().clonarAlgoritmo();
+        bloque.agregarAlgoritmo(nuevoAlgoritmo);
         //AlgoritmoPersonalizado algoritmoPersonalizado = new AlgoritmoPersonalizado(dibujo.algoritmo());
-        dibujo.cambiarAlgoritmo(nuevoAlgoritmo);
+        //dibujo.cambiarAlgoritmo(nuevoAlgoritmo);
         Label nombreAlgoritmo = guardarNombreAlgoritmo();
         ImageView imgBloqueGuardado = generarImagenesLabels(ruta);
         HBox contenedorHorizontal = new HBox(imgBloqueGuardado, nombreAlgoritmo);

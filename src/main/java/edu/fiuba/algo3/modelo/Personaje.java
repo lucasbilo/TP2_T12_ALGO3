@@ -23,7 +23,7 @@ public class Personaje {
     public void modificarPosicion(Direccion direccion, Tablero tablero){
         Posicion nuevaPosicion = this.posicion.mover(direccion);
         if(tablero.posicionEsValida(nuevaPosicion)){
-            this.estadoLapiz.esDibujo(tablero, posicion);
+            tablero.actualizar(this.posicion, nuevaPosicion, this.estadoLapiz);
             this.posicion = nuevaPosicion;
         }
     }

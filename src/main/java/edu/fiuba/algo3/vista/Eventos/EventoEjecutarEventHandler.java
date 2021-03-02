@@ -20,6 +20,7 @@ public class EventoEjecutarEventHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent actionEvent){
 
         GraphicsContext gc = canva.getGraphicsContext2D();
+
         gc.beginPath();
         double xMedio = (gc.getCanvas().getWidth()) / 2;
         double yMedio = (gc.getCanvas().getHeight()) / 2;
@@ -29,17 +30,21 @@ public class EventoEjecutarEventHandler implements EventHandler<ActionEvent> {
         dibujo.tablero().resetear();
         Iterador iterador = new Iterador(algoritmo);
 
-        while (iterador.tieneSiguiente()){
-            Posicion posicionAnterior = dibujo.personaje().obtenerPosicion();
+        while (iterador.tieneSiguiente()) {
+            //Posicion posicionAnterior = dibujo.personaje().obtenerPosicion();
             dibujo.ejecutar(iterador.actual());
-            if(dibujo.tablero().existePosicion(posicionAnterior)){
-                gc.lineTo(xMedio + dibujo.personaje().obtenerPosicion().obtenerX(), yMedio + dibujo.personaje().obtenerPosicion().obtenerY());
+            iterador.siguiente();
+        }
+        
+        ArrayList<Trazo> trazos = this.dibujo.tablero().obtenerTrazos();
+        for (int i = 0; i < trazos.size(); i++) {
+            if(trazos.get(i).obtenerEstadoLapiz().lapizAbajo()){
+                gc.lineTo(xMedio + trazos.get(i).obtenerFinal().obtenerX(), yMedio + trazos.get(i).obtenerFinal().obtenerY());
             }
             else{
-                gc.moveTo(xMedio + dibujo.personaje().obtenerPosicion().obtenerX(), yMedio + dibujo.personaje().obtenerPosicion().obtenerY());
+                gc.moveTo(xMedio + trazos.get(i).obtenerFinal().obtenerX(), yMedio + trazos.get(i).obtenerFinal().obtenerY());
             }
-            iterador.siguiente();
-            sectorPersonaje.actualizarPosicion(xMedio + dibujo.personaje().obtenerPosicion().obtenerX(), yMedio + dibujo.personaje().obtenerPosicion().obtenerY());
+            sectorPersonaje.actualizarPosicion(xMedio + trazos.get(i).obtenerFinal().obtenerX(), yMedio + trazos.get(i).obtenerFinal().obtenerY());
         }
         gc.stroke();
     }

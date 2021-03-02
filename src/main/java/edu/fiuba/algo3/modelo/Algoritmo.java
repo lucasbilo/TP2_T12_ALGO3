@@ -2,11 +2,13 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
 
-public class Algoritmo {
+public class Algoritmo{
 
     private ArrayList<Bloque> algoritmo;
 
     public Algoritmo(){ algoritmo = new ArrayList();}
+
+    public Algoritmo(ArrayList<Bloque> algoritmo) { this.algoritmo = algoritmo;}
 
     public ArrayList<Bloque> obtenerAlgoritmo() { return algoritmo; }
 
@@ -27,4 +29,13 @@ public class Algoritmo {
             }
         }
     }
+
+    public Algoritmo clonarAlgoritmo(){
+        ArrayList<Bloque> nuevoArray = new ArrayList<>();
+        for(int i = 0; i < algoritmo.size(); i++){
+                nuevoArray.add(algoritmo.get(i).clonarBloque());
+            }
+        return new Algoritmo(nuevoArray);
+    }
+
 }

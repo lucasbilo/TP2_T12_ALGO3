@@ -14,4 +14,6 @@ public class LevantarLapiz extends Bloque{
         EstadoLapiz lapizAbajo = new LapizAbajo();
         personaje.modificarEstadoLapiz(lapizAbajo);
     }
+
+    public LevantarLapiz clonarBloque(){ return new LevantarLapiz();}
 }

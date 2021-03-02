@@ -33,4 +33,5 @@ public class Dibujo {
     }
 
     public void eliminarBloque(Bloque bloque){ this.algoritmo.eliminarBloque(bloque);}
+
 }

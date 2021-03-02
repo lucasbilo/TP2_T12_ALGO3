@@ -25,4 +25,6 @@ public class Mover extends Bloque {
         return this.direccion;
     }
 
+    public Mover clonarBloque(){ return new Mover(new Direccion(direccion.obtenerX(), direccion.obtenerY()));}
+
 }

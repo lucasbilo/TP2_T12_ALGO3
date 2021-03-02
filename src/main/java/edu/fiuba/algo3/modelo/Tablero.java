@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public class Tablero {
 
-    private ArrayList<Posicion> posiciones = new ArrayList<>();
+    private ArrayList<Trazo> trazos = new ArrayList<>();
     private int alto = 10;
     private int ancho = 10;
 
@@ -16,7 +16,7 @@ public class Tablero {
         this.alto = alto;
         this.ancho = ancho;
     }
-
+    /*
     public void escribir(Posicion posicion){
         Optional<Posicion> nuevaPosicion = this.obtenerPosicion(posicion);
         if(nuevaPosicion.isEmpty()){
@@ -31,11 +31,13 @@ public class Tablero {
 
     public boolean existePosicion(Posicion pos){
         return this.posiciones.stream().anyMatch(posicion -> posicion.igualA(pos));
-    }
+    }*/
 
-    public void actualizar(Posicion posicion){
-        Posicion posicionNueva = new Posicion(posicion.obtenerX(),posicion.obtenerY());
-        this.escribir(posicionNueva);
+    public void actualizar(Posicion posInicial, Posicion posFinal, EstadoLapiz estadoLapiz){
+        Trazo trazo = new Trazo(posInicial, posFinal, estadoLapiz);
+        trazos.add(trazo);
+        // posicionNueva = new Posicion(posicion.obtenerX(),posicion.obtenerY());
+        //this.escribir(posicionNueva);
     }
 
     public boolean posicionEsValida(Posicion posicion) {
@@ -45,6 +47,8 @@ public class Tablero {
     }
 
     public void resetear(){
-        this.posiciones = new ArrayList<>();
+        this.trazos = new ArrayList<>();
     }
+
+    public ArrayList<Trazo> obtenerTrazos(){ return this.trazos;}
 }

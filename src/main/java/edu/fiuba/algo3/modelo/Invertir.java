@@ -29,4 +29,6 @@ public class Invertir extends Bloque{
             iterador.siguiente();
         }
     }
+
+    public Invertir clonarBloque(){return new Invertir(this.algoritmoInvertido.clonarAlgoritmo());}
 }

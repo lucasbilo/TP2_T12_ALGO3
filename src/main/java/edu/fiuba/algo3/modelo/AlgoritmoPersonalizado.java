@@ -28,4 +28,6 @@ public class AlgoritmoPersonalizado extends Bloque{
             iterador.siguiente();
         }
     }
+
+    public AlgoritmoPersonalizado clonarBloque(){ return new AlgoritmoPersonalizado(this.algoritmoGuardado.clonarAlgoritmo());}
 }

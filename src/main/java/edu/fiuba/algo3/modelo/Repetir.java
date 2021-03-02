@@ -43,4 +43,6 @@ public class Repetir extends Bloque{
             }
         }
     }
+
+    public Repetir clonarBloque(){ return new Repetir(numVeces, this.algoritmoRepetido.clonarAlgoritmo());}
 }
