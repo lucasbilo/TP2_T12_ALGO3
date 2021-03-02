@@ -35,4 +35,29 @@ public class PersonajeTest {
 
         assertTrue(posicionActual.igualA(posicionEsperada));
     }
+
+    @Test
+    public void test04SeCreaUnPersonajeSeLeModificaLaPosicionYSeLoResetea(){
+        Personaje personaje = new Personaje();
+        Tablero tablero = new Tablero();
+        Direccion direccionArriba = new Direccion(0, 5);
+        personaje.modificarPosicion(direccionArriba, tablero);
+
+        personaje.resetear();
+        Posicion posicionActual = personaje.obtenerPosicion();
+        Posicion posicionEsperada = new Posicion(0,0);
+
+        assertTrue(posicionActual.igualA(posicionEsperada));
+    }
+
+    @Test
+    public void test05SeCreaUnPersonajeSeLeModificaElEstadoDelLapizHaciaAbajoYSeLoResetea(){
+        Personaje personaje = new Personaje();
+        personaje.modificarEstadoLapiz(new LapizAbajo());
+
+        personaje.resetear();
+        EstadoLapiz estadoActual = personaje.obtenerEstadoLapiz();
+
+        assertTrue(estadoActual.lapizArriba());
+    }
 }

@@ -1,9 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AlgoritmoTest {
@@ -117,9 +115,9 @@ public class AlgoritmoTest {
         algoritmo.agregarBloque(bloque);
         ArrayList<Bloque> arrayDeBloques = algoritmo.obtenerAlgoritmo();
 
-        assertEquals(1,arrayDeBloques.size());
+        assertEquals(1, arrayDeBloques.size());
         algoritmo.eliminarBloque(bloque);
-        assertEquals(0,arrayDeBloques.size());
+        assertEquals(0, arrayDeBloques.size());
     }
 
 }

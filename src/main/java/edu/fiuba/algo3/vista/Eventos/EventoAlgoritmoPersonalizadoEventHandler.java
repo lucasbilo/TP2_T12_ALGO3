@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.vista.Eventos;
 
 import edu.fiuba.algo3.modelo.Algoritmo;
-import edu.fiuba.algo3.modelo.AlgoritmoPersonalizado;
 import edu.fiuba.algo3.modelo.Bloque;
 import edu.fiuba.algo3.modelo.Dibujo;
 import javafx.event.ActionEvent;

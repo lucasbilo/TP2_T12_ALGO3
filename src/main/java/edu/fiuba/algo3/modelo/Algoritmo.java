@@ -15,20 +15,20 @@ public class Algoritmo{
     public void agregarBloque(Bloque unBloque) { algoritmo.add(unBloque); }
 
     public void ejecutar(Personaje personaje, Tablero tablero){
-        for(int i = 0; i < algoritmo.size(); i++){
-            algoritmo.get(i).ejecutar(personaje, tablero);
+        for (Bloque bloque : algoritmo){
+            bloque.ejecutar(personaje, tablero);
         }
     }
 
     public void ejecutarInvertido(Personaje personaje, Tablero tablero){
-        for(int i = 0; i < algoritmo.size(); i++){
-            algoritmo.get(i).ejecutarInvertido(personaje, tablero);
+        for (Bloque bloque : algoritmo){
+            bloque.ejecutarInvertido(personaje, tablero);
         }
     }
 
     public void eliminarBloque(Bloque bloque) {
         for(int i = 0; i < algoritmo.size(); i++){
-            if (bloque == algoritmo.get(i)) {
+            if (bloque == algoritmo.get(i)){
                 algoritmo.remove(i);
             }
         }
@@ -36,9 +36,9 @@ public class Algoritmo{
 
     public Algoritmo clonarAlgoritmo(){
         ArrayList<Bloque> nuevoArray = new ArrayList<>();
-        for(int i = 0; i < algoritmo.size(); i++){
-                nuevoArray.add(algoritmo.get(i).clonarBloque());
-            }
+        for (Bloque bloque : algoritmo){
+            nuevoArray.add(bloque.clonarBloque());
+        }
         return new Algoritmo(nuevoArray);
     }
 
