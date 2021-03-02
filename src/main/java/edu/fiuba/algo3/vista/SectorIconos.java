@@ -42,9 +42,9 @@ public class SectorIconos {
 
     public Button obtenerSalir() { return this.botonSalir; }
 
-    public void crearIconosControladores(Canvas canva, Stage programa){
-        EventoEjecutarEventHandler eventoEjecutarEventHandler = new EventoEjecutarEventHandler(dibujo, canva);
-        EventoBorrarEventHandler eventoBorrarEventHandler = new EventoBorrarEventHandler(dibujo,canva);
+    public void crearIconosControladores(Canvas canva, Stage programa, SectorDibujo sectorDibujo){
+        EventoEjecutarEventHandler eventoEjecutarEventHandler = new EventoEjecutarEventHandler(dibujo, canva, sectorDibujo);
+        EventoBorrarEventHandler eventoBorrarEventHandler = new EventoBorrarEventHandler(dibujo, sectorDibujo);
         EventoSalirEventHandler eventoSalirEventHandler = new EventoSalirEventHandler(programa);
         this.botonEjecutar = crearIcono("src/main/java/edu/fiuba/algo3/vista/Images/ejecutar.png", eventoEjecutarEventHandler);
         this.botonBorrar = crearIcono("src/main/java/edu/fiuba/algo3/vista/Images/delete.png", eventoBorrarEventHandler);

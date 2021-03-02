@@ -58,7 +58,7 @@ public class EventoBotonIniciarEventHandler implements EventHandler<ActionEvent>
         SectorDibujo sectorDibujo = new SectorDibujo();
 
         //Botones Controladores
-        sectorIconos.crearIconosControladores(sectorDibujo.obtenerCanva(), programa);
+        sectorIconos.crearIconosControladores(sectorDibujo.obtenerCanva(), programa, sectorDibujo);
 
         HBox contenedorBotonesControladores = new HBox(sectorIconos.obtenerEjecutar(),sectorIconos.obtenerBorrar(), sectorIconos.obtenerSalir());
         contenedorBotonesControladores.setSpacing(10);

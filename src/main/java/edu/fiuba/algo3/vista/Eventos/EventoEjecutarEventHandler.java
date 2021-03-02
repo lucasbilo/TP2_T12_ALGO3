@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista.Eventos;
 
+import edu.fiuba.algo3.vista.SectorDibujo;
 import edu.fiuba.algo3.vista.SectorPersonaje;
 import edu.fiuba.algo3.modelo.*;
 import javafx.event.ActionEvent;
@@ -11,14 +12,18 @@ import java.util.ArrayList;
 public class EventoEjecutarEventHandler implements EventHandler<ActionEvent> {
     private final Dibujo dibujo;
     private final Canvas canva;
+    private final SectorDibujo sectorDibujo;
 
-    public EventoEjecutarEventHandler(Dibujo dibujo, Canvas canva) {
+    public EventoEjecutarEventHandler(Dibujo dibujo, Canvas canva, SectorDibujo sectorDibujo) {
         this.dibujo = dibujo;
         this.canva = canva;
+        this.sectorDibujo = sectorDibujo;
     }
 
     public void handle(ActionEvent actionEvent){
-
+        sectorDibujo.resetearCanva();
+        dibujo.personaje().resetear();
+        dibujo.tablero().resetear();
         GraphicsContext gc = canva.getGraphicsContext2D();
 
         gc.beginPath();
@@ -26,7 +31,6 @@ public class EventoEjecutarEventHandler implements EventHandler<ActionEvent> {
         double yMedio = (gc.getCanvas().getHeight()) / 2;
         gc.moveTo(xMedio,yMedio);
         SectorPersonaje sectorPersonaje = new SectorPersonaje(gc,xMedio,yMedio);
-        dibujo.tablero().resetear();
         dibujo.ejecutar();
         
         ArrayList<Trazo> trazos = this.dibujo.tablero().obtenerTrazos();

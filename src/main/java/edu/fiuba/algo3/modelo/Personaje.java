@@ -32,4 +32,9 @@ public class Personaje {
         this.estadoLapiz = nuevoEstado;
     }
 
+    public void resetear(){
+        this.estadoLapiz = new LapizArriba();
+        this.posicion.resetearCoordenadas();
+    }
+
 }
