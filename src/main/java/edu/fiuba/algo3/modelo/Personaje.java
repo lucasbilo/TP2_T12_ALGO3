@@ -2,11 +2,9 @@
 package edu.fiuba.algo3.modelo;
 
 public class Personaje {
-    //Atributos
     private EstadoLapiz estadoLapiz;
     private Posicion posicion;
 
-    //Constructor
     public Personaje(){
         this.posicion = new Posicion();
         this.estadoLapiz = new LapizArriba();

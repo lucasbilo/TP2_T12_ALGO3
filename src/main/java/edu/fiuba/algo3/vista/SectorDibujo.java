@@ -1,11 +1,8 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.modelo.LapizArriba;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.*;
 import javafx.scene.canvas.*;
-
-
 
 public class SectorDibujo {
 
