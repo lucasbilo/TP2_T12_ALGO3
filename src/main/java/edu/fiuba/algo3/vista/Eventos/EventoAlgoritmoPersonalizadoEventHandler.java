@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vista.Eventos;
 
 import edu.fiuba.algo3.modelo.Algoritmo;
 import edu.fiuba.algo3.modelo.Bloque;
+import edu.fiuba.algo3.modelo.BloqueSinNombreError;
 import edu.fiuba.algo3.modelo.Dibujo;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -36,16 +37,30 @@ public class EventoAlgoritmoPersonalizadoEventHandler implements EventHandler<Ac
         Label consigna = new Label("Escriba el nombre de su bloque personalizado");
         Button botonGuardar = new Button("Guardar");
         Label nombreAlgoritmo = new Label();
-        VBox contenedorVertical = new VBox(consigna, inputField, botonGuardar);
+        Label mensaje = new Label(" ");
+        VBox contenedorVertical = new VBox(consigna, inputField, botonGuardar, mensaje);
         Scene escenaTextField = new Scene(contenedorVertical);
         ventanaTextField.setScene(escenaTextField);
+        ventanaTextField.setResizable(true);
         ventanaTextField.show();
 
         botonGuardar.setOnAction(e -> {
-            String nombre = inputField.getText();
-            nombreAlgoritmo.setText(nombre);
-            ventanaTextField.close();
+            try{
+                String nombre = inputField.getText();
+                nombreAlgoritmo.setText(nombre);
+                if (nombre.length() == 0) {
+                    throw new BloqueSinNombreError();
+                }
+                else{ ventanaTextField.close();}
+            }
+            catch(BloqueSinNombreError exc){
+                String mensajeError = exc.arrojarMensaje(contenedorVertical, mensaje);
+            }
+
+
         });
+
+
 
         return nombreAlgoritmo;
 
