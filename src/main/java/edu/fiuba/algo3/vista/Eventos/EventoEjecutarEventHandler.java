@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 
 public class EventoEjecutarEventHandler implements EventHandler<ActionEvent> {
+
     private final Dibujo dibujo;
     private final Canvas canva;
     private final SectorDibujo sectorDibujo;

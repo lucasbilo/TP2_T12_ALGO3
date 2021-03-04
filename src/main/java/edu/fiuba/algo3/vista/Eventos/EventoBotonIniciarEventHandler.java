@@ -50,7 +50,8 @@ public class EventoBotonIniciarEventHandler implements EventHandler<ActionEvent>
         sectorIconos.crearIconoBajarLapiz();
 
         sectorIconos.crearIconoInvertir(algoritmosPersonalizados);
-        sectorIconos.crearIconoRepetir(algoritmosPersonalizados);
+        sectorIconos.crearIconoRepetir(algoritmosPersonalizados,2);
+        sectorIconos.crearIconoRepetir(algoritmosPersonalizados,3);
         sectorIconos.crearIconoAlgoritmoPersonalizado(algoritmosPersonalizados);
 
 

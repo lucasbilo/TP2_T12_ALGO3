@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.vista.Eventos;
 
 import edu.fiuba.algo3.modelo.Algoritmo;
-import edu.fiuba.algo3.modelo.AlgoritmoPersonalizado;
 import edu.fiuba.algo3.modelo.Bloque;
 import edu.fiuba.algo3.modelo.Dibujo;
 import javafx.event.ActionEvent;
@@ -12,7 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -57,13 +55,12 @@ public class EventoAlgoritmoPersonalizadoEventHandler implements EventHandler<Ac
     public void handle(ActionEvent actionEvent){
         Algoritmo nuevoAlgoritmo = dibujo.algoritmo().clonarAlgoritmo();
         bloque.agregarAlgoritmo(nuevoAlgoritmo);
-        //AlgoritmoPersonalizado algoritmoPersonalizado = new AlgoritmoPersonalizado(dibujo.algoritmo());
-        //dibujo.cambiarAlgoritmo(nuevoAlgoritmo);
         Label nombreAlgoritmo = guardarNombreAlgoritmo();
+        System.out.println(nombreAlgoritmo.getText());
         ImageView imgBloqueGuardado = generarImagenesLabels(ruta);
-        HBox contenedorHorizontal = new HBox(imgBloqueGuardado, nombreAlgoritmo);
-        contenedorHorizontal.setSpacing(10);
-        contenedorDeAlgoritmos.getChildren().add(contenedorHorizontal);
+        VBox contenedorVertical = new VBox(imgBloqueGuardado, nombreAlgoritmo);
+        contenedorVertical.setSpacing(10);
+        contenedorDeAlgoritmos.getChildren().add(contenedorVertical);
         EventoDragAndDrop drag = new EventoDragAndDrop(imgBloqueGuardado, contenedorDeBloques, dibujo, bloque);
         drag.empezarDragAndDrop();
     }

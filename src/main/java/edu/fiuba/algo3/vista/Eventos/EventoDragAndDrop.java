@@ -5,9 +5,13 @@ import edu.fiuba.algo3.modelo.Dibujo;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 
 public class EventoDragAndDrop {
@@ -92,8 +96,6 @@ public class EventoDragAndDrop {
         source.setOnDragDone(new EventHandler<DragEvent>() {
             public void handle(DragEvent event) {
                 /* the drag-and-drop gesture ended */
-                //System.out.println("onDragDone");
-                /* if the data was successfully moved, clear it */
                 Dragboard db = event.getDragboard();
                 ImageView image = new ImageView(db.getImage());
                 Button button = new Button();
@@ -103,7 +105,6 @@ public class EventoDragAndDrop {
                 target.setAlignment(Pos.BOTTOM_CENTER);
                 dibujo.agregarBloque(bloque);
                 event.consume();
-                System.out.println(dibujo.algoritmo().obtenerAlgoritmo().size());
             }
         });
 
