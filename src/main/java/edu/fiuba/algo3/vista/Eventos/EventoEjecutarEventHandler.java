@@ -31,20 +31,33 @@ public class EventoEjecutarEventHandler implements EventHandler<ActionEvent> {
         double xMedio = (gc.getCanvas().getWidth()) / 2;
         double yMedio = (gc.getCanvas().getHeight()) / 2;
         gc.moveTo(xMedio,yMedio);
-        SectorPersonaje sectorPersonaje = new SectorPersonaje(gc,xMedio,yMedio);
-        dibujo.ejecutar();
-        
-        ArrayList<Trazo> trazos = this.dibujo.tablero().obtenerTrazos();
-        for (int i = 0; i < trazos.size(); i++) {
-            if(trazos.get(i).obtenerEstadoLapiz().lapizAbajo()){
-                gc.lineTo(xMedio + trazos.get(i).obtenerFinal().obtenerX(), yMedio + trazos.get(i).obtenerFinal().obtenerY());
+
+        try{
+            if (dibujo.algoritmo().obtenerAlgoritmo().size() == 0){
+                throw new AlgoritmoSinBloquesError();
             }
-            else{
-                gc.moveTo(xMedio + trazos.get(i).obtenerFinal().obtenerX(), yMedio + trazos.get(i).obtenerFinal().obtenerY());
+            else {
+                SectorPersonaje sectorPersonaje = new SectorPersonaje(gc,xMedio,yMedio);
+                dibujo.ejecutar();
+
+                ArrayList<Trazo> trazos = this.dibujo.tablero().obtenerTrazos();
+                for (int i = 0; i < trazos.size(); i++) {
+                    if(trazos.get(i).obtenerEstadoLapiz().lapizAbajo()){
+                        gc.lineTo(xMedio + trazos.get(i).obtenerFinal().obtenerX(), yMedio + trazos.get(i).obtenerFinal().obtenerY());
+                    }
+                    else{
+                        gc.moveTo(xMedio + trazos.get(i).obtenerFinal().obtenerX(), yMedio + trazos.get(i).obtenerFinal().obtenerY());
+                    }
+                    sectorPersonaje.actualizarPosicion(xMedio + trazos.get(i).obtenerFinal().obtenerX(), yMedio + trazos.get(i).obtenerFinal().obtenerY());
+                }
+                gc.stroke();
             }
-            sectorPersonaje.actualizarPosicion(xMedio + trazos.get(i).obtenerFinal().obtenerX(), yMedio + trazos.get(i).obtenerFinal().obtenerY());
+
         }
-        gc.stroke();
+        catch(AlgoritmoSinBloquesError exc) {
+            exc.arrojarMensaje();
+        }
+
     }
 
 }
