@@ -6,7 +6,7 @@ public abstract class Bloque {
 
     public abstract void ejecutarInvertido(Personaje personaje, Tablero tablero);
 
-    public abstract void agregarAlgoritmo(Algoritmo algoritmo);
+    public abstract void agregarAlgoritmo(Algoritmo algoritmo) throws AlgoritmoPersonalizadoSinBloquesError;
 
-    public abstract Bloque clonarBloque();
+    public abstract Bloque clonarBloque() throws AlgoritmoPersonalizadoSinBloquesError;
 }

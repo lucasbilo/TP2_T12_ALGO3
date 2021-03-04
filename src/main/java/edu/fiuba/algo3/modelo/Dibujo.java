@@ -24,8 +24,11 @@ public class Dibujo {
         this.algoritmo.agregarBloque(bloque);
     }
 
-    public void ejecutar(){
-            this.algoritmo.ejecutar(this.personaje, this.tablero);
+    public void ejecutar() throws AlgoritmoSinBloquesError {
+        if(algoritmo.obtenerAlgoritmo().size() == 0) {
+            throw new AlgoritmoSinBloquesError();
+        }
+        this.algoritmo.ejecutar(this.personaje, this.tablero);
     }
 
     public void eliminarBloque(Bloque bloque){ this.algoritmo.eliminarBloque(bloque);}

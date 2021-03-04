@@ -27,14 +27,10 @@ public class Algoritmo{
     }
 
     public void eliminarBloque(Bloque bloque) {
-        for(int i = 0; i < algoritmo.size(); i++){
-            if (bloque == algoritmo.get(i)){
-                algoritmo.remove(i);
-            }
-        }
+        algoritmo.removeIf(bloque1 -> bloque == bloque1);
     }
 
-    public Algoritmo clonarAlgoritmo(){
+    public Algoritmo clonarAlgoritmo() throws AlgoritmoPersonalizadoSinBloquesError {
         ArrayList<Bloque> nuevoArray = new ArrayList<>();
         for (Bloque bloque : algoritmo){
             nuevoArray.add(bloque.clonarBloque());

@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class DibujoTest {
 
     @Test
-    public void test01SeAgregaBloqueMoverArribaAlAlgoritmoYSeEjecuta(){
+    public void test01SeAgregaBloqueMoverArribaAlAlgoritmoYSeEjecuta() throws AlgoritmoSinBloquesError {
         Dibujo dibujo = new Dibujo();
         Direccion direccionArriba = new Direccion(0,1);
         Mover moverArriba = new Mover(direccionArriba);
@@ -20,7 +20,7 @@ public class DibujoTest {
     }
 
     @Test
-    public void test02SeAgregaBloqueMoverAbajoAlAlgoritmoYSeEjecuta(){
+    public void test02SeAgregaBloqueMoverAbajoAlAlgoritmoYSeEjecuta() throws AlgoritmoSinBloquesError {
         Dibujo dibujo = new Dibujo();
         Direccion direccionAbajo = new Direccion(0,-1);
         Mover moverAbajo = new Mover(direccionAbajo);
@@ -34,7 +34,7 @@ public class DibujoTest {
     }
 
     @Test
-    public void test03SeAgregaBloqueMoverDerechaAlAlgoritmoYSeEjecuta(){
+    public void test03SeAgregaBloqueMoverDerechaAlAlgoritmoYSeEjecuta() throws AlgoritmoSinBloquesError {
         Dibujo dibujo = new Dibujo();
         Direccion direccionDerecha = new Direccion(1,0);
         Mover moverDerecha = new Mover(direccionDerecha);
@@ -48,7 +48,7 @@ public class DibujoTest {
     }
 
     @Test
-    public void test04SeAgregaBloqueMoverIzquierdaAlAlgoritmoYSeEjecuta(){
+    public void test04SeAgregaBloqueMoverIzquierdaAlAlgoritmoYSeEjecuta() throws AlgoritmoSinBloquesError {
         Dibujo dibujo = new Dibujo();
         Direccion direccionIzquierda = new Direccion(-1,0);
         Mover moverIzquierda = new Mover(direccionIzquierda);
@@ -62,9 +62,9 @@ public class DibujoTest {
     }
 
     @Test
-    public void test05SeAgregaBloqueLevantarLapizAlAlgoritmoYSeEjecuta(){
+    public void test05SeAgregaBloqueLevantarLapizAlAlgoritmoYSeEjecuta() throws AlgoritmoSinBloquesError {
         Dibujo dibujo = new Dibujo();
-        dibujo.personaje().modificarEstadoLapiz(new LapizArriba());
+        dibujo.agregarBloque(new LevantarLapiz());
         dibujo.ejecutar();
 
         EstadoLapiz estado = dibujo.personaje().obtenerEstadoLapiz();
@@ -73,9 +73,9 @@ public class DibujoTest {
     }
 
     @Test
-    public void test06SeAgregaBloqueBajarLapizAlAlgoritmoYSeEjecuta(){
+    public void test06SeAgregaBloqueBajarLapizAlAlgoritmoYSeEjecuta() throws AlgoritmoSinBloquesError {
         Dibujo dibujo = new Dibujo();
-        dibujo.personaje().modificarEstadoLapiz(new LapizAbajo());
+        dibujo.agregarBloque(new BajarLapiz());
         dibujo.ejecutar();
 
         EstadoLapiz estado = dibujo.personaje().obtenerEstadoLapiz();
@@ -84,7 +84,7 @@ public class DibujoTest {
     }
 
     @Test
-    public void test07SeAgregaBloqueInvertirConBloqueMoverDerechaAlAlgoritmoYSeEjecuta(){
+    public void test07SeAgregaBloqueInvertirConBloqueMoverDerechaAlAlgoritmoYSeEjecuta() throws AlgoritmoSinBloquesError {
         Dibujo dibujo = new Dibujo();
         Algoritmo algoritmo = new Algoritmo();
         Direccion derecha = new Direccion(1,0);
@@ -102,14 +102,14 @@ public class DibujoTest {
     }
 
     @Test
-    public void test08SeAgregaBloqueAlgoritmoPersonalizadoConUnAlgoritmoYSeEjecuta(){
+    public void test08SeAgregaBloqueAlgoritmoPersonalizadoConUnAlgoritmoYSeEjecuta() throws AlgoritmoSinBloquesError, AlgoritmoPersonalizadoSinBloquesError {
         Dibujo dibujo = new Dibujo();
         Algoritmo algoritmo = new Algoritmo();
         Mover moverArriba = new Mover(new Direccion(0,1));
         algoritmo.agregarBloque(moverArriba);
         AlgoritmoPersonalizado algoritmoPersonalizado = new AlgoritmoPersonalizado(algoritmo);
+        dibujo.agregarBloque(algoritmoPersonalizado);
         dibujo.ejecutar();
-        algoritmoPersonalizado.ejecutar(dibujo.personaje(),dibujo.tablero());
 
         Posicion posicionActual = dibujo.personaje().obtenerPosicion();
         Posicion posicionEsperada = new Posicion (0,1);
@@ -129,6 +129,13 @@ public class DibujoTest {
         assertEquals(2,arrayDeBloques.size());
         dibujo.eliminarBloque(lapizAbajo);
         assertEquals(1,arrayDeBloques.size());
+    }
+
+    @Test
+    public void test10SeEjecutaSinBloquesDebeLanzarExcepcion(){
+        Dibujo dibujo = new Dibujo();
+
+        assertThrows(AlgoritmoSinBloquesError.class, dibujo::ejecutar);
     }
 
 

@@ -6,9 +6,18 @@ public class AlgoritmoPersonalizado extends Bloque{
 
     public AlgoritmoPersonalizado(){}
 
-    public AlgoritmoPersonalizado(Algoritmo algoritmo){this.algoritmoGuardado = algoritmo;}
+    public AlgoritmoPersonalizado(Algoritmo algoritmo) throws AlgoritmoPersonalizadoSinBloquesError {
+        if (algoritmo.obtenerAlgoritmo().size() == 0){
+            throw new AlgoritmoPersonalizadoSinBloquesError();
+        }
+        this.algoritmoGuardado = algoritmo;
+    }
 
-    public void agregarAlgoritmo(Algoritmo algoritmo){this.algoritmoGuardado = algoritmo;}
+    public void agregarAlgoritmo(Algoritmo algoritmo) throws AlgoritmoPersonalizadoSinBloquesError {
+        if (algoritmo.obtenerAlgoritmo().size() == 0){
+            throw new AlgoritmoPersonalizadoSinBloquesError();
+        }
+        this.algoritmoGuardado = algoritmo;}
 
     public Algoritmo obtenerAlgoritmo(){return algoritmoGuardado;}
 
@@ -20,6 +29,8 @@ public class AlgoritmoPersonalizado extends Bloque{
         algoritmoGuardado.ejecutarInvertido(personaje, tablero);
     }
 
-    public AlgoritmoPersonalizado clonarBloque(){ return new AlgoritmoPersonalizado(this.algoritmoGuardado.clonarAlgoritmo());}
+    public AlgoritmoPersonalizado clonarBloque() throws AlgoritmoPersonalizadoSinBloquesError{
+        return new AlgoritmoPersonalizado(this.algoritmoGuardado.clonarAlgoritmo());
+    }
 
 }

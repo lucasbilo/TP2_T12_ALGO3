@@ -12,7 +12,10 @@ public class Repetir extends Bloque{
         this.numVeces = numVeces;
     }
 
-    public Repetir(int numVeces, Algoritmo algoritmo){
+    public Repetir(int numVeces, Algoritmo algoritmo) throws AlgoritmoPersonalizadoSinBloquesError {
+        if (algoritmo.obtenerAlgoritmo().size() == 0){
+            throw new AlgoritmoPersonalizadoSinBloquesError();
+        }
         this.numVeces = numVeces;
         this.algoritmoRepetido = algoritmo;
     }
@@ -21,7 +24,12 @@ public class Repetir extends Bloque{
 
     public void agregarBloque(Bloque unBloque){ algoritmoRepetido.agregarBloque(unBloque);}
 
-    public void agregarAlgoritmo(Algoritmo algoritmo){this.algoritmoRepetido = algoritmo;}
+    public void agregarAlgoritmo(Algoritmo algoritmo) throws AlgoritmoPersonalizadoSinBloquesError {
+        if (algoritmo.obtenerAlgoritmo().size() == 0){
+            throw new AlgoritmoPersonalizadoSinBloquesError();
+        }
+        this.algoritmoRepetido = algoritmo;
+    }
 
     public void ejecutar(Personaje personaje, Tablero tablero){
         for(int i = 0; i < numVeces; i++){
@@ -35,5 +43,7 @@ public class Repetir extends Bloque{
         }
     }
 
-    public Repetir clonarBloque(){ return new Repetir(numVeces, this.algoritmoRepetido.clonarAlgoritmo());}
+    public Repetir clonarBloque() throws AlgoritmoPersonalizadoSinBloquesError {
+        return new Repetir(numVeces, this.algoritmoRepetido.clonarAlgoritmo());
+    }
 }

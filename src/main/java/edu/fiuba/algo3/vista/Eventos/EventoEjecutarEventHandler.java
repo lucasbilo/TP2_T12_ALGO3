@@ -33,28 +33,20 @@ public class EventoEjecutarEventHandler implements EventHandler<ActionEvent> {
         gc.moveTo(xMedio,yMedio);
 
         try{
-            if (dibujo.algoritmo().obtenerAlgoritmo().size() == 0){
-                throw new AlgoritmoSinBloquesError();
-            }
-            else {
-                SectorPersonaje sectorPersonaje = new SectorPersonaje(gc,xMedio,yMedio);
-                dibujo.ejecutar();
+            dibujo.ejecutar();
+            SectorPersonaje sectorPersonaje = new SectorPersonaje(gc,xMedio,yMedio);
 
-                ArrayList<Trazo> trazos = this.dibujo.tablero().obtenerTrazos();
-                for (int i = 0; i < trazos.size(); i++) {
-                    if(trazos.get(i).obtenerEstadoLapiz().lapizAbajo()){
-                        gc.lineTo(xMedio + trazos.get(i).obtenerFinal().obtenerX(), yMedio + trazos.get(i).obtenerFinal().obtenerY());
-                    }
-                    else{
-                        gc.moveTo(xMedio + trazos.get(i).obtenerFinal().obtenerX(), yMedio + trazos.get(i).obtenerFinal().obtenerY());
-                    }
-                    sectorPersonaje.actualizarPosicion(xMedio + trazos.get(i).obtenerFinal().obtenerX(), yMedio + trazos.get(i).obtenerFinal().obtenerY());
+            ArrayList<Trazo> trazos = this.dibujo.tablero().obtenerTrazos();
+            for (Trazo trazo : trazos) {
+                if (trazo.obtenerEstadoLapiz().lapizAbajo()) {
+                    gc.lineTo(xMedio + trazo.obtenerFinal().obtenerX(), yMedio + trazo.obtenerFinal().obtenerY());
+                } else {
+                    gc.moveTo(xMedio + trazo.obtenerFinal().obtenerX(), yMedio + trazo.obtenerFinal().obtenerY());
                 }
-                gc.stroke();
+                sectorPersonaje.actualizarPosicion(xMedio + trazo.obtenerFinal().obtenerX(), yMedio + trazo.obtenerFinal().obtenerY());
             }
-
-        }
-        catch(AlgoritmoSinBloquesError exc) {
+            gc.stroke();
+        } catch(AlgoritmoSinBloquesError exc) {
             exc.arrojarMensaje();
         }
 

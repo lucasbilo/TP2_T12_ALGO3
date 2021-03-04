@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RepetirTest {
 
@@ -87,5 +87,22 @@ public class RepetirTest {
 
         assertTrue(posicionActual.igualA(posicionEsperada));
     }
+
+    @Test
+    public void test08SeCreaBloqueRepetirConAlgoritmoVacioDebeLanzarExcepcion(){
+        Algoritmo algoritmo = new Algoritmo();
+
+        assertThrows(AlgoritmoPersonalizadoSinBloquesError.class, () -> new Repetir(2, algoritmo));
+    }
+
+    @Test
+    public void test09SeCreaBloqueRepetirYSeAgregaUnAlgoritmoVacioDebeLanzarExcepcion(){
+        Algoritmo algoritmo = new Algoritmo();
+        Repetir repetir = new Repetir();
+
+        assertThrows(AlgoritmoPersonalizadoSinBloquesError.class, () -> repetir.agregarAlgoritmo(algoritmo));
+    }
+
+
 
 }

@@ -33,7 +33,7 @@ public class InvertirTest {
     }
 
     @Test
-    public void test03SeCreaUnBloqueInvertirConAlgoritmoHaciaLaDerechaYLoInviertoALaIzquierda(){
+    public void test03SeCreaUnBloqueInvertirConAlgoritmoHaciaLaDerechaYLoInviertoALaIzquierda() throws AlgoritmoPersonalizadoSinBloquesError {
         Personaje personaje = new Personaje();
         Tablero tablero = new Tablero();
         Algoritmo algoritmo = new Algoritmo();
@@ -66,7 +66,7 @@ public class InvertirTest {
     }
 
     @Test
-    public void test05SeCreaUnBloqueInvertirConAlgoritmoBajarLapizYPersonajeSubeLapiz(){
+    public void test05SeCreaUnBloqueInvertirConAlgoritmoBajarLapizYPersonajeSubeLapiz() throws AlgoritmoPersonalizadoSinBloquesError {
         Personaje personaje = new Personaje();
         Tablero tablero = new Tablero();
         Algoritmo algoritmo = new Algoritmo();
@@ -99,7 +99,7 @@ public class InvertirTest {
     }
 
     @Test
-    public void test07SeCreaUnBloqueInvertirConAlgoritmoHaciaLaDerechaYSeLoEjecutaInvertido(){
+    public void test07SeCreaUnBloqueInvertirConAlgoritmoHaciaLaDerechaYSeLoEjecutaInvertido() throws AlgoritmoPersonalizadoSinBloquesError {
         Personaje personaje = new Personaje();
         Tablero tablero = new Tablero();
         Algoritmo algoritmo = new Algoritmo();
@@ -115,4 +115,21 @@ public class InvertirTest {
 
         assertTrue(posicionActual.igualA(posicionEsperada));
     }
+
+    @Test
+    public void test08SeCreaBloqueInvertirConAlgoritmoVacioDebeLanzarExcepcion(){
+        Algoritmo algoritmo = new Algoritmo();
+
+        assertThrows(AlgoritmoPersonalizadoSinBloquesError.class, () -> new Invertir(algoritmo));
+    }
+
+    @Test
+    public void test09SeCreaBloqueInvertirYSeAgregaUnAlgoritmoVacioDebeLanzarExcepcion(){
+        Algoritmo algoritmo = new Algoritmo();
+        Invertir invertir = new Invertir();
+
+        assertThrows(AlgoritmoPersonalizadoSinBloquesError.class, () -> invertir.agregarAlgoritmo(algoritmo));
+    }
+
+
 }

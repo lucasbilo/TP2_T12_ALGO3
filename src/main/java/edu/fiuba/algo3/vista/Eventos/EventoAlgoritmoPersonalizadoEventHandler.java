@@ -60,28 +60,23 @@ public class EventoAlgoritmoPersonalizadoEventHandler implements EventHandler<Ac
     @Override
     public void handle(ActionEvent actionEvent){
         try{
-            if(dibujo.algoritmo().obtenerAlgoritmo().size() == 0){
-                throw new AlgoritmoPersonalizadoSinBloquesError();
-            }
-            else{
-                Algoritmo nuevoAlgoritmo = dibujo.algoritmo().clonarAlgoritmo();
-                bloque.agregarAlgoritmo(nuevoAlgoritmo);
-                Label nombreAlgoritmo = guardarNombreAlgoritmo();
-                System.out.println(nombreAlgoritmo.getText());
-                ImageView imgBloqueGuardado = generarImagenesLabels(ruta);
-                VBox contenedorVertical = new VBox(imgBloqueGuardado, nombreAlgoritmo);
-                contenedorVertical.setSpacing(10);
-                contenedorDeAlgoritmos.getChildren().add(contenedorVertical);
-                EventoDragAndDrop drag = new EventoDragAndDrop(imgBloqueGuardado, contenedorDeBloques, dibujo, bloque);
-                drag.empezarDragAndDrop();
-            }
+            Algoritmo nuevoAlgoritmo = dibujo.algoritmo().clonarAlgoritmo();
+            bloque.agregarAlgoritmo(nuevoAlgoritmo);
+            Label nombreAlgoritmo = guardarNombreAlgoritmo();
+            System.out.println(nombreAlgoritmo.getText());
+            ImageView imgBloqueGuardado = generarImagenesLabels(ruta);
+            VBox contenedorVertical = new VBox(imgBloqueGuardado, nombreAlgoritmo);
+            contenedorVertical.setSpacing(10);
+            contenedorDeAlgoritmos.getChildren().add(contenedorVertical);
+            EventoDragAndDrop drag = new EventoDragAndDrop(imgBloqueGuardado, contenedorDeBloques, dibujo, bloque);
+            drag.empezarDragAndDrop();
         }
-        catch(AlgoritmoPersonalizadoSinBloquesError exc){
+        catch (AlgoritmoPersonalizadoSinBloquesError exc) {
             exc.arrojarMensaje();
         }
-
-
     }
+
+
 
     public ImageView generarImagenesLabels(String ruta){
         try {
