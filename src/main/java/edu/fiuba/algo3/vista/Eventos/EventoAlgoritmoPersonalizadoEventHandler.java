@@ -1,9 +1,6 @@
 package edu.fiuba.algo3.vista.Eventos;
 
-import edu.fiuba.algo3.modelo.Algoritmo;
-import edu.fiuba.algo3.modelo.Bloque;
-import edu.fiuba.algo3.modelo.BloqueSinNombreError;
-import edu.fiuba.algo3.modelo.Dibujo;
+import edu.fiuba.algo3.modelo.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -56,28 +53,34 @@ public class EventoAlgoritmoPersonalizadoEventHandler implements EventHandler<Ac
             catch(BloqueSinNombreError exc){
                 String mensajeError = exc.arrojarMensaje(contenedorVertical, mensaje);
             }
-
-
         });
-
-
-
         return nombreAlgoritmo;
-
     }
 
     @Override
     public void handle(ActionEvent actionEvent){
-        Algoritmo nuevoAlgoritmo = dibujo.algoritmo().clonarAlgoritmo();
-        bloque.agregarAlgoritmo(nuevoAlgoritmo);
-        Label nombreAlgoritmo = guardarNombreAlgoritmo();
-        System.out.println(nombreAlgoritmo.getText());
-        ImageView imgBloqueGuardado = generarImagenesLabels(ruta);
-        VBox contenedorVertical = new VBox(imgBloqueGuardado, nombreAlgoritmo);
-        contenedorVertical.setSpacing(10);
-        contenedorDeAlgoritmos.getChildren().add(contenedorVertical);
-        EventoDragAndDrop drag = new EventoDragAndDrop(imgBloqueGuardado, contenedorDeBloques, dibujo, bloque);
-        drag.empezarDragAndDrop();
+        try{
+            if(dibujo.algoritmo().obtenerAlgoritmo().size() == 0){
+                throw new AlgoritmoPersonalizadoSinBloquesError();
+            }
+            else{
+                Algoritmo nuevoAlgoritmo = dibujo.algoritmo().clonarAlgoritmo();
+                bloque.agregarAlgoritmo(nuevoAlgoritmo);
+                Label nombreAlgoritmo = guardarNombreAlgoritmo();
+                System.out.println(nombreAlgoritmo.getText());
+                ImageView imgBloqueGuardado = generarImagenesLabels(ruta);
+                VBox contenedorVertical = new VBox(imgBloqueGuardado, nombreAlgoritmo);
+                contenedorVertical.setSpacing(10);
+                contenedorDeAlgoritmos.getChildren().add(contenedorVertical);
+                EventoDragAndDrop drag = new EventoDragAndDrop(imgBloqueGuardado, contenedorDeBloques, dibujo, bloque);
+                drag.empezarDragAndDrop();
+            }
+        }
+        catch(AlgoritmoPersonalizadoSinBloquesError exc){
+            exc.arrojarMensaje();
+        }
+
+
     }
 
     public ImageView generarImagenesLabels(String ruta){
