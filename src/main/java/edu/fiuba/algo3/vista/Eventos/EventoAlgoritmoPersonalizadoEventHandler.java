@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class EventoAlgoritmoPersonalizadoEventHandler implements EventHandler<ActionEvent> {
@@ -51,7 +52,8 @@ public class EventoAlgoritmoPersonalizadoEventHandler implements EventHandler<Ac
                 else{ ventanaTextField.close();}
             }
             catch(BloqueSinNombreError exc){
-                String mensajeError = exc.arrojarMensaje(contenedorVertical, mensaje);
+                mensaje.setText("El nombre del bloque no puede estar vacío");
+                mensaje.setTextFill(Color.RED);
             }
         });
         return nombreAlgoritmo;
@@ -72,7 +74,14 @@ public class EventoAlgoritmoPersonalizadoEventHandler implements EventHandler<Ac
             drag.empezarDragAndDrop();
         }
         catch (AlgoritmoPersonalizadoSinBloquesError exc) {
-            exc.arrojarMensaje();
+            Stage ventanaError = new Stage();
+            Label mensajeError = new Label();
+            mensajeError.setText("El bloque personalizado no puede estar vacío");
+            mensajeError.setTextFill(Color.RED);
+            VBox contenedorMensaje = new VBox(mensajeError);
+            Scene escenaError = new Scene(contenedorMensaje);
+            ventanaError.setScene(escenaError);
+            ventanaError.show();
         }
     }
 

@@ -5,7 +5,13 @@ import edu.fiuba.algo3.vista.SectorPersonaje;
 import edu.fiuba.algo3.modelo.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.canvas.*;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+
 import java.util.ArrayList;
 
 
@@ -47,7 +53,14 @@ public class EventoEjecutarEventHandler implements EventHandler<ActionEvent> {
             }
             gc.stroke();
         } catch(AlgoritmoSinBloquesError exc) {
-            exc.arrojarMensaje();
+            Stage ventanaError = new Stage();
+            Label mensajeError = new Label();
+            mensajeError.setText("El algoritmo no puede estar vacío");
+            mensajeError.setTextFill(Color.RED);
+            VBox contenedorMensaje = new VBox(mensajeError);
+            Scene escenaError = new Scene(contenedorMensaje);
+            ventanaError.setScene(escenaError);
+            ventanaError.show();
         }
 
     }
